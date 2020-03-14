@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.tf_keras_1.models.return_model API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.tf_keras_1.models.return_model</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from tf_keras_1.models.imports import *
+from system.imports import *
+from tf_keras_1.models.models import *
+from tf_keras_1.models.common import create_final_layer
+from tf_keras_1.models.common import get_layer_uid
+from tf_keras_1.models.layers import custom_model_get_layer
+
+
+
+
+
+def load_model(system_dict, path=False, final=False, resume=False, external_path=False):
+    &#39;&#39;&#39;
+    Load model based on the system state 
+
+    Args:
+        system_dict (dict): System Dictionary
+        path (str): Path to final or best model weights if Final flag is set
+        final (bool): If True, Load model generated from latest epoch training
+        resume (bool): If True, load model from last checkpoint to resume training
+        external_path (str): Path to custom model weights
+
+    Returns:
+        network: Neural network loaded with weights.
+    &#39;&#39;&#39;
+    if(final):
+        if(path):
+            finetune_net = keras.models.load_model(path + &#34;final.h5&#34;);
+        else:
+            finetune_net = keras.models.load_model(system_dict[&#34;model_dir_relative&#34;] + &#34;final.h5&#34;);
+    if(resume):
+        finetune_net = keras.models.load_model(system_dict[&#34;model_dir_relative&#34;] + &#34;resume_state.h5&#34;);
+ 
+    if(external_path):
+        finetune_net = keras.models.load_model(external_path);
+
+    return finetune_net;
+
+
+
+
+
+
+
+
+def setup_model(system_dict):
+    &#39;&#39;&#39;
+    Setup model based on the system state and parameters
+
+    Args:
+        system_dict (dict): System Dictionary
+
+    Returns:
+        dict: Updated system dictionary
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        model_name = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;];
+        use_pretrained = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_pretrained&#34;];
+        freeze_base_network = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;freeze_base_network&#34;];
+        custom_network = system_dict[&#34;model&#34;][&#34;custom_network&#34;];
+        final_layer = system_dict[&#34;model&#34;][&#34;final_layer&#34;];
+        num_classes = system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;];
+        input_size = system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;input_size&#34;];
+
+        finetune_net, model_name = get_base_model(model_name, use_pretrained, num_classes, freeze_base_network, input_size);
+
+
+        if(len(custom_network)):
+            if(final_layer):
+                finetune_net = create_final_layer(finetune_net, custom_network, num_classes);
+            else:
+                msg = &#34;Final layer not assigned&#34;;
+                raise ConstraintError(msg);
+        else:
+            x = finetune_net.output
+            x = krl.GlobalAveragePooling2D()(x)
+            x = krl.Dense(512)(x);
+            x = krl.ReLU()(x)
+            x = krl.Dropout(0.5)(x);
+            x = krl.Dense(num_classes)(x);
+            preds = krl.Softmax()(x);
+            finetune_net = keras.models.Model(inputs=finetune_net.input, outputs=preds);
+
+        system_dict[&#34;local&#34;][&#34;model&#34;] = finetune_net;
+
+        return system_dict;
+
+
+    else:
+        net = create_network(system_dict[&#34;custom_model&#34;][&#34;network_stack&#34;], 
+            system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;data_shape&#34;], 
+            system_dict[&#34;custom_model&#34;][&#34;network_initializer&#34;]);
+
+        system_dict[&#34;local&#34;][&#34;model&#34;] = net;
+
+        return system_dict;
+
+
+
+
+
+
+
+def create_block(network_stack, count, G, sequential_first, position, current_width, out, initializer):
+    &#39;&#39;&#39;
+    Recursively create sub-blocks when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers for the sub-branch in the network
+        count (dict): A dictionary mapping to a count of every type of layer in the network
+        G (directed graph): NetworkX object
+        sequential_first (str): NAme of the current input layer
+        position (int): Vertical position on the directed graph
+        current_width (int): Horizontal position on the directed graph
+        out (placeholder): Keras placeholder temporary input for this sub-network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required sub-branch
+        directed graph: Updated directed graph
+        str: Name of the outermost layer in the sub-network
+        int: Vertical position of the outer most layer in the sub-network 
+        int: Horizontal position of the outer most layer in the sub-network 
+    &#39;&#39;&#39;
+    position += 1;
+    max_width = current_width;
+    for i in range(len(network_stack)): 
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _, out, initializer =  create_block(network_stack[i], count,
+                                                                                        G, sequential_first, position, 0,
+                                                                                        out, initializer)
+                #print(sequential_second, current_in_shape)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+                out_base = out;
+
+                #if(max_width &lt; len(network_stack[i])-2):
+                #    max_width = len(network_stack[i])-2;
+                max_width = current_width;
+                width = current_width;
+                for j in range(len(network_stack[i])-1):
+                    small_net = [];
+                    branch_net.append(out_base)
+                    branch_first = sequential_first
+                    branch_position = position
+                    column = max((j+1)*2+current_width, width);
+                    max_width = column;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block(network_stack[i][j][k], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2, #j+k+width
+                                                                                                             branch_net[j], 
+                                                                                                             initializer)
+                            else:
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block([network_stack[i][j][k]], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2,
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            #print(branch_second, current_in_shape_base)
+                            branch_first = branch_second
+                            small_net.append(branch_net[j]);
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            branch_net[j] = custom_model_get_layer(network_stack[i][j][k], initializer)(branch_net[j]);
+                            small_net.append(custom_model_get_layer(network_stack[i][j][k], initializer));
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    branches.append(small_net);
+
+                position = branch_max_length;
+                position += 1;
+                max_width += 2;
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+                if(network_stack[i][-1][&#34;name&#34;] == &#34;concatenate&#34;):
+                    out = keras.layers.concatenate(branch_net)
+                else:
+                    out = keras.layers.add(branch_net)
+
+                G.add_node(sequential_second, pos=(2 + current_width, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            out = custom_model_get_layer(network_stack[i], initializer)(out);
+            G.add_node(sequential_second, pos=(2 + current_width, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+            
+    return G, count, sequential_second, position, max_width, out, initializer
+    
+
+
+
+
+def create_network(network_stack, current_in_shape, initializer):
+    &#39;&#39;&#39;
+    Main function to create network when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers in the network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required complete network
+    &#39;&#39;&#39;
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    G=nx.DiGraph()
+    G.add_node(&#34;Net&#34;, pos=(1,1))
+    sequential_first = &#34;data&#34;;
+    
+
+    if(len(current_in_shape) == 2):
+        c, w = current_in_shape;
+        input1 = krl.Input(shape=(w, c));
+    elif(len(current_in_shape) == 3):
+        c, h, w = current_in_shape;
+        input1 = krl.Input(shape=(h, w, c));
+    elif(len(current_in_shape) == 4):
+        c, d, h, w = current_in_shape;
+        input1 = krl.Input(shape=(d, h, w, c));
+
+    out = input1;
+
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    position = 1;
+    G.add_node(sequential_first, pos=(2,1))
+    position += 1;
+
+
+    max_width = 1;
+    width = 0;
+    for i in range(len(network_stack)):
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+
+            if(is_block):
+                G, count, sequential_second, position, _, out, initializer =  create_block(network_stack[i], count,
+                                                                                        G, sequential_first, position, 0,
+                                                                                        out, initializer)
+                #print(sequential_second, current_in_shape)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+                out_base = out;
+
+
+                if(max_width &lt; len(network_stack[i])-2):
+                    max_width = len(network_stack[i])-2;
+                width = 0;
+                for j in range(len(network_stack[i])-1):
+                    small_net = [];
+                    branch_first = sequential_first
+                    branch_net.append(out_base)
+                    branch_position = position
+                    if(width &gt; 0):
+                        if(column == width):
+                            column += 2;
+                        else:
+                            column = width;
+                    else:
+                        column = (j+1)*2;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+                        
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block(network_stack[i][j][k], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2, #j+k+width
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            else:
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block([network_stack[i][j][k]], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2,
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            #print(branch_second, current_in_shape_base)
+                            branch_first = branch_second
+                            small_net.append(branch_net[j]);
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            branch_net[j] = custom_model_get_layer(network_stack[i][j][k], initializer)(branch_net[j]);
+                            small_net.append(custom_model_get_layer(network_stack[i][j][k], initializer));
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;                        
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    branches.append(small_net);
+                
+                position = branch_max_length;
+                position += 1;
+                max_width += width
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count)
+                if(network_stack[i][-1][&#34;name&#34;] == &#34;concatenate&#34;):
+                    out = keras.layers.concatenate(branch_net)
+                else:
+                    out = keras.layers.add(branch_net)
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+
+
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2, position))
+            out = custom_model_get_layer(network_stack[i], initializer)(out);
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+
+
+    net = keras.models.Model(inputs=input1, outputs=out)
+
+    max_width = max(max_width, width);
+    if(max_width == 1):
+        G.add_node(&#34;monk&#34;, pos=(3, position));
+    else:
+        G.add_node(&#34;monk&#34;, pos=(max_width + 3, position))
+    pos = nx.get_node_attributes(G, &#39;pos&#39;)
+
+
+    plt.figure(3, figsize=(12, 12 + position//6)) 
+    nx.draw_networkx(G, pos, with_label=True, font_size=16, node_color=&#34;yellow&#34;, node_size=100)
+    plt.savefig(&#34;graph.png&#34;);
+
+    return net;
+
+
+
+
+
+
+
+
+
+
+
+
+
+def debug_create_block(network_stack, count, G, sequential_first, position, current_width):
+    &#39;&#39;&#39;
+    Recursively visualize sub-blocks when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers for the sub-branch in the network
+        count (dict): A dictionary mapping to a count of every type of layer in the network
+        G (directed graph): NetworkX object
+        sequential_first (str): NAme of the current input layer
+        position (int): Vertical position on the directed graph
+        current_width (int): Horizontal position on the directed graph
+        out (placeholder): Keras placeholder temporary input for this sub-network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required sub-branch
+        directed graph: Updated directed graph
+        str: Name of the outermost layer in the sub-network
+        int: Vertical position of the outer most layer in the sub-network 
+        int: Horizontal position of the outer most layer in the sub-network 
+    &#39;&#39;&#39;
+    position += 1;
+    max_width = current_width
+    for i in range(len(network_stack)): 
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _ =  debug_create_block(network_stack[i], count,
+                                                                                G, sequential_first, position, current_width) #0
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+
+                #if(max_width &lt; len(network_stack[i])-2):
+                #    max_width = len(network_stack[i])-2;
+                max_width = current_width;
+                width = current_width;
+                for j in range(len(network_stack[i])-1):
+                    branch_first = sequential_first
+                    branch_position = position
+                    column = max((j+1)*2+current_width, width);
+                    max_width = column
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width = debug_create_block(network_stack[i][j][k], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width, j*2+current_width
+                            else:
+                                G, count, branch_second, branch_position, width = debug_create_block([network_stack[i][j][k]], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width, j+k+current_width
+                            branch_first = branch_second
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                
+                position = branch_max_length;
+                position += 1;
+                max_width += 2;
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2 + current_width, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2+current_width, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+    
+    return G, count, sequential_second, position, max_width
+    
+
+
+
+def debug_create_network(network_stack):
+    &#39;&#39;&#39;
+    Main function to visualize network when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers in the network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required complete network
+    &#39;&#39;&#39;
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    G=nx.DiGraph()
+    G.add_node(&#34;Net&#34;, pos=(1,1))
+    sequential_first = &#34;data&#34;;
+    #sequential_second, count = get_layer_uid(network_stack[0], count);
+
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    position = 1;
+    G.add_node(sequential_first, pos=(2,1))
+    position += 1;
+
+
+    max_width = 1;
+    width = 0;
+    for i in range(len(network_stack)):
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _ =  debug_create_block(network_stack[i], count,
+                                                                                G, sequential_first, position, 0)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+
+
+                if(max_width &lt; len(network_stack[i])-2):
+                    max_width = len(network_stack[i])-2;
+                width = 0;
+                for j in range(len(network_stack[i])-1):
+                    branch_first = sequential_first
+                    branch_position = position
+                    if(width &gt; 0):
+                        if(column == width):
+                            column += 2;
+                        else:
+                            column = width;
+                    else:
+                        column = (j+1)*2;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+                           
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width = debug_create_block(network_stack[i][j][k], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j*2+width
+                            else:
+                                G, count, branch_second, branch_position, width = debug_create_block([network_stack[i][j][k]], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width
+                            branch_first = branch_second
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    
+                position = branch_max_length;
+                position += 1;
+                max_width += width
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+
+
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+
+    max_width = max(max_width, width);
+    if(max_width == 1):
+        G.add_node(&#34;monk&#34;, pos=(3, position));
+    else:
+        G.add_node(&#34;monk&#34;, pos=(max_width + 3, position))
+    pos = nx.get_node_attributes(G, &#39;pos&#39;)
+
+
+    plt.figure(3, figsize=(16, 20 + position//6)) 
+    nx.draw_networkx(G, pos, with_label=True, font_size=16, node_color=&#34;yellow&#34;, node_size=100)
+    plt.savefig(&#34;graph.png&#34;);</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="monk.tf_keras_1.models.return_model.create_block"><code class="name flex">
+<span>def <span class="ident">create_block</span></span>(<span>network_stack, count, G, sequential_first, position, current_width, out, initializer)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Recursively create sub-blocks when designing custom networks</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_stack</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of lists containing information on layers for the sub-branch in the network</dd>
+<dt><strong><code>count</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary mapping to a count of every type of layer in the network</dd>
+<dt><strong><code>G</code></strong> :&ensp;<code>directed</code> <code>graph</code></dt>
+<dd>NetworkX object</dd>
+<dt><strong><code>sequential_first</code></strong> :&ensp;<code>str</code></dt>
+<dd>NAme of the current input layer</dd>
+<dt><strong><code>position</code></strong> :&ensp;<code>int</code></dt>
+<dd>Vertical position on the directed graph</dd>
+<dt><strong><code>current_width</code></strong> :&ensp;<code>int</code></dt>
+<dd>Horizontal position on the directed graph</dd>
+<dt><strong><code>out</code></strong> :&ensp;<code>placeholder</code></dt>
+<dd>Keras placeholder temporary input for this sub-network</dd>
+<dt><strong><code>initializer</code></strong> :&ensp;<code>keras</code> <code>iniatialzer</code></dt>
+<dd>Random wieght initializer for layers in the sub-network</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code>: <code>The</code> <code>required</code> <code>sub</code>-<code>branch</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>directed</code> <code>graph</code>: <code>Updated</code> <code>directed</code> <code>graph</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>str</code></strong></dt>
+<dd>Name of the outermost layer in the sub-network</dd>
+<dt><strong><code>int</code></strong></dt>
+<dd>Vertical position of the outer most layer in the sub-network </dd>
+<dt><strong><code>int</code></strong></dt>
+<dd>Horizontal position of the outer most layer in the sub-network</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_block(network_stack, count, G, sequential_first, position, current_width, out, initializer):
+    &#39;&#39;&#39;
+    Recursively create sub-blocks when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers for the sub-branch in the network
+        count (dict): A dictionary mapping to a count of every type of layer in the network
+        G (directed graph): NetworkX object
+        sequential_first (str): NAme of the current input layer
+        position (int): Vertical position on the directed graph
+        current_width (int): Horizontal position on the directed graph
+        out (placeholder): Keras placeholder temporary input for this sub-network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required sub-branch
+        directed graph: Updated directed graph
+        str: Name of the outermost layer in the sub-network
+        int: Vertical position of the outer most layer in the sub-network 
+        int: Horizontal position of the outer most layer in the sub-network 
+    &#39;&#39;&#39;
+    position += 1;
+    max_width = current_width;
+    for i in range(len(network_stack)): 
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _, out, initializer =  create_block(network_stack[i], count,
+                                                                                        G, sequential_first, position, 0,
+                                                                                        out, initializer)
+                #print(sequential_second, current_in_shape)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+                out_base = out;
+
+                #if(max_width &lt; len(network_stack[i])-2):
+                #    max_width = len(network_stack[i])-2;
+                max_width = current_width;
+                width = current_width;
+                for j in range(len(network_stack[i])-1):
+                    small_net = [];
+                    branch_net.append(out_base)
+                    branch_first = sequential_first
+                    branch_position = position
+                    column = max((j+1)*2+current_width, width);
+                    max_width = column;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block(network_stack[i][j][k], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2, #j+k+width
+                                                                                                             branch_net[j], 
+                                                                                                             initializer)
+                            else:
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block([network_stack[i][j][k]], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2,
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            #print(branch_second, current_in_shape_base)
+                            branch_first = branch_second
+                            small_net.append(branch_net[j]);
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            branch_net[j] = custom_model_get_layer(network_stack[i][j][k], initializer)(branch_net[j]);
+                            small_net.append(custom_model_get_layer(network_stack[i][j][k], initializer));
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    branches.append(small_net);
+
+                position = branch_max_length;
+                position += 1;
+                max_width += 2;
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+                if(network_stack[i][-1][&#34;name&#34;] == &#34;concatenate&#34;):
+                    out = keras.layers.concatenate(branch_net)
+                else:
+                    out = keras.layers.add(branch_net)
+
+                G.add_node(sequential_second, pos=(2 + current_width, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            out = custom_model_get_layer(network_stack[i], initializer)(out);
+            G.add_node(sequential_second, pos=(2 + current_width, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+            
+    return G, count, sequential_second, position, max_width, out, initializer</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.models.return_model.create_network"><code class="name flex">
+<span>def <span class="ident">create_network</span></span>(<span>network_stack, current_in_shape, initializer)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main function to create network when designing custom networks</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_stack</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of lists containing information on layers in the network</dd>
+<dt><strong><code>initializer</code></strong> :&ensp;<code>keras</code> <code>iniatialzer</code></dt>
+<dd>Random wieght initializer for layers in the sub-network</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code>: <code>The</code> <code>required</code> <code>complete</code> <code>network</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_network(network_stack, current_in_shape, initializer):
+    &#39;&#39;&#39;
+    Main function to create network when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers in the network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required complete network
+    &#39;&#39;&#39;
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    G=nx.DiGraph()
+    G.add_node(&#34;Net&#34;, pos=(1,1))
+    sequential_first = &#34;data&#34;;
+    
+
+    if(len(current_in_shape) == 2):
+        c, w = current_in_shape;
+        input1 = krl.Input(shape=(w, c));
+    elif(len(current_in_shape) == 3):
+        c, h, w = current_in_shape;
+        input1 = krl.Input(shape=(h, w, c));
+    elif(len(current_in_shape) == 4):
+        c, d, h, w = current_in_shape;
+        input1 = krl.Input(shape=(d, h, w, c));
+
+    out = input1;
+
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    position = 1;
+    G.add_node(sequential_first, pos=(2,1))
+    position += 1;
+
+
+    max_width = 1;
+    width = 0;
+    for i in range(len(network_stack)):
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+
+            if(is_block):
+                G, count, sequential_second, position, _, out, initializer =  create_block(network_stack[i], count,
+                                                                                        G, sequential_first, position, 0,
+                                                                                        out, initializer)
+                #print(sequential_second, current_in_shape)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+                out_base = out;
+
+
+                if(max_width &lt; len(network_stack[i])-2):
+                    max_width = len(network_stack[i])-2;
+                width = 0;
+                for j in range(len(network_stack[i])-1):
+                    small_net = [];
+                    branch_first = sequential_first
+                    branch_net.append(out_base)
+                    branch_position = position
+                    if(width &gt; 0):
+                        if(column == width):
+                            column += 2;
+                        else:
+                            column = width;
+                    else:
+                        column = (j+1)*2;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+                        
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block(network_stack[i][j][k], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2, #j+k+width
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            else:
+                                G, count, branch_second, branch_position, width, branch_net[j], initializer = create_block([network_stack[i][j][k]], 
+                                                                                                             count,
+                                                                                                             G, 
+                                                                                                             branch_first, 
+                                                                                                             branch_position, 
+                                                                                                             column-2,
+                                                                                                             branch_net[j],
+                                                                                                             initializer)
+                            #print(branch_second, current_in_shape_base)
+                            branch_first = branch_second
+                            small_net.append(branch_net[j]);
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            branch_net[j] = custom_model_get_layer(network_stack[i][j][k], initializer)(branch_net[j]);
+                            small_net.append(custom_model_get_layer(network_stack[i][j][k], initializer));
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;                        
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    branches.append(small_net);
+                
+                position = branch_max_length;
+                position += 1;
+                max_width += width
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count)
+                if(network_stack[i][-1][&#34;name&#34;] == &#34;concatenate&#34;):
+                    out = keras.layers.concatenate(branch_net)
+                else:
+                    out = keras.layers.add(branch_net)
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+
+
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2, position))
+            out = custom_model_get_layer(network_stack[i], initializer)(out);
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+
+
+    net = keras.models.Model(inputs=input1, outputs=out)
+
+    max_width = max(max_width, width);
+    if(max_width == 1):
+        G.add_node(&#34;monk&#34;, pos=(3, position));
+    else:
+        G.add_node(&#34;monk&#34;, pos=(max_width + 3, position))
+    pos = nx.get_node_attributes(G, &#39;pos&#39;)
+
+
+    plt.figure(3, figsize=(12, 12 + position//6)) 
+    nx.draw_networkx(G, pos, with_label=True, font_size=16, node_color=&#34;yellow&#34;, node_size=100)
+    plt.savefig(&#34;graph.png&#34;);
+
+    return net;</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.models.return_model.debug_create_block"><code class="name flex">
+<span>def <span class="ident">debug_create_block</span></span>(<span>network_stack, count, G, sequential_first, position, current_width)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Recursively visualize sub-blocks when designing custom networks</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_stack</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of lists containing information on layers for the sub-branch in the network</dd>
+<dt><strong><code>count</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary mapping to a count of every type of layer in the network</dd>
+<dt><strong><code>G</code></strong> :&ensp;<code>directed</code> <code>graph</code></dt>
+<dd>NetworkX object</dd>
+<dt><strong><code>sequential_first</code></strong> :&ensp;<code>str</code></dt>
+<dd>NAme of the current input layer</dd>
+<dt><strong><code>position</code></strong> :&ensp;<code>int</code></dt>
+<dd>Vertical position on the directed graph</dd>
+<dt><strong><code>current_width</code></strong> :&ensp;<code>int</code></dt>
+<dd>Horizontal position on the directed graph</dd>
+<dt><strong><code>out</code></strong> :&ensp;<code>placeholder</code></dt>
+<dd>Keras placeholder temporary input for this sub-network</dd>
+<dt><strong><code>initializer</code></strong> :&ensp;<code>keras</code> <code>iniatialzer</code></dt>
+<dd>Random wieght initializer for layers in the sub-network</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code>: <code>The</code> <code>required</code> <code>sub</code>-<code>branch</code></dt>
+<dd>&nbsp;</dd>
+<dt><code>directed</code> <code>graph</code>: <code>Updated</code> <code>directed</code> <code>graph</code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>str</code></strong></dt>
+<dd>Name of the outermost layer in the sub-network</dd>
+<dt><strong><code>int</code></strong></dt>
+<dd>Vertical position of the outer most layer in the sub-network </dd>
+<dt><strong><code>int</code></strong></dt>
+<dd>Horizontal position of the outer most layer in the sub-network</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def debug_create_block(network_stack, count, G, sequential_first, position, current_width):
+    &#39;&#39;&#39;
+    Recursively visualize sub-blocks when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers for the sub-branch in the network
+        count (dict): A dictionary mapping to a count of every type of layer in the network
+        G (directed graph): NetworkX object
+        sequential_first (str): NAme of the current input layer
+        position (int): Vertical position on the directed graph
+        current_width (int): Horizontal position on the directed graph
+        out (placeholder): Keras placeholder temporary input for this sub-network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required sub-branch
+        directed graph: Updated directed graph
+        str: Name of the outermost layer in the sub-network
+        int: Vertical position of the outer most layer in the sub-network 
+        int: Horizontal position of the outer most layer in the sub-network 
+    &#39;&#39;&#39;
+    position += 1;
+    max_width = current_width
+    for i in range(len(network_stack)): 
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _ =  debug_create_block(network_stack[i], count,
+                                                                                G, sequential_first, position, current_width) #0
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+
+                #if(max_width &lt; len(network_stack[i])-2):
+                #    max_width = len(network_stack[i])-2;
+                max_width = current_width;
+                width = current_width;
+                for j in range(len(network_stack[i])-1):
+                    branch_first = sequential_first
+                    branch_position = position
+                    column = max((j+1)*2+current_width, width);
+                    max_width = column
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width = debug_create_block(network_stack[i][j][k], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width, j*2+current_width
+                            else:
+                                G, count, branch_second, branch_position, width = debug_create_block([network_stack[i][j][k]], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width, j+k+current_width
+                            branch_first = branch_second
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                
+                position = branch_max_length;
+                position += 1;
+                max_width += 2;
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2 + current_width, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2+current_width, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+    
+    return G, count, sequential_second, position, max_width</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.models.return_model.debug_create_network"><code class="name flex">
+<span>def <span class="ident">debug_create_network</span></span>(<span>network_stack)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main function to visualize network when designing custom networks</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_stack</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of lists containing information on layers in the network</dd>
+<dt><strong><code>initializer</code></strong> :&ensp;<code>keras</code> <code>iniatialzer</code></dt>
+<dd>Random wieght initializer for layers in the sub-network</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code>: <code>The</code> <code>required</code> <code>complete</code> <code>network</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def debug_create_network(network_stack):
+    &#39;&#39;&#39;
+    Main function to visualize network when designing custom networks
+
+    Args:
+        network_stack (list): List of lists containing information on layers in the network
+        initializer (keras iniatialzer): Random wieght initializer for layers in the sub-network
+    
+    Returns:
+        neural network: The required complete network
+    &#39;&#39;&#39;
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    G=nx.DiGraph()
+    G.add_node(&#34;Net&#34;, pos=(1,1))
+    sequential_first = &#34;data&#34;;
+    #sequential_second, count = get_layer_uid(network_stack[0], count);
+
+    count = [];
+    for i in range(len(names)):
+        count.append(1);
+
+    position = 1;
+    G.add_node(sequential_first, pos=(2,1))
+    position += 1;
+
+
+    max_width = 1;
+    width = 0;
+    for i in range(len(network_stack)):
+        if(type(network_stack[i]) == list):
+            is_block = True;
+
+            if(type(network_stack[i][-1]) != list):
+                if(network_stack[i][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                    is_block=False;
+
+            if(is_block):
+                G, count, sequential_second, position, _ =  debug_create_block(network_stack[i], count,
+                                                                                G, sequential_first, position, 0)
+                sequential_first = sequential_second
+            else:
+                branch_end_points = [];
+                branch_max_length = 0;
+                branches = [];
+                branch_net = [];
+
+
+                if(max_width &lt; len(network_stack[i])-2):
+                    max_width = len(network_stack[i])-2;
+                width = 0;
+                for j in range(len(network_stack[i])-1):
+                    branch_first = sequential_first
+                    branch_position = position
+                    if(width &gt; 0):
+                        if(column == width):
+                            column += 2;
+                        else:
+                            column = width;
+                    else:
+                        column = (j+1)*2;
+                    for k in range(len(network_stack[i][j])):
+                        if type(network_stack[i][j][k]) == list:
+                            is_block2 = True;
+
+                            if(type(network_stack[i][j][k][-1]) != list):
+                                if(network_stack[i][j][k][-1][&#34;name&#34;] in [&#34;add&#34;, &#34;concatenate&#34;]):
+                                    is_block2=False;
+
+                           
+
+                            if(is_block2):
+                                G, count, branch_second, branch_position, width = debug_create_block(network_stack[i][j][k], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j*2+width
+                            else:
+                                G, count, branch_second, branch_position, width = debug_create_block([network_stack[i][j][k]], 
+                                                                                     count,
+                                                                                     G, 
+                                                                                     branch_first, 
+                                                                                     branch_position, 
+                                                                                     column-2) #j+k+width
+                            branch_first = branch_second
+                        else:
+                            branch_second, count = get_layer_uid(network_stack[i][j][k], count);
+                            G.add_node(branch_second, pos=(column, branch_position));
+                            branch_position += 1;
+                            G.add_edge(branch_first, branch_second);
+                            branch_first = branch_second;
+
+                        branch_max_length = max(branch_position, branch_max_length)
+                        if(k == len(network_stack[i][j])-1):
+                            branch_end_points.append(branch_second);
+                    
+                position = branch_max_length;
+                position += 1;
+                max_width += width
+
+                sequential_second, count = get_layer_uid(network_stack[i][-1], count);
+
+                G.add_node(sequential_second, pos=(2, position));
+                position += 1;
+                for i in range(len(branch_end_points)):
+                    G.add_edge(branch_end_points[i], sequential_second);
+                sequential_first = sequential_second;
+
+
+        else:
+            sequential_second, count = get_layer_uid(network_stack[i], count);
+            G.add_node(sequential_second, pos=(2, position))
+            position += 1;
+            G.add_edge(sequential_first, sequential_second);
+            sequential_first = sequential_second;
+
+    max_width = max(max_width, width);
+    if(max_width == 1):
+        G.add_node(&#34;monk&#34;, pos=(3, position));
+    else:
+        G.add_node(&#34;monk&#34;, pos=(max_width + 3, position))
+    pos = nx.get_node_attributes(G, &#39;pos&#39;)
+
+
+    plt.figure(3, figsize=(16, 20 + position//6)) 
+    nx.draw_networkx(G, pos, with_label=True, font_size=16, node_color=&#34;yellow&#34;, node_size=100)
+    plt.savefig(&#34;graph.png&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.models.return_model.load_model"><code class="name flex">
+<span>def <span class="ident">load_model</span></span>(<span>system_dict, path=False, final=False, resume=False, external_path=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Load model based on the system state </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System Dictionary</dd>
+<dt><strong><code>path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to final or best model weights if Final flag is set</dd>
+<dt><strong><code>final</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, Load model generated from latest epoch training</dd>
+<dt><strong><code>resume</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, load model from last checkpoint to resume training</dd>
+<dt><strong><code>external_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to custom model weights</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>network</code></strong></dt>
+<dd>Neural network loaded with weights.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_model(system_dict, path=False, final=False, resume=False, external_path=False):
+    &#39;&#39;&#39;
+    Load model based on the system state 
+
+    Args:
+        system_dict (dict): System Dictionary
+        path (str): Path to final or best model weights if Final flag is set
+        final (bool): If True, Load model generated from latest epoch training
+        resume (bool): If True, load model from last checkpoint to resume training
+        external_path (str): Path to custom model weights
+
+    Returns:
+        network: Neural network loaded with weights.
+    &#39;&#39;&#39;
+    if(final):
+        if(path):
+            finetune_net = keras.models.load_model(path + &#34;final.h5&#34;);
+        else:
+            finetune_net = keras.models.load_model(system_dict[&#34;model_dir_relative&#34;] + &#34;final.h5&#34;);
+    if(resume):
+        finetune_net = keras.models.load_model(system_dict[&#34;model_dir_relative&#34;] + &#34;resume_state.h5&#34;);
+ 
+    if(external_path):
+        finetune_net = keras.models.load_model(external_path);
+
+    return finetune_net;</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.models.return_model.setup_model"><code class="name flex">
+<span>def <span class="ident">setup_model</span></span>(<span>system_dict)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Setup model based on the system state and parameters</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System Dictionary</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>Updated system dictionary</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setup_model(system_dict):
+    &#39;&#39;&#39;
+    Setup model based on the system state and parameters
+
+    Args:
+        system_dict (dict): System Dictionary
+
+    Returns:
+        dict: Updated system dictionary
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        model_name = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;];
+        use_pretrained = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_pretrained&#34;];
+        freeze_base_network = system_dict[&#34;model&#34;][&#34;params&#34;][&#34;freeze_base_network&#34;];
+        custom_network = system_dict[&#34;model&#34;][&#34;custom_network&#34;];
+        final_layer = system_dict[&#34;model&#34;][&#34;final_layer&#34;];
+        num_classes = system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;];
+        input_size = system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;input_size&#34;];
+
+        finetune_net, model_name = get_base_model(model_name, use_pretrained, num_classes, freeze_base_network, input_size);
+
+
+        if(len(custom_network)):
+            if(final_layer):
+                finetune_net = create_final_layer(finetune_net, custom_network, num_classes);
+            else:
+                msg = &#34;Final layer not assigned&#34;;
+                raise ConstraintError(msg);
+        else:
+            x = finetune_net.output
+            x = krl.GlobalAveragePooling2D()(x)
+            x = krl.Dense(512)(x);
+            x = krl.ReLU()(x)
+            x = krl.Dropout(0.5)(x);
+            x = krl.Dense(num_classes)(x);
+            preds = krl.Softmax()(x);
+            finetune_net = keras.models.Model(inputs=finetune_net.input, outputs=preds);
+
+        system_dict[&#34;local&#34;][&#34;model&#34;] = finetune_net;
+
+        return system_dict;
+
+
+    else:
+        net = create_network(system_dict[&#34;custom_model&#34;][&#34;network_stack&#34;], 
+            system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;data_shape&#34;], 
+            system_dict[&#34;custom_model&#34;][&#34;network_initializer&#34;]);
+
+        system_dict[&#34;local&#34;][&#34;model&#34;] = net;
+
+        return system_dict;</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.tf_keras_1.models" href="index.html">monk.tf_keras_1.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="monk.tf_keras_1.models.return_model.create_block" href="#monk.tf_keras_1.models.return_model.create_block">create_block</a></code></li>
+<li><code><a title="monk.tf_keras_1.models.return_model.create_network" href="#monk.tf_keras_1.models.return_model.create_network">create_network</a></code></li>
+<li><code><a title="monk.tf_keras_1.models.return_model.debug_create_block" href="#monk.tf_keras_1.models.return_model.debug_create_block">debug_create_block</a></code></li>
+<li><code><a title="monk.tf_keras_1.models.return_model.debug_create_network" href="#monk.tf_keras_1.models.return_model.debug_create_network">debug_create_network</a></code></li>
+<li><code><a title="monk.tf_keras_1.models.return_model.load_model" href="#monk.tf_keras_1.models.return_model.load_model">load_model</a></code></li>
+<li><code><a title="monk.tf_keras_1.models.return_model.setup_model" href="#monk.tf_keras_1.models.return_model.setup_model">setup_model</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

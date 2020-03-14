@@ -1,0 +1,2242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.system.base_class API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.system.base_class</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from system.imports import *
+from system.base_system_state import get_base_system_dict
+from system.common import read_json
+from system.common import save
+from system.common import create_dir
+from system.common import delete_dir
+
+
+
+class system():
+    &#39;&#39;&#39;
+    Base class for all system project management
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+    def __init__(self, verbose=1):
+        self.system_dict = get_base_system_dict();
+        self.system_dict[&#34;verbose&#34;] = verbose;
+        self.system_dict[&#34;cwd&#34;] = os.getcwd() + &#34;/&#34;;
+        self.system_dict[&#34;master_systems_dir&#34;] = self.system_dict[&#34;cwd&#34;] + &#34;workspace/&#34;;
+        self.system_dict[&#34;master_systems_dir_relative&#34;] = &#34;workspace/&#34;;
+
+        create_dir(self.system_dict[&#34;master_systems_dir_relative&#34;]);
+
+        self.system_dict[&#34;master_comparison_dir&#34;] = self.system_dict[&#34;cwd&#34;] + &#34;workspace/comparison/&#34;;
+        self.system_dict[&#34;master_comparison_dir_relative&#34;] = &#34;workspace/comparison/&#34;;
+        
+        create_dir(self.system_dict[&#34;master_comparison_dir_relative&#34;]);
+            
+        self.system_dict[&#34;local&#34;][&#34;projects_list&#34;] = os.listdir(self.system_dict[&#34;master_comparison_dir&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;num_projects&#34;] = len(self.system_dict[&#34;local&#34;][&#34;projects_list&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;] = [];
+        self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] = 0;
+        self.system_dict[&#34;origin&#34;] = [&#34;New&#34;, &#34;New&#34;];
+
+
+
+    #############################################################################################################################
+    def set_system_project(self, project_name):
+        &#39;&#39;&#39;
+        Create Project
+
+        Args:
+            project_name (str): Unique name to project
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;project_dir&#34;] = self.system_dict[&#34;master_systems_dir&#34;] + project_name + &#34;/&#34;;
+        self.system_dict[&#34;project_dir_relative&#34;] = self.system_dict[&#34;master_systems_dir_relative&#34;] + project_name + &#34;/&#34;;
+        if(not os.path.isdir(self.system_dict[&#34;project_dir&#34;])):
+            self.system_dict[&#34;local&#34;][&#34;projects_list&#34;].append(project_name);
+            self.system_dict[&#34;local&#34;][&#34;num_projects&#34;] += 1;
+        create_dir(self.system_dict[&#34;project_dir&#34;]);
+        self.set_system_select_project(project_name);
+    
+    
+
+    def set_system_select_project(self, project_name):
+        &#39;&#39;&#39;
+        Function to update system dictionary on project properties
+
+        Args:
+            project_name (str): Unique name to project
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;project_name&#34;] = project_name;
+        self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;] = os.listdir(self.system_dict[&#34;project_dir&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] = len(self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;]);
+
+
+
+    def set_system_aux_list_projects(self):
+        &#39;&#39;&#39;
+        List all projects in current workspace
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        return os.listdir(self.system_dict[&#34;master_systems_dir&#34;]);
+    #############################################################################################################################
+
+
+
+    #############################################################################################################################
+    def set_system_experiment(self, experiment_name, eval_infer=False, copy_from=False, pseudo_copy_from=False, resume_train=False, summary=False):
+        &#39;&#39;&#39;
+        Create Experiment or load it in different states
+
+        Args:
+            experiment_name (str): Unique name to experiment
+            eval_infer (bool): If set as True, model is loaded in evaluation mode
+            resume_train (bool): If set as True, model is loaded from last checkpoint
+            copy_from (list): [project, experiment] to copy from
+            pseudo_copy_from (list): For creating sub-experiments while in hyper-parametric analysis state
+            summary (list): Dummy variable
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(summary):
+            self.set_system_select_experiment(experiment_name);
+            print_summary(self.system_dict[&#34;fname_relative&#34;]);
+
+        else:
+            self.system_dict[&#34;experiment_dir&#34;] = self.system_dict[&#34;project_dir&#34;] + experiment_name + &#34;/&#34;;
+            self.system_dict[&#34;experiment_dir_relative&#34;] = self.system_dict[&#34;project_dir_relative&#34;] + experiment_name + &#34;/&#34;;
+            if(not os.path.isdir(self.system_dict[&#34;experiment_dir&#34;])):
+                self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;].append(experiment_name);
+                self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] += 1;
+            create_dir(self.system_dict[&#34;experiment_dir&#34;]);
+            self.set_system_select_experiment(experiment_name);
+            
+            if(eval_infer):
+                self.set_system_state_eval_infer();
+            elif(resume_train):
+                self.set_system_state_resume_train();
+            elif(copy_from):
+                self.set_system_delete_create_dir();
+                self.set_system_state_copy_from(copy_from);
+            elif(pseudo_copy_from):
+                self.set_system_delete_create_dir();
+                self.set_system_state_pseudo_copy_from(pseudo_copy_from);
+            else: 
+                self.set_system_delete_create_dir();
+                save(self.system_dict);
+
+    
+
+    def set_system_select_experiment(self, experiment_name):
+        &#39;&#39;&#39;
+        Function to update system dictionary on experiment properties
+
+        Args:
+            experiment_name (str): Unique name to experiment
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;experiment_name&#34;] = experiment_name;
+        self.system_dict[&#34;output_dir&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;output/&#34;;
+        self.system_dict[&#34;output_dir_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;output/&#34;;
+        self.system_dict[&#34;model_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;models/&#34;;
+        self.system_dict[&#34;model_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;models/&#34;;
+        self.system_dict[&#34;log_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;logs/&#34;;
+        self.system_dict[&#34;log_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;logs/&#34;;
+        self.system_dict[&#34;fname&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;/experiment_state.json&#34;;
+        self.system_dict[&#34;fname_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;/experiment_state.json&#34;;
+    #############################################################################################################################
+
+
+
+    #############################################################################################################################
+    def set_system_delete_create_dir(self):
+        &#39;&#39;&#39;
+        Function to remove old directories and create new at the same place
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        delete_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;model_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;log_dir_relative&#34;]);
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def set_system_comparison(self, comparison_name):
+        &#39;&#39;&#39;
+        Create comparison experiment
+
+        Args:
+            comparison_name (str): Unique name to comparison experiment
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        create_dir(self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;);
+        self.system_dict[&#34;comparison_name&#34;] = comparison_name;
+        self.system_dict[&#34;comparison_dir&#34;] = self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;;
+    #############################################################################################################################
+
+
+    #############################################################################################################################
+    def custom_print(self, msg):
+        &#39;&#39;&#39;
+        Overwritten print function, to switch off and on as per verbosity levels
+
+        Args:
+            msg (str): Message to print
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;verbose&#34;]):
+            print(msg);
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_models(self):
+        &#39;&#39;&#39;
+        List all the available models in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Models List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            set1 = [&#34;alexnet&#34;, &#34;darknet53&#34;, &#34;DenseNet121&#34;, &#34;DenseNet161&#34;, &#34;DenseNet169&#34;, &#34;DenseNet201&#34;, &#34;InceptionV3&#34;, &#34;MobileNet1.0&#34;, &#34;MobileNet0.75&#34;, 
+                        &#34;MobileNet0.25&#34;, &#34;MobileNet0.5&#34;, &#34;ResNet18_v1&#34;, &#34;ResNet34_v1&#34;, &#34;ResNet50_v1&#34;, &#34;ResNet101_v1&#34;, &#34;ResNet152_v1&#34;, &#34;ResNext50_32x4d&#34;, 
+                        &#34;ResNext101_32x4d&#34;, &#34;ResNext101_64x4d_v1&#34;, &#34;SE_ResNext50_32x4d&#34;, &#34;SE_ResNext101_32x4d&#34;, &#34;SE_ResNext101_64x4d&#34;, &#34;SENet_154&#34;, 
+                        &#34;VGG11&#34;, &#34;VGG13&#34;, &#34;VGG16&#34;, &#34;VGG19&#34;, &#34;VGG11_bn&#34;, &#34;VGG13_bn&#34;, &#34;VGG16_bn&#34;, &#34;VGG19_bn&#34;, &#34;ResNet18_v2&#34;, &#34;ResNet34_v2&#34;, 
+                        &#34;ResNet50_v2&#34;, &#34;ResNet101_v2&#34;, &#34;ResNet152_v2&#34;];
+            set2 = [&#34;MobileNetV2_1.0&#34;, &#34;MobileNetV2_0.75&#34;, &#34;MobileNetV2_0.5&#34;, &#34;MobileNetV2_0.25&#34;, &#34;SqueezeNet1.0&#34;, &#34;SqueezeNet1.1&#34;, &#34;MobileNetV3_Large&#34;, &#34;MobileNetV3_Small&#34;];
+            set3 = [&#34;ResNet18_v1b&#34;, &#34;ResNet34_v1b&#34;, &#34;ResNet50_v1b&#34;, &#34;ResNet50_v1b_gn&#34;, &#34;ResNet101_v1b&#34;, &#34;ResNet152_v1b&#34;, &#34;ResNet50_v1c&#34;, 
+                        &#34;ResNet101_v1c&#34;, &#34;ResNet152_v1c&#34;, &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;ResNet18_v1d&#34;, &#34;ResNet34_v1d&#34;, 
+                        &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;resnet18_v1b_0.89&#34;, &#34;resnet50_v1d_0.86&#34;, &#34;resnet50_v1d_0.48&#34;, 
+                        &#34;resnet50_v1d_0.37&#34;, &#34;resnet50_v1d_0.11&#34;, &#34;resnet101_v1d_0.76&#34;, &#34;resnet101_v1d_0.73&#34;, &#34;Xception&#34;];
+            combined_list = set1+set2+set3
+            combined_list_lower = list(map(str.lower, combined_list))
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            set1 = [&#34;alexnet&#34;, &#34;vgg11&#34;, &#34;vgg11_bn&#34;, &#34;vgg13&#34;, &#34;vgg13_bn&#34;, &#34;vgg16&#34;, &#34;vgg16_bn&#34;, &#34;vgg19&#34;, &#34;vgg19_bn&#34;]
+            set2 = [&#34;densenet121&#34;, &#34;densenet161&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;]
+            set3 = [&#34;googlenet&#34;, &#34;inception_v3&#34;, &#34;resnet18&#34;, &#34;resnet34&#34;, &#34;resnet50&#34;, &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnext50_32x4d&#34;, &#34;resnext101_32x8d&#34;,
+                        &#34;shufflenet_v2_x0_5&#34;, &#34;shufflenet_v2_x1_0, shufflenet_v2_x1_5&#34;, &#34;shufflenet_v2_x2_0&#34;, &#34;wide_resnet101_2&#34;, &#34;wide_resnet50_2&#34;]
+            set4 = [&#34;mnasnet0_5&#34;, &#34;mnasnet0_75&#34;, &#34;mnasnet1_0&#34;, &#34;mnasnet1_3&#34;, &#34;mobilenet_v2&#34;, &#34;squeezenet1_0&#34;, &#34;squeezenet1_1&#34;]
+            combined_list = set1+set2+set3+set4
+            combined_list_lower = list(map(str.lower, combined_list))
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            set1 = [&#34;mobilenet&#34;, &#34;densenet121&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;, &#34;inception_v3&#34;, 
+                        &#34;inception_resnet_v3&#34;, &#34;mobilenet_v2&#34;, &#34;nasnet_mobile&#34;, &#34;nasnet_large&#34;, &#34;resnet50&#34;,
+                        &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnet50_v2&#34;, &#34;resnet101_v2&#34;, &#34;resnet152_v2&#34;, &#34;vgg16&#34;,
+                        &#34;vgg19&#34;, &#34;xception&#34;];
+            combined_list = set1
+            combined_list_lower = list(map(str.lower, combined_list))
+            
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_layers_transfer_learning(self):
+        &#39;&#39;&#39;
+        List all the available transfer learning layers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_layers_custom_model(self):
+        &#39;&#39;&#39;
+        List all the available custom network layers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                    &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, 
+                                    &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                    &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                    &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                    &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, 
+                                    &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;flatten&#34;, &#34;identity&#34;, &#34;add&#34;, &#34;concatenate&#34;, &#34;batch_normalization&#34;,
+                                    &#34;instance_normalization&#34;, &#34;layer_normalization&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution&#34;, 
+                                    &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, 
+                                    &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;, &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, 
+                                    &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;, &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, 
+                                    &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;, &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, 
+                                    &#34;global_average_pooling3d&#34;, &#34;flatten&#34;, &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;,
+                                    &#34;add&#34;, &#34;concatenate&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                    &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;,
+                                    &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                    &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                    &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                    &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, &#34;fully_connected&#34;, 
+                                    &#34;flatten&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;, &#34;instance_normalization&#34;, &#34;layer_normalization&#34;,
+                                    &#34;add&#34;, &#34;concatenate&#34;];
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_activations_transfer_learning(self):
+        &#39;&#39;&#39;
+        List all the available transfer learning activations in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_softmax&#34;, &#34;append_swish&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_threshold&#34;, &#34;append_softmax&#34;];
+
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_threshold&#34;, &#34;append_softmax&#34;, &#34;append_hardshrink&#34;, &#34;append_hardtanh&#34;, 
+                                    &#34;append_logsigmoid&#34;, &#34;append_relu6&#34;, &#34;append_rrelu&#34;, &#34;append_celu&#34;, &#34;append_softshrink&#34;,
+                                    &#34;append_tanhshrink&#34;, &#34;append_logsoftmax&#34;, &#34;append_softmin&#34;];
+
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_activations_custom_model(self):
+        &#39;&#39;&#39;
+        List all the available custom network activations in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;elu&#34;, &#34;gelu&#34;, &#34;leaky_relu&#34;,
+                                    &#34;prelu&#34;, &#34;selu&#34;, &#34;swish&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;thresholded_relu&#34;, &#34;softmax&#34;, 
+                                    &#34;selu&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;tanh&#34;, &#34;sigmoid&#34;, &#34;hard_sigmoid&#34;];
+
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;,  &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;selu&#34;,
+                                    &#34;hardshrink&#34;, &#34;hardtanh&#34;, &#34;logsigmoid&#34;, &#34;relu6&#34;, &#34;rrelu&#34;, &#34;celu&#34;, &#34;softshrink&#34;, &#34;tanhshrink&#34;,
+                                    &#34;threshold&#34;, &#34;softmin&#34;, &#34;softmax&#34;, &#34;logsoftmax&#34;];
+
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_losses(self):
+        &#39;&#39;&#39;
+        List all the available loss functions in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Losses List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                    &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                    &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                    &#34;loss_squared_hinge&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;
+                                    &#34;loss_kldiv&#34;, &#34;loss_hinge&#34;, &#34;loss_squared_hinge&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                    &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                    &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                    &#34;loss_squared_hinge&#34;, &#34;loss_multimargin&#34;, &#34;loss_squared_multimargin&#34;,
+                                    &#34;loss_multilabel_margin&#34;, &#34;loss_multilabel_softmargin&#34;];
+
+                                    
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_optimizers(self):
+        &#39;&#39;&#39;
+        List all the available optimizers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Optimizers List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                    &#34;optimizer_adam&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_nesterov_adam&#34;, 
+                                    &#34;optimizer_adadelta&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_signum&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_adam&#34;,
+                                    &#34;optimizer_nesterov_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_adadelta&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                    &#34;optimizer_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adamw&#34;, &#34;optimizer_adagrad&#34;, 
+                                    &#34;optimizer_adadelta&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_schedulers(self):
+        &#39;&#39;&#39;
+        List all the available learning rate schedulers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Optimizers List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_transforms(self):
+        &#39;&#39;&#39;
+        List all the available data transforms in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Transforms List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;apply_random_resized_crop&#34;, &#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_horizontal_flip&#34;,
+                                    &#34;apply_random_vertical_flip&#34;, &#34;apply_random_lighting&#34;, &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_horizontal_flip&#34;, 
+                                    &#34;apply_random_vertical_flip&#34;, &#34;apply_random_rotation&#34;, &#34;apply_mean_subtraction&#34;, 
+                                    &#34;apply_normalize&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_crop&#34;, 
+                                    &#34;apply_random_horizontal_flip&#34;, &#34;apply_random_perspective&#34;, &#34;apply_random_resized_crop&#34;,
+                                    &#34;apply_grayscale&#34;, &#34;apply_random_rotation&#34;, &#34;apply_random_vertical_flip&#34;,
+                                    &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_blocks(self):
+        &#39;&#39;&#39;
+        List all the available blocks for custom network creation in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Blocks List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.system.base_class.system"><code class="flex name class">
+<span>class <span class="ident">system</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Base class for all system project management</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class system():
+    &#39;&#39;&#39;
+    Base class for all system project management
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+    def __init__(self, verbose=1):
+        self.system_dict = get_base_system_dict();
+        self.system_dict[&#34;verbose&#34;] = verbose;
+        self.system_dict[&#34;cwd&#34;] = os.getcwd() + &#34;/&#34;;
+        self.system_dict[&#34;master_systems_dir&#34;] = self.system_dict[&#34;cwd&#34;] + &#34;workspace/&#34;;
+        self.system_dict[&#34;master_systems_dir_relative&#34;] = &#34;workspace/&#34;;
+
+        create_dir(self.system_dict[&#34;master_systems_dir_relative&#34;]);
+
+        self.system_dict[&#34;master_comparison_dir&#34;] = self.system_dict[&#34;cwd&#34;] + &#34;workspace/comparison/&#34;;
+        self.system_dict[&#34;master_comparison_dir_relative&#34;] = &#34;workspace/comparison/&#34;;
+        
+        create_dir(self.system_dict[&#34;master_comparison_dir_relative&#34;]);
+            
+        self.system_dict[&#34;local&#34;][&#34;projects_list&#34;] = os.listdir(self.system_dict[&#34;master_comparison_dir&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;num_projects&#34;] = len(self.system_dict[&#34;local&#34;][&#34;projects_list&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;] = [];
+        self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] = 0;
+        self.system_dict[&#34;origin&#34;] = [&#34;New&#34;, &#34;New&#34;];
+
+
+
+    #############################################################################################################################
+    def set_system_project(self, project_name):
+        &#39;&#39;&#39;
+        Create Project
+
+        Args:
+            project_name (str): Unique name to project
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;project_dir&#34;] = self.system_dict[&#34;master_systems_dir&#34;] + project_name + &#34;/&#34;;
+        self.system_dict[&#34;project_dir_relative&#34;] = self.system_dict[&#34;master_systems_dir_relative&#34;] + project_name + &#34;/&#34;;
+        if(not os.path.isdir(self.system_dict[&#34;project_dir&#34;])):
+            self.system_dict[&#34;local&#34;][&#34;projects_list&#34;].append(project_name);
+            self.system_dict[&#34;local&#34;][&#34;num_projects&#34;] += 1;
+        create_dir(self.system_dict[&#34;project_dir&#34;]);
+        self.set_system_select_project(project_name);
+    
+    
+
+    def set_system_select_project(self, project_name):
+        &#39;&#39;&#39;
+        Function to update system dictionary on project properties
+
+        Args:
+            project_name (str): Unique name to project
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;project_name&#34;] = project_name;
+        self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;] = os.listdir(self.system_dict[&#34;project_dir&#34;]);
+        self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] = len(self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;]);
+
+
+
+    def set_system_aux_list_projects(self):
+        &#39;&#39;&#39;
+        List all projects in current workspace
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        return os.listdir(self.system_dict[&#34;master_systems_dir&#34;]);
+    #############################################################################################################################
+
+
+
+    #############################################################################################################################
+    def set_system_experiment(self, experiment_name, eval_infer=False, copy_from=False, pseudo_copy_from=False, resume_train=False, summary=False):
+        &#39;&#39;&#39;
+        Create Experiment or load it in different states
+
+        Args:
+            experiment_name (str): Unique name to experiment
+            eval_infer (bool): If set as True, model is loaded in evaluation mode
+            resume_train (bool): If set as True, model is loaded from last checkpoint
+            copy_from (list): [project, experiment] to copy from
+            pseudo_copy_from (list): For creating sub-experiments while in hyper-parametric analysis state
+            summary (list): Dummy variable
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(summary):
+            self.set_system_select_experiment(experiment_name);
+            print_summary(self.system_dict[&#34;fname_relative&#34;]);
+
+        else:
+            self.system_dict[&#34;experiment_dir&#34;] = self.system_dict[&#34;project_dir&#34;] + experiment_name + &#34;/&#34;;
+            self.system_dict[&#34;experiment_dir_relative&#34;] = self.system_dict[&#34;project_dir_relative&#34;] + experiment_name + &#34;/&#34;;
+            if(not os.path.isdir(self.system_dict[&#34;experiment_dir&#34;])):
+                self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;].append(experiment_name);
+                self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] += 1;
+            create_dir(self.system_dict[&#34;experiment_dir&#34;]);
+            self.set_system_select_experiment(experiment_name);
+            
+            if(eval_infer):
+                self.set_system_state_eval_infer();
+            elif(resume_train):
+                self.set_system_state_resume_train();
+            elif(copy_from):
+                self.set_system_delete_create_dir();
+                self.set_system_state_copy_from(copy_from);
+            elif(pseudo_copy_from):
+                self.set_system_delete_create_dir();
+                self.set_system_state_pseudo_copy_from(pseudo_copy_from);
+            else: 
+                self.set_system_delete_create_dir();
+                save(self.system_dict);
+
+    
+
+    def set_system_select_experiment(self, experiment_name):
+        &#39;&#39;&#39;
+        Function to update system dictionary on experiment properties
+
+        Args:
+            experiment_name (str): Unique name to experiment
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;experiment_name&#34;] = experiment_name;
+        self.system_dict[&#34;output_dir&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;output/&#34;;
+        self.system_dict[&#34;output_dir_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;output/&#34;;
+        self.system_dict[&#34;model_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;models/&#34;;
+        self.system_dict[&#34;model_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;models/&#34;;
+        self.system_dict[&#34;log_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;logs/&#34;;
+        self.system_dict[&#34;log_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;logs/&#34;;
+        self.system_dict[&#34;fname&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;/experiment_state.json&#34;;
+        self.system_dict[&#34;fname_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;/experiment_state.json&#34;;
+    #############################################################################################################################
+
+
+
+    #############################################################################################################################
+    def set_system_delete_create_dir(self):
+        &#39;&#39;&#39;
+        Function to remove old directories and create new at the same place
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        delete_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;model_dir_relative&#34;]);
+        create_dir(self.system_dict[&#34;log_dir_relative&#34;]);
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def set_system_comparison(self, comparison_name):
+        &#39;&#39;&#39;
+        Create comparison experiment
+
+        Args:
+            comparison_name (str): Unique name to comparison experiment
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        create_dir(self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;);
+        self.system_dict[&#34;comparison_name&#34;] = comparison_name;
+        self.system_dict[&#34;comparison_dir&#34;] = self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;;
+    #############################################################################################################################
+
+
+    #############################################################################################################################
+    def custom_print(self, msg):
+        &#39;&#39;&#39;
+        Overwritten print function, to switch off and on as per verbosity levels
+
+        Args:
+            msg (str): Message to print
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;verbose&#34;]):
+            print(msg);
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_models(self):
+        &#39;&#39;&#39;
+        List all the available models in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Models List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            set1 = [&#34;alexnet&#34;, &#34;darknet53&#34;, &#34;DenseNet121&#34;, &#34;DenseNet161&#34;, &#34;DenseNet169&#34;, &#34;DenseNet201&#34;, &#34;InceptionV3&#34;, &#34;MobileNet1.0&#34;, &#34;MobileNet0.75&#34;, 
+                        &#34;MobileNet0.25&#34;, &#34;MobileNet0.5&#34;, &#34;ResNet18_v1&#34;, &#34;ResNet34_v1&#34;, &#34;ResNet50_v1&#34;, &#34;ResNet101_v1&#34;, &#34;ResNet152_v1&#34;, &#34;ResNext50_32x4d&#34;, 
+                        &#34;ResNext101_32x4d&#34;, &#34;ResNext101_64x4d_v1&#34;, &#34;SE_ResNext50_32x4d&#34;, &#34;SE_ResNext101_32x4d&#34;, &#34;SE_ResNext101_64x4d&#34;, &#34;SENet_154&#34;, 
+                        &#34;VGG11&#34;, &#34;VGG13&#34;, &#34;VGG16&#34;, &#34;VGG19&#34;, &#34;VGG11_bn&#34;, &#34;VGG13_bn&#34;, &#34;VGG16_bn&#34;, &#34;VGG19_bn&#34;, &#34;ResNet18_v2&#34;, &#34;ResNet34_v2&#34;, 
+                        &#34;ResNet50_v2&#34;, &#34;ResNet101_v2&#34;, &#34;ResNet152_v2&#34;];
+            set2 = [&#34;MobileNetV2_1.0&#34;, &#34;MobileNetV2_0.75&#34;, &#34;MobileNetV2_0.5&#34;, &#34;MobileNetV2_0.25&#34;, &#34;SqueezeNet1.0&#34;, &#34;SqueezeNet1.1&#34;, &#34;MobileNetV3_Large&#34;, &#34;MobileNetV3_Small&#34;];
+            set3 = [&#34;ResNet18_v1b&#34;, &#34;ResNet34_v1b&#34;, &#34;ResNet50_v1b&#34;, &#34;ResNet50_v1b_gn&#34;, &#34;ResNet101_v1b&#34;, &#34;ResNet152_v1b&#34;, &#34;ResNet50_v1c&#34;, 
+                        &#34;ResNet101_v1c&#34;, &#34;ResNet152_v1c&#34;, &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;ResNet18_v1d&#34;, &#34;ResNet34_v1d&#34;, 
+                        &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;resnet18_v1b_0.89&#34;, &#34;resnet50_v1d_0.86&#34;, &#34;resnet50_v1d_0.48&#34;, 
+                        &#34;resnet50_v1d_0.37&#34;, &#34;resnet50_v1d_0.11&#34;, &#34;resnet101_v1d_0.76&#34;, &#34;resnet101_v1d_0.73&#34;, &#34;Xception&#34;];
+            combined_list = set1+set2+set3
+            combined_list_lower = list(map(str.lower, combined_list))
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            set1 = [&#34;alexnet&#34;, &#34;vgg11&#34;, &#34;vgg11_bn&#34;, &#34;vgg13&#34;, &#34;vgg13_bn&#34;, &#34;vgg16&#34;, &#34;vgg16_bn&#34;, &#34;vgg19&#34;, &#34;vgg19_bn&#34;]
+            set2 = [&#34;densenet121&#34;, &#34;densenet161&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;]
+            set3 = [&#34;googlenet&#34;, &#34;inception_v3&#34;, &#34;resnet18&#34;, &#34;resnet34&#34;, &#34;resnet50&#34;, &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnext50_32x4d&#34;, &#34;resnext101_32x8d&#34;,
+                        &#34;shufflenet_v2_x0_5&#34;, &#34;shufflenet_v2_x1_0, shufflenet_v2_x1_5&#34;, &#34;shufflenet_v2_x2_0&#34;, &#34;wide_resnet101_2&#34;, &#34;wide_resnet50_2&#34;]
+            set4 = [&#34;mnasnet0_5&#34;, &#34;mnasnet0_75&#34;, &#34;mnasnet1_0&#34;, &#34;mnasnet1_3&#34;, &#34;mobilenet_v2&#34;, &#34;squeezenet1_0&#34;, &#34;squeezenet1_1&#34;]
+            combined_list = set1+set2+set3+set4
+            combined_list_lower = list(map(str.lower, combined_list))
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            set1 = [&#34;mobilenet&#34;, &#34;densenet121&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;, &#34;inception_v3&#34;, 
+                        &#34;inception_resnet_v3&#34;, &#34;mobilenet_v2&#34;, &#34;nasnet_mobile&#34;, &#34;nasnet_large&#34;, &#34;resnet50&#34;,
+                        &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnet50_v2&#34;, &#34;resnet101_v2&#34;, &#34;resnet152_v2&#34;, &#34;vgg16&#34;,
+                        &#34;vgg19&#34;, &#34;xception&#34;];
+            combined_list = set1
+            combined_list_lower = list(map(str.lower, combined_list))
+            
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_layers_transfer_learning(self):
+        &#39;&#39;&#39;
+        List all the available transfer learning layers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_layers_custom_model(self):
+        &#39;&#39;&#39;
+        List all the available custom network layers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                    &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, 
+                                    &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                    &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                    &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                    &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, 
+                                    &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;flatten&#34;, &#34;identity&#34;, &#34;add&#34;, &#34;concatenate&#34;, &#34;batch_normalization&#34;,
+                                    &#34;instance_normalization&#34;, &#34;layer_normalization&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution&#34;, 
+                                    &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, 
+                                    &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;, &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, 
+                                    &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;, &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, 
+                                    &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;, &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, 
+                                    &#34;global_average_pooling3d&#34;, &#34;flatten&#34;, &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;,
+                                    &#34;add&#34;, &#34;concatenate&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                    &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;,
+                                    &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                    &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                    &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                    &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, &#34;fully_connected&#34;, 
+                                    &#34;flatten&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;, &#34;instance_normalization&#34;, &#34;layer_normalization&#34;,
+                                    &#34;add&#34;, &#34;concatenate&#34;];
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_activations_transfer_learning(self):
+        &#39;&#39;&#39;
+        List all the available transfer learning activations in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_softmax&#34;, &#34;append_swish&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_threshold&#34;, &#34;append_softmax&#34;];
+
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                    &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                    &#34;append_threshold&#34;, &#34;append_softmax&#34;, &#34;append_hardshrink&#34;, &#34;append_hardtanh&#34;, 
+                                    &#34;append_logsigmoid&#34;, &#34;append_relu6&#34;, &#34;append_rrelu&#34;, &#34;append_celu&#34;, &#34;append_softshrink&#34;,
+                                    &#34;append_tanhshrink&#34;, &#34;append_logsoftmax&#34;, &#34;append_softmin&#34;];
+
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+    #############################################################################################################################
+    def print_list_activations_custom_model(self):
+        &#39;&#39;&#39;
+        List all the available custom network activations in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;elu&#34;, &#34;gelu&#34;, &#34;leaky_relu&#34;,
+                                    &#34;prelu&#34;, &#34;selu&#34;, &#34;swish&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;thresholded_relu&#34;, &#34;softmax&#34;, 
+                                    &#34;selu&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;tanh&#34;, &#34;sigmoid&#34;, &#34;hard_sigmoid&#34;];
+
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;,  &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;selu&#34;,
+                                    &#34;hardshrink&#34;, &#34;hardtanh&#34;, &#34;logsigmoid&#34;, &#34;relu6&#34;, &#34;rrelu&#34;, &#34;celu&#34;, &#34;softshrink&#34;, &#34;tanhshrink&#34;,
+                                    &#34;threshold&#34;, &#34;softmin&#34;, &#34;softmax&#34;, &#34;logsoftmax&#34;];
+
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_losses(self):
+        &#39;&#39;&#39;
+        List all the available loss functions in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Losses List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                    &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                    &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                    &#34;loss_squared_hinge&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;
+                                    &#34;loss_kldiv&#34;, &#34;loss_hinge&#34;, &#34;loss_squared_hinge&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                    &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                    &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                    &#34;loss_squared_hinge&#34;, &#34;loss_multimargin&#34;, &#34;loss_squared_multimargin&#34;,
+                                    &#34;loss_multilabel_margin&#34;, &#34;loss_multilabel_softmargin&#34;];
+
+                                    
+
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_optimizers(self):
+        &#39;&#39;&#39;
+        List all the available optimizers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Optimizers List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                    &#34;optimizer_adam&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_nesterov_adam&#34;, 
+                                    &#34;optimizer_adadelta&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_signum&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_adam&#34;,
+                                    &#34;optimizer_nesterov_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_adadelta&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                    &#34;optimizer_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adamw&#34;, &#34;optimizer_adagrad&#34;, 
+                                    &#34;optimizer_adadelta&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_schedulers(self):
+        &#39;&#39;&#39;
+        List all the available learning rate schedulers in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Optimizers List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_transforms(self):
+        &#39;&#39;&#39;
+        List all the available data transforms in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Transforms List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;apply_random_resized_crop&#34;, &#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_horizontal_flip&#34;,
+                                    &#34;apply_random_vertical_flip&#34;, &#34;apply_random_lighting&#34;, &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_horizontal_flip&#34;, 
+                                    &#34;apply_random_vertical_flip&#34;, &#34;apply_random_rotation&#34;, &#34;apply_mean_subtraction&#34;, 
+                                    &#34;apply_normalize&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_crop&#34;, 
+                                    &#34;apply_random_horizontal_flip&#34;, &#34;apply_random_perspective&#34;, &#34;apply_random_resized_crop&#34;,
+                                    &#34;apply_grayscale&#34;, &#34;apply_random_rotation&#34;, &#34;apply_random_vertical_flip&#34;,
+                                    &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)
+    #############################################################################################################################
+
+
+
+
+
+    #############################################################################################################################
+    def print_list_blocks(self):
+        &#39;&#39;&#39;
+        List all the available blocks for custom network creation in the selected backend.
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Blocks List: &#34;);
+
+        if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+
+        elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+            combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                    &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                    &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                    &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+                                    
+        for i in range(len(combined_list_lower)):
+            self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+        self.custom_print(&#34;&#34;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.system.base_class.system.custom_print"><code class="name flex">
+<span>def <span class="ident">custom_print</span></span>(<span>self, msg)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Overwritten print function, to switch off and on as per verbosity levels</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>msg</code></strong> :&ensp;<code>str</code></dt>
+<dd>Message to print</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_print(self, msg):
+    &#39;&#39;&#39;
+    Overwritten print function, to switch off and on as per verbosity levels
+
+    Args:
+        msg (str): Message to print
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(self.system_dict[&#34;verbose&#34;]):
+        print(msg);</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_activations_custom_model"><code class="name flex">
+<span>def <span class="ident">print_list_activations_custom_model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available custom network activations in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_activations_custom_model(self):
+    &#39;&#39;&#39;
+    List all the available custom network activations in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;elu&#34;, &#34;gelu&#34;, &#34;leaky_relu&#34;,
+                                &#34;prelu&#34;, &#34;selu&#34;, &#34;swish&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;relu&#34;, &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;thresholded_relu&#34;, &#34;softmax&#34;, 
+                                &#34;selu&#34;, &#34;softplus&#34;, &#34;softsign&#34;, &#34;tanh&#34;, &#34;sigmoid&#34;, &#34;hard_sigmoid&#34;];
+
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;relu&#34;, &#34;sigmoid&#34;, &#34;tanh&#34;, &#34;softplus&#34;, &#34;softsign&#34;,  &#34;elu&#34;, &#34;leaky_relu&#34;, &#34;prelu&#34;, &#34;selu&#34;,
+                                &#34;hardshrink&#34;, &#34;hardtanh&#34;, &#34;logsigmoid&#34;, &#34;relu6&#34;, &#34;rrelu&#34;, &#34;celu&#34;, &#34;softshrink&#34;, &#34;tanhshrink&#34;,
+                                &#34;threshold&#34;, &#34;softmin&#34;, &#34;softmax&#34;, &#34;logsoftmax&#34;];
+
+
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_activations_transfer_learning"><code class="name flex">
+<span>def <span class="ident">print_list_activations_transfer_learning</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available transfer learning activations in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_activations_transfer_learning(self):
+    &#39;&#39;&#39;
+    List all the available transfer learning activations in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Activations List for transfer learning: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_tanh&#34;,
+                                &#34;append_softmax&#34;, &#34;append_swish&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                &#34;append_threshold&#34;, &#34;append_softmax&#34;];
+
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;append_elu&#34;, &#34;append_leakyrelu&#34;, &#34;append_prelu&#34;, &#34;append_relu&#34;, &#34;append_selu&#34;,
+                                &#34;append_selu&#34;, &#34;append_sigmoid&#34;, &#34;append_softplus&#34;, &#34;append_softsign&#34;, &#34;append_tanh&#34;,
+                                &#34;append_threshold&#34;, &#34;append_softmax&#34;, &#34;append_hardshrink&#34;, &#34;append_hardtanh&#34;, 
+                                &#34;append_logsigmoid&#34;, &#34;append_relu6&#34;, &#34;append_rrelu&#34;, &#34;append_celu&#34;, &#34;append_softshrink&#34;,
+                                &#34;append_tanhshrink&#34;, &#34;append_logsoftmax&#34;, &#34;append_softmin&#34;];
+
+
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_blocks"><code class="name flex">
+<span>def <span class="ident">print_list_blocks</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available blocks for custom network creation in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_blocks(self):
+    &#39;&#39;&#39;
+    List all the available blocks for custom network creation in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Blocks List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;resnet_v1_block&#34;, &#34;resnet_v2_block&#34;, &#34;resnet_v1_bottleneck_block&#34;, &#34;resnet_v2_bottleneck_block&#34;,
+                                &#34;resnext_block&#34;, &#34;mobilenet_v2_linear_block&#34;, &#34;mobilenet_v2_inverted_linear_block&#34;,
+                                &#34;squeezenet_fire_block&#34;, &#34;conv_bn_relu_block&#34;, &#34;inception_a_block&#34;, &#34;inception_b_block&#34;,
+                                &#34;inception_c_block&#34;, &#34;inception_d_block&#34;, &#34;inception_e_block&#34;];
+
+                                
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_layers_custom_model"><code class="name flex">
+<span>def <span class="ident">print_list_layers_custom_model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available custom network layers in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_layers_custom_model(self):
+    &#39;&#39;&#39;
+    List all the available custom network layers in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, 
+                                &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, 
+                                &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;flatten&#34;, &#34;identity&#34;, &#34;add&#34;, &#34;concatenate&#34;, &#34;batch_normalization&#34;,
+                                &#34;instance_normalization&#34;, &#34;layer_normalization&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution&#34;, 
+                                &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;, &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, 
+                                &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;, &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, 
+                                &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;, &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, 
+                                &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;, &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, 
+                                &#34;global_average_pooling3d&#34;, &#34;flatten&#34;, &#34;fully_connected&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;,
+                                &#34;add&#34;, &#34;concatenate&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;convolution1d&#34;, &#34;convolution2d&#34;, &#34;convolution&#34;, &#34;convolution3d&#34;, &#34;transposed_convolution1d&#34;,
+                                &#34;transposed_convolution&#34;, &#34;transposed_convolution2d&#34;, &#34;transposed_convolution3d&#34;,
+                                &#34;max_pooling1d&#34;, &#34;max_pooling2d&#34;, &#34;max_pooling&#34;, &#34;max_pooling3d&#34;, &#34;average_pooling1d&#34;,
+                                &#34;average_pooling2d&#34;, &#34;average_pooling&#34;, &#34;average_pooling3d&#34;, &#34;global_max_pooling1d&#34;,
+                                &#34;global_max_pooling2d&#34;, &#34;global_max_pooling&#34;, &#34;global_max_pooling3d&#34;, &#34;global_average_pooling1d&#34;,
+                                &#34;global_average_pooling2d&#34;, &#34;global_average_pooling&#34;, &#34;global_average_pooling3d&#34;, &#34;fully_connected&#34;, 
+                                &#34;flatten&#34;, &#34;dropout&#34;, &#34;identity&#34;, &#34;batch_normalization&#34;, &#34;instance_normalization&#34;, &#34;layer_normalization&#34;,
+                                &#34;add&#34;, &#34;concatenate&#34;];
+
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_layers_transfer_learning"><code class="name flex">
+<span>def <span class="ident">print_list_layers_transfer_learning</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available transfer learning layers in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_layers_transfer_learning(self):
+    &#39;&#39;&#39;
+    List all the available transfer learning layers in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Layers List for transfer learning: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;append_linear&#34;, &#34;append_dropout&#34;];
+
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_losses"><code class="name flex">
+<span>def <span class="ident">print_list_losses</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available loss functions in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_losses(self):
+    &#39;&#39;&#39;
+    List all the available loss functions in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Losses List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                &#34;loss_squared_hinge&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;
+                                &#34;loss_kldiv&#34;, &#34;loss_hinge&#34;, &#34;loss_squared_hinge&#34;];
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;loss_l1&#34;, &#34;loss_l2&#34;, &#34;loss_softmax_crossentropy&#34;, &#34;loss_crossentropy&#34;,
+                                &#34;loss_sigmoid_binary_crossentropy&#34;, &#34;loss_binary_crossentropy&#34;,
+                                &#34;loss_kldiv&#34;, &#34;loss_poisson_nll&#34;, &#34;loss_huber&#34;, &#34;loss_hinge&#34;,
+                                &#34;loss_squared_hinge&#34;, &#34;loss_multimargin&#34;, &#34;loss_squared_multimargin&#34;,
+                                &#34;loss_multilabel_margin&#34;, &#34;loss_multilabel_softmargin&#34;];
+
+                                
+
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_models"><code class="name flex">
+<span>def <span class="ident">print_list_models</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available models in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_models(self):
+    &#39;&#39;&#39;
+    List all the available models in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Models List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        set1 = [&#34;alexnet&#34;, &#34;darknet53&#34;, &#34;DenseNet121&#34;, &#34;DenseNet161&#34;, &#34;DenseNet169&#34;, &#34;DenseNet201&#34;, &#34;InceptionV3&#34;, &#34;MobileNet1.0&#34;, &#34;MobileNet0.75&#34;, 
+                    &#34;MobileNet0.25&#34;, &#34;MobileNet0.5&#34;, &#34;ResNet18_v1&#34;, &#34;ResNet34_v1&#34;, &#34;ResNet50_v1&#34;, &#34;ResNet101_v1&#34;, &#34;ResNet152_v1&#34;, &#34;ResNext50_32x4d&#34;, 
+                    &#34;ResNext101_32x4d&#34;, &#34;ResNext101_64x4d_v1&#34;, &#34;SE_ResNext50_32x4d&#34;, &#34;SE_ResNext101_32x4d&#34;, &#34;SE_ResNext101_64x4d&#34;, &#34;SENet_154&#34;, 
+                    &#34;VGG11&#34;, &#34;VGG13&#34;, &#34;VGG16&#34;, &#34;VGG19&#34;, &#34;VGG11_bn&#34;, &#34;VGG13_bn&#34;, &#34;VGG16_bn&#34;, &#34;VGG19_bn&#34;, &#34;ResNet18_v2&#34;, &#34;ResNet34_v2&#34;, 
+                    &#34;ResNet50_v2&#34;, &#34;ResNet101_v2&#34;, &#34;ResNet152_v2&#34;];
+        set2 = [&#34;MobileNetV2_1.0&#34;, &#34;MobileNetV2_0.75&#34;, &#34;MobileNetV2_0.5&#34;, &#34;MobileNetV2_0.25&#34;, &#34;SqueezeNet1.0&#34;, &#34;SqueezeNet1.1&#34;, &#34;MobileNetV3_Large&#34;, &#34;MobileNetV3_Small&#34;];
+        set3 = [&#34;ResNet18_v1b&#34;, &#34;ResNet34_v1b&#34;, &#34;ResNet50_v1b&#34;, &#34;ResNet50_v1b_gn&#34;, &#34;ResNet101_v1b&#34;, &#34;ResNet152_v1b&#34;, &#34;ResNet50_v1c&#34;, 
+                    &#34;ResNet101_v1c&#34;, &#34;ResNet152_v1c&#34;, &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;ResNet18_v1d&#34;, &#34;ResNet34_v1d&#34;, 
+                    &#34;ResNet50_v1d&#34;, &#34;ResNet101_v1d&#34;, &#34;ResNet152_v1d&#34;, &#34;resnet18_v1b_0.89&#34;, &#34;resnet50_v1d_0.86&#34;, &#34;resnet50_v1d_0.48&#34;, 
+                    &#34;resnet50_v1d_0.37&#34;, &#34;resnet50_v1d_0.11&#34;, &#34;resnet101_v1d_0.76&#34;, &#34;resnet101_v1d_0.73&#34;, &#34;Xception&#34;];
+        combined_list = set1+set2+set3
+        combined_list_lower = list(map(str.lower, combined_list))
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        set1 = [&#34;alexnet&#34;, &#34;vgg11&#34;, &#34;vgg11_bn&#34;, &#34;vgg13&#34;, &#34;vgg13_bn&#34;, &#34;vgg16&#34;, &#34;vgg16_bn&#34;, &#34;vgg19&#34;, &#34;vgg19_bn&#34;]
+        set2 = [&#34;densenet121&#34;, &#34;densenet161&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;]
+        set3 = [&#34;googlenet&#34;, &#34;inception_v3&#34;, &#34;resnet18&#34;, &#34;resnet34&#34;, &#34;resnet50&#34;, &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnext50_32x4d&#34;, &#34;resnext101_32x8d&#34;,
+                    &#34;shufflenet_v2_x0_5&#34;, &#34;shufflenet_v2_x1_0, shufflenet_v2_x1_5&#34;, &#34;shufflenet_v2_x2_0&#34;, &#34;wide_resnet101_2&#34;, &#34;wide_resnet50_2&#34;]
+        set4 = [&#34;mnasnet0_5&#34;, &#34;mnasnet0_75&#34;, &#34;mnasnet1_0&#34;, &#34;mnasnet1_3&#34;, &#34;mobilenet_v2&#34;, &#34;squeezenet1_0&#34;, &#34;squeezenet1_1&#34;]
+        combined_list = set1+set2+set3+set4
+        combined_list_lower = list(map(str.lower, combined_list))
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        set1 = [&#34;mobilenet&#34;, &#34;densenet121&#34;, &#34;densenet169&#34;, &#34;densenet201&#34;, &#34;inception_v3&#34;, 
+                    &#34;inception_resnet_v3&#34;, &#34;mobilenet_v2&#34;, &#34;nasnet_mobile&#34;, &#34;nasnet_large&#34;, &#34;resnet50&#34;,
+                    &#34;resnet101&#34;, &#34;resnet152&#34;, &#34;resnet50_v2&#34;, &#34;resnet101_v2&#34;, &#34;resnet152_v2&#34;, &#34;vgg16&#34;,
+                    &#34;vgg19&#34;, &#34;xception&#34;];
+        combined_list = set1
+        combined_list_lower = list(map(str.lower, combined_list))
+        
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_optimizers"><code class="name flex">
+<span>def <span class="ident">print_list_optimizers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available optimizers in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_optimizers(self):
+    &#39;&#39;&#39;
+    List all the available optimizers in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Optimizers List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                &#34;optimizer_adam&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_nesterov_adam&#34;, 
+                                &#34;optimizer_adadelta&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_signum&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_adam&#34;,
+                                &#34;optimizer_nesterov_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adagrad&#34;, &#34;optimizer_adadelta&#34;];
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;optimizer_sgd&#34;, &#34;optimizer_nesterov_sgd&#34;, &#34;optimizer_rmsprop&#34;, &#34;optimizer_momentum_rmsprop&#34;, 
+                                &#34;optimizer_adam&#34;, &#34;optimizer_adamax&#34;, &#34;optimizer_adamw&#34;, &#34;optimizer_adagrad&#34;, 
+                                &#34;optimizer_adadelta&#34;];
+
+                                
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_schedulers"><code class="name flex">
+<span>def <span class="ident">print_list_schedulers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available learning rate schedulers in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_schedulers(self):
+    &#39;&#39;&#39;
+    List all the available learning rate schedulers in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Optimizers List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;lr_fixed&#34;, &#34;lr_step_decrease&#34;, &#34;lr_multistep_decrease&#34;, &#34;lr_exponential_decrease&#34;, &#34;lr_plateau_decrease&#34;];
+
+                                
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.print_list_transforms"><code class="name flex">
+<span>def <span class="ident">print_list_transforms</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all the available data transforms in the selected backend.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_list_transforms(self):
+    &#39;&#39;&#39;
+    List all the available data transforms in the selected backend.
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Transforms List: &#34;);
+
+    if(self.system_dict[&#34;library&#34;] == &#34;Mxnet&#34;):
+        combined_list_lower = [&#34;apply_random_resized_crop&#34;, &#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_horizontal_flip&#34;,
+                                &#34;apply_random_vertical_flip&#34;, &#34;apply_random_lighting&#34;, &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Keras&#34;):
+        combined_list_lower = [&#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_horizontal_flip&#34;, 
+                                &#34;apply_random_vertical_flip&#34;, &#34;apply_random_rotation&#34;, &#34;apply_mean_subtraction&#34;, 
+                                &#34;apply_normalize&#34;];
+
+
+    elif(self.system_dict[&#34;library&#34;] == &#34;Pytorch&#34;):
+        combined_list_lower = [&#34;apply_center_crop&#34;, &#34;apply_color_jitter&#34;, &#34;apply_random_affine&#34;, &#34;apply_random_crop&#34;, 
+                                &#34;apply_random_horizontal_flip&#34;, &#34;apply_random_perspective&#34;, &#34;apply_random_resized_crop&#34;,
+                                &#34;apply_grayscale&#34;, &#34;apply_random_rotation&#34;, &#34;apply_random_vertical_flip&#34;,
+                                &#34;apply_resize&#34;, &#34;apply_normalize&#34;];
+
+                                
+    for i in range(len(combined_list_lower)):
+        self.custom_print(&#34;    {}. {}&#34;.format(i+1, combined_list_lower[i]))
+
+    self.custom_print(&#34;&#34;)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_aux_list_projects"><code class="name flex">
+<span>def <span class="ident">set_system_aux_list_projects</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>List all projects in current workspace</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_aux_list_projects(self):
+    &#39;&#39;&#39;
+    List all projects in current workspace
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    return os.listdir(self.system_dict[&#34;master_systems_dir&#34;]);</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_comparison"><code class="name flex">
+<span>def <span class="ident">set_system_comparison</span></span>(<span>self, comparison_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create comparison experiment</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>comparison_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Unique name to comparison experiment</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_comparison(self, comparison_name):
+    &#39;&#39;&#39;
+    Create comparison experiment
+
+    Args:
+        comparison_name (str): Unique name to comparison experiment
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    create_dir(self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;);
+    self.system_dict[&#34;comparison_name&#34;] = comparison_name;
+    self.system_dict[&#34;comparison_dir&#34;] = self.system_dict[&#34;master_comparison_dir&#34;] + comparison_name + &#34;/&#34;;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_delete_create_dir"><code class="name flex">
+<span>def <span class="ident">set_system_delete_create_dir</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Function to remove old directories and create new at the same place</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_delete_create_dir(self):
+    &#39;&#39;&#39;
+    Function to remove old directories and create new at the same place
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    delete_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+    create_dir(self.system_dict[&#34;output_dir_relative&#34;]);
+    create_dir(self.system_dict[&#34;model_dir_relative&#34;]);
+    create_dir(self.system_dict[&#34;log_dir_relative&#34;]);</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_experiment"><code class="name flex">
+<span>def <span class="ident">set_system_experiment</span></span>(<span>self, experiment_name, eval_infer=False, copy_from=False, pseudo_copy_from=False, resume_train=False, summary=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create Experiment or load it in different states</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>experiment_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Unique name to experiment</dd>
+<dt><strong><code>eval_infer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If set as True, model is loaded in evaluation mode</dd>
+<dt><strong><code>resume_train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If set as True, model is loaded from last checkpoint</dd>
+<dt><strong><code>copy_from</code></strong> :&ensp;<code>list</code></dt>
+<dd>[project, experiment] to copy from</dd>
+<dt><strong><code>pseudo_copy_from</code></strong> :&ensp;<code>list</code></dt>
+<dd>For creating sub-experiments while in hyper-parametric analysis state</dd>
+<dt><strong><code>summary</code></strong> :&ensp;<code>list</code></dt>
+<dd>Dummy variable</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_experiment(self, experiment_name, eval_infer=False, copy_from=False, pseudo_copy_from=False, resume_train=False, summary=False):
+    &#39;&#39;&#39;
+    Create Experiment or load it in different states
+
+    Args:
+        experiment_name (str): Unique name to experiment
+        eval_infer (bool): If set as True, model is loaded in evaluation mode
+        resume_train (bool): If set as True, model is loaded from last checkpoint
+        copy_from (list): [project, experiment] to copy from
+        pseudo_copy_from (list): For creating sub-experiments while in hyper-parametric analysis state
+        summary (list): Dummy variable
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(summary):
+        self.set_system_select_experiment(experiment_name);
+        print_summary(self.system_dict[&#34;fname_relative&#34;]);
+
+    else:
+        self.system_dict[&#34;experiment_dir&#34;] = self.system_dict[&#34;project_dir&#34;] + experiment_name + &#34;/&#34;;
+        self.system_dict[&#34;experiment_dir_relative&#34;] = self.system_dict[&#34;project_dir_relative&#34;] + experiment_name + &#34;/&#34;;
+        if(not os.path.isdir(self.system_dict[&#34;experiment_dir&#34;])):
+            self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;].append(experiment_name);
+            self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] += 1;
+        create_dir(self.system_dict[&#34;experiment_dir&#34;]);
+        self.set_system_select_experiment(experiment_name);
+        
+        if(eval_infer):
+            self.set_system_state_eval_infer();
+        elif(resume_train):
+            self.set_system_state_resume_train();
+        elif(copy_from):
+            self.set_system_delete_create_dir();
+            self.set_system_state_copy_from(copy_from);
+        elif(pseudo_copy_from):
+            self.set_system_delete_create_dir();
+            self.set_system_state_pseudo_copy_from(pseudo_copy_from);
+        else: 
+            self.set_system_delete_create_dir();
+            save(self.system_dict);</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_project"><code class="name flex">
+<span>def <span class="ident">set_system_project</span></span>(<span>self, project_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create Project</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>project_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Unique name to project</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_project(self, project_name):
+    &#39;&#39;&#39;
+    Create Project
+
+    Args:
+        project_name (str): Unique name to project
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;project_dir&#34;] = self.system_dict[&#34;master_systems_dir&#34;] + project_name + &#34;/&#34;;
+    self.system_dict[&#34;project_dir_relative&#34;] = self.system_dict[&#34;master_systems_dir_relative&#34;] + project_name + &#34;/&#34;;
+    if(not os.path.isdir(self.system_dict[&#34;project_dir&#34;])):
+        self.system_dict[&#34;local&#34;][&#34;projects_list&#34;].append(project_name);
+        self.system_dict[&#34;local&#34;][&#34;num_projects&#34;] += 1;
+    create_dir(self.system_dict[&#34;project_dir&#34;]);
+    self.set_system_select_project(project_name);</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_select_experiment"><code class="name flex">
+<span>def <span class="ident">set_system_select_experiment</span></span>(<span>self, experiment_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Function to update system dictionary on experiment properties</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>experiment_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Unique name to experiment</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_select_experiment(self, experiment_name):
+    &#39;&#39;&#39;
+    Function to update system dictionary on experiment properties
+
+    Args:
+        experiment_name (str): Unique name to experiment
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;experiment_name&#34;] = experiment_name;
+    self.system_dict[&#34;output_dir&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;output/&#34;;
+    self.system_dict[&#34;output_dir_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;output/&#34;;
+    self.system_dict[&#34;model_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;models/&#34;;
+    self.system_dict[&#34;model_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;models/&#34;;
+    self.system_dict[&#34;log_dir&#34;] = self.system_dict[&#34;output_dir&#34;] + &#34;logs/&#34;;
+    self.system_dict[&#34;log_dir_relative&#34;] = self.system_dict[&#34;output_dir_relative&#34;] + &#34;logs/&#34;;
+    self.system_dict[&#34;fname&#34;] = self.system_dict[&#34;experiment_dir&#34;] + &#34;/experiment_state.json&#34;;
+    self.system_dict[&#34;fname_relative&#34;] = self.system_dict[&#34;experiment_dir_relative&#34;] + &#34;/experiment_state.json&#34;;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.base_class.system.set_system_select_project"><code class="name flex">
+<span>def <span class="ident">set_system_select_project</span></span>(<span>self, project_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Function to update system dictionary on project properties</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>project_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Unique name to project</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_system_select_project(self, project_name):
+    &#39;&#39;&#39;
+    Function to update system dictionary on project properties
+
+    Args:
+        project_name (str): Unique name to project
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;project_name&#34;] = project_name;
+    self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;] = os.listdir(self.system_dict[&#34;project_dir&#34;]);
+    self.system_dict[&#34;local&#34;][&#34;num_experiments&#34;] = len(self.system_dict[&#34;local&#34;][&#34;experiments_list&#34;]);</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.system" href="index.html">monk.system</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.system.base_class.system" href="#monk.system.base_class.system">system</a></code></h4>
+<ul class="">
+<li><code><a title="monk.system.base_class.system.custom_print" href="#monk.system.base_class.system.custom_print">custom_print</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_activations_custom_model" href="#monk.system.base_class.system.print_list_activations_custom_model">print_list_activations_custom_model</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_activations_transfer_learning" href="#monk.system.base_class.system.print_list_activations_transfer_learning">print_list_activations_transfer_learning</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_blocks" href="#monk.system.base_class.system.print_list_blocks">print_list_blocks</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_layers_custom_model" href="#monk.system.base_class.system.print_list_layers_custom_model">print_list_layers_custom_model</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_layers_transfer_learning" href="#monk.system.base_class.system.print_list_layers_transfer_learning">print_list_layers_transfer_learning</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_losses" href="#monk.system.base_class.system.print_list_losses">print_list_losses</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_models" href="#monk.system.base_class.system.print_list_models">print_list_models</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_optimizers" href="#monk.system.base_class.system.print_list_optimizers">print_list_optimizers</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_schedulers" href="#monk.system.base_class.system.print_list_schedulers">print_list_schedulers</a></code></li>
+<li><code><a title="monk.system.base_class.system.print_list_transforms" href="#monk.system.base_class.system.print_list_transforms">print_list_transforms</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_aux_list_projects" href="#monk.system.base_class.system.set_system_aux_list_projects">set_system_aux_list_projects</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_comparison" href="#monk.system.base_class.system.set_system_comparison">set_system_comparison</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_delete_create_dir" href="#monk.system.base_class.system.set_system_delete_create_dir">set_system_delete_create_dir</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_experiment" href="#monk.system.base_class.system.set_system_experiment">set_system_experiment</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_project" href="#monk.system.base_class.system.set_system_project">set_system_project</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_select_experiment" href="#monk.system.base_class.system.set_system_select_experiment">set_system_select_experiment</a></code></li>
+<li><code><a title="monk.system.base_class.system.set_system_select_project" href="#monk.system.base_class.system.set_system_select_project">set_system_select_project</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

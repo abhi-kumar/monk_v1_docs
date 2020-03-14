@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.pytorch.finetune.level_11_optimizers_main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.pytorch.finetune.level_11_optimizers_main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from pytorch.finetune.imports import *
+from system.imports import *
+
+from pytorch.finetune.level_10_schedulers_main import prototype_schedulers
+
+
+class prototype_optimizers(prototype_schedulers):
+    &#39;&#39;&#39;
+    Main class for all optimizers in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def optimizer_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select stochastic gradient descent optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            momentum_dampening_rate (float): Reduction rate for momentum
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = sgd(self.system_dict, learning_rate, 
+                momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_nesterov_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select stochastic gradient descent optimizer with nesterov acceleration
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            momentum_dampening_rate (float): Reduction rate for momentum
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = nesterov_sgd(self.system_dict, learning_rate, 
+                momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select root mean score prop optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            decay_rate (float): A decay factor of moving average over past squared gradient.
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = rmsprop(self.system_dict , learning_rate, 
+            decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_momentum_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, momentum=0.9):
+        &#39;&#39;&#39;
+        Select root mean score prop optimizer with momentum
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            decay_rate (float): A decay factor of moving average over past squared gradient.
+            epsilon (float): A value to avoid division by zero
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = momentum_rmsprop(self.system_dict , learning_rate, 
+            decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, momentum=momentum);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adam(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False, 
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select ADAM optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adam(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad, clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: amsgrad is active only for keras and pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adamax(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0,
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adamax optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+
+        self.system_dict = adamax(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);  
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adamw(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False):
+        &#39;&#39;&#39;
+        Select ADAMW variant of ADAM optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adamw(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;OptimizerWarning: adamw is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adadelta(self, learning_rate, rho=0.9, epsilon=1e-06, weight_decay=0, 
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adadelta optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            rho (float): Exponential decay rate for momentum estimates
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adadelta(self.system_dict, learning_rate,
+            rho=rho, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def optimizer_adagrad(self, learning_rate, learning_rate_decay=0, weight_decay=0, epsilon=1e-08,
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adagrad optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            learning_rate_decay (float): Learning rate decay factor
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adagrad(self.system_dict, learning_rate,
+            learning_rate_decay=learning_rate_decay, weight_decay=weight_decay, epsilon=epsilon, 
+            clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: learning_rate_decay is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers"><code class="flex name class">
+<span>class <span class="ident">prototype_optimizers</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main class for all optimizers in expert mode</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl>
+<p>Class that serves as a decorator to trace entry and exit from
+functions. Used by appending @TraceFunction on top of the
+definition of the function to trace.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class prototype_optimizers(prototype_schedulers):
+    &#39;&#39;&#39;
+    Main class for all optimizers in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def optimizer_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select stochastic gradient descent optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            momentum_dampening_rate (float): Reduction rate for momentum
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = sgd(self.system_dict, learning_rate, 
+                momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_nesterov_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select stochastic gradient descent optimizer with nesterov acceleration
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            momentum_dampening_rate (float): Reduction rate for momentum
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = nesterov_sgd(self.system_dict, learning_rate, 
+                momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select root mean score prop optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            decay_rate (float): A decay factor of moving average over past squared gradient.
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = rmsprop(self.system_dict , learning_rate, 
+            decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_momentum_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, momentum=0.9):
+        &#39;&#39;&#39;
+        Select root mean score prop optimizer with momentum
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            decay_rate (float): A decay factor of moving average over past squared gradient.
+            epsilon (float): A value to avoid division by zero
+            momentum (float): Momentum value for driving the weights towards minima
+            weight_decay (float): Value for regularizing weights post every update
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = momentum_rmsprop(self.system_dict , learning_rate, 
+            decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, momentum=momentum);
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adam(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False, 
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select ADAM optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adam(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad, clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: amsgrad is active only for keras and pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adamax(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0,
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adamax optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+
+        self.system_dict = adamax(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);  
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adamw(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False):
+        &#39;&#39;&#39;
+        Select ADAMW variant of ADAM optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            beta1 (float): Exponential decay rate for first momentum estimates
+            beta2 (float): Exponential decay rate for first second estimates
+            weight_decay (float): Value for regularizing weights post every update
+            amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adamw(self.system_dict, learning_rate,
+            beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;OptimizerWarning: adamw is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def optimizer_adadelta(self, learning_rate, rho=0.9, epsilon=1e-06, weight_decay=0, 
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adadelta optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            rho (float): Exponential decay rate for momentum estimates
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adadelta(self.system_dict, learning_rate,
+            rho=rho, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def optimizer_adagrad(self, learning_rate, learning_rate_decay=0, weight_decay=0, epsilon=1e-08,
+        clipnorm=0.0, clipvalue=0.0):
+        &#39;&#39;&#39;
+        Select Adagrad optimizer
+
+        Args:
+            learning_rate (float): Initial base learning rate
+            learning_rate_decay (float): Learning rate decay factor
+            weight_decay (float): Value for regularizing weights post every update
+            epsilon (float): A value to avoid division by zero
+            clipnorm (float): Gradient clipping factor
+            clipvalue (float): Value for clipping
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = adagrad(self.system_dict, learning_rate,
+            learning_rate_decay=learning_rate_decay, weight_decay=weight_decay, epsilon=epsilon, 
+            clipnorm=clipnorm, clipvalue=clipvalue);
+        
+        self.custom_print(&#34;Optimizer&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);
+        ConstraintWarning(&#34;ArgumentWarning: learning_rate_decay is active only for pytorch in current version of Monk&#34;);
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pytorch.finetune.level_10_schedulers_main.prototype_schedulers</li>
+<li>pytorch.finetune.level_9_transforms_main.prototype_transforms</li>
+<li>pytorch.finetune.level_8_layers_main.prototype_layers</li>
+<li>pytorch.finetune.level_7_aux_main.prototype_aux</li>
+<li>pytorch.finetune.level_6_params_main.prototype_params</li>
+<li>pytorch.finetune.level_5_state_base.finetune_state</li>
+<li>pytorch.finetune.level_4_evaluation_base.finetune_evaluation</li>
+<li>pytorch.finetune.level_3_training_base.finetune_training</li>
+<li>pytorch.finetune.level_2_model_base.finetune_model</li>
+<li>pytorch.finetune.level_1_dataset_base.finetune_dataset</li>
+<li>system.base_class.system</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adadelta"><code class="name flex">
+<span>def <span class="ident">optimizer_adadelta</span></span>(<span>self, learning_rate, rho=0.9, epsilon=1e-06, weight_decay=0, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select Adadelta optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>rho</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for momentum estimates</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_adadelta(self, learning_rate, rho=0.9, epsilon=1e-06, weight_decay=0, 
+    clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select Adadelta optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        rho (float): Exponential decay rate for momentum estimates
+        weight_decay (float): Value for regularizing weights post every update
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = adadelta(self.system_dict, learning_rate,
+        rho=rho, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+    
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adagrad"><code class="name flex">
+<span>def <span class="ident">optimizer_adagrad</span></span>(<span>self, learning_rate, learning_rate_decay=0, weight_decay=0, epsilon=1e-08, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select Adagrad optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>learning_rate_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Learning rate decay factor</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_adagrad(self, learning_rate, learning_rate_decay=0, weight_decay=0, epsilon=1e-08,
+    clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select Adagrad optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        learning_rate_decay (float): Learning rate decay factor
+        weight_decay (float): Value for regularizing weights post every update
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = adagrad(self.system_dict, learning_rate,
+        learning_rate_decay=learning_rate_decay, weight_decay=weight_decay, epsilon=epsilon, 
+        clipnorm=clipnorm, clipvalue=clipvalue);
+    
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: learning_rate_decay is active only for pytorch in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adam"><code class="name flex">
+<span>def <span class="ident">optimizer_adam</span></span>(<span>self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select ADAM optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>beta1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first momentum estimates</dd>
+<dt><strong><code>beta2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first second estimates</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>amsgrad</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, AMSGrad variant of this algorithm is used</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_adam(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False, 
+    clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select ADAM optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        beta1 (float): Exponential decay rate for first momentum estimates
+        beta2 (float): Exponential decay rate for first second estimates
+        weight_decay (float): Value for regularizing weights post every update
+        amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = adam(self.system_dict, learning_rate,
+        beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad, clipnorm=clipnorm, clipvalue=clipvalue);
+    
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: amsgrad is active only for keras and pytorch in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamax"><code class="name flex">
+<span>def <span class="ident">optimizer_adamax</span></span>(<span>self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select Adamax optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>beta1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first momentum estimates</dd>
+<dt><strong><code>beta2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first second estimates</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_adamax(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0,
+    clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select Adamax optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        beta1 (float): Exponential decay rate for first momentum estimates
+        beta2 (float): Exponential decay rate for first second estimates
+        weight_decay (float): Value for regularizing weights post every update
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+
+    self.system_dict = adamax(self.system_dict, learning_rate,
+        beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);  
+    
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamw"><code class="name flex">
+<span>def <span class="ident">optimizer_adamw</span></span>(<span>self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select ADAMW variant of ADAM optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>beta1</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first momentum estimates</dd>
+<dt><strong><code>beta2</code></strong> :&ensp;<code>float</code></dt>
+<dd>Exponential decay rate for first second estimates</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>amsgrad</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, AMSGrad variant of this algorithm is used</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_adamw(self, learning_rate, beta1=0.9, beta2=0.999, epsilon=1e-08, weight_decay=0, amsgrad=False):
+    &#39;&#39;&#39;
+    Select ADAMW variant of ADAM optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        beta1 (float): Exponential decay rate for first momentum estimates
+        beta2 (float): Exponential decay rate for first second estimates
+        weight_decay (float): Value for regularizing weights post every update
+        amsgrad (bool): If True, AMSGrad variant of this algorithm is used
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = adamw(self.system_dict, learning_rate,
+        beta1=beta1, beta2=beta2, epsilon=epsilon, weight_decay=weight_decay, amsgrad=amsgrad);
+    
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;OptimizerWarning: adamw is active only for pytorch in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_momentum_rmsprop"><code class="name flex">
+<span>def <span class="ident">optimizer_momentum_rmsprop</span></span>(<span>self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, momentum=0.9)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select root mean score prop optimizer with momentum</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>decay_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>A decay factor of moving average over past squared gradient.</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>momentum</code></strong> :&ensp;<code>float</code></dt>
+<dd>Momentum value for driving the weights towards minima</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_momentum_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, momentum=0.9):
+    &#39;&#39;&#39;
+    Select root mean score prop optimizer with momentum
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        decay_rate (float): A decay factor of moving average over past squared gradient.
+        epsilon (float): A value to avoid division by zero
+        momentum (float): Momentum value for driving the weights towards minima
+        weight_decay (float): Value for regularizing weights post every update
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = momentum_rmsprop(self.system_dict , learning_rate, 
+        decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, momentum=momentum);
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_nesterov_sgd"><code class="name flex">
+<span>def <span class="ident">optimizer_nesterov_sgd</span></span>(<span>self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select stochastic gradient descent optimizer with nesterov acceleration</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>momentum</code></strong> :&ensp;<code>float</code></dt>
+<dd>Momentum value for driving the weights towards minima</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>momentum_dampening_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Reduction rate for momentum</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_nesterov_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select stochastic gradient descent optimizer with nesterov acceleration
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        momentum (float): Momentum value for driving the weights towards minima
+        weight_decay (float): Value for regularizing weights post every update
+        momentum_dampening_rate (float): Reduction rate for momentum
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = nesterov_sgd(self.system_dict, learning_rate, 
+            momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_rmsprop"><code class="name flex">
+<span>def <span class="ident">optimizer_rmsprop</span></span>(<span>self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select root mean score prop optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>decay_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>A decay factor of moving average over past squared gradient.</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>epsilon</code></strong> :&ensp;<code>float</code></dt>
+<dd>A value to avoid division by zero</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_rmsprop(self, learning_rate, decay_rate=0.99, epsilon=1e-08, weight_decay=0, clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select root mean score prop optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        decay_rate (float): A decay factor of moving average over past squared gradient.
+        weight_decay (float): Value for regularizing weights post every update
+        epsilon (float): A value to avoid division by zero
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = rmsprop(self.system_dict , learning_rate, 
+        decay_rate=decay_rate, epsilon=epsilon, weight_decay=weight_decay, clipnorm=clipnorm, clipvalue=clipvalue);
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_sgd"><code class="name flex">
+<span>def <span class="ident">optimizer_sgd</span></span>(<span>self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select stochastic gradient descent optimizer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initial base learning rate</dd>
+<dt><strong><code>momentum</code></strong> :&ensp;<code>float</code></dt>
+<dd>Momentum value for driving the weights towards minima</dd>
+<dt><strong><code>weight_decay</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for regularizing weights post every update</dd>
+<dt><strong><code>momentum_dampening_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>Reduction rate for momentum</dd>
+<dt><strong><code>clipnorm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Gradient clipping factor</dd>
+<dt><strong><code>clipvalue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Value for clipping</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def optimizer_sgd(self, learning_rate, momentum=0, weight_decay=0, momentum_dampening_rate=0, clipnorm=0.0, clipvalue=0.0):
+    &#39;&#39;&#39;
+    Select stochastic gradient descent optimizer
+
+    Args:
+        learning_rate (float): Initial base learning rate
+        momentum (float): Momentum value for driving the weights towards minima
+        weight_decay (float): Value for regularizing weights post every update
+        momentum_dampening_rate (float): Reduction rate for momentum
+        clipnorm (float): Gradient clipping factor
+        clipvalue (float): Value for clipping
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = sgd(self.system_dict, learning_rate, 
+            momentum=momentum, weight_decay=weight_decay, momentum_dampening_rate=momentum_dampening_rate, clipnorm=clipnorm, clipvalue=clipvalue);
+    self.custom_print(&#34;Optimizer&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Learning rate: {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: clipnorm and clipvalue are active only for keras in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);
+    ConstraintWarning(&#34;ArgumentWarning: momentum_dampening_rate is active only for pytorch in current version of Monk&#34;);
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.pytorch.finetune" href="index.html">monk.pytorch.finetune</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers">prototype_optimizers</a></code></h4>
+<ul class="">
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adadelta" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adadelta">optimizer_adadelta</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adagrad" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adagrad">optimizer_adagrad</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adam" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adam">optimizer_adam</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamax" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamax">optimizer_adamax</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamw" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_adamw">optimizer_adamw</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_momentum_rmsprop" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_momentum_rmsprop">optimizer_momentum_rmsprop</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_nesterov_sgd" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_nesterov_sgd">optimizer_nesterov_sgd</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_rmsprop" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_rmsprop">optimizer_rmsprop</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_sgd" href="#monk.pytorch.finetune.level_11_optimizers_main.prototype_optimizers.optimizer_sgd">optimizer_sgd</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

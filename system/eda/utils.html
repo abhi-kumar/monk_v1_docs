@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.system.eda.utils API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.system.eda.utils</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from system.eda.imports import *
+from system.imports import *
+
+
+
+def get_img_label(fname, delimiter):
+    &#39;&#39;&#39;
+    Find list of images and corresponding labels in csv file
+
+    Args:
+        fname (str): Path to csv file
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of images in dataset
+        list: List of labels corresponding every image in dataset
+    &#39;&#39;&#39;
+    f = open(fname);
+    lst = f.readlines();
+    f.close();
+    del lst[0]
+    img_list = [];
+    label_list = [];
+    for i in range(len(lst)):
+        img, label = lst[i][:len(lst[i])-1].split(delimiter);
+        img_list.append(img);
+        label_list.append(label);
+
+    return img_list, label_list;
+
+
+
+
+
+def read_csv(fname):
+    &#39;&#39;&#39;
+    Read CSV File
+
+    Args:
+        fname (str): Path to csv file
+
+    Returns:
+        list: List of every row in csv
+    &#39;&#39;&#39;
+    f = open(fname);
+    lst = f.readlines();
+    f.close();
+    del lst[0]
+    return lst;
+
+
+
+
+
+
+def populate_from_folder_train(tpath):
+    &#39;&#39;&#39;
+    Find number of images in every class image folder - train
+
+    Args:
+        tpath (str): Path to image training folder
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder = os.listdir(tpath);
+    classes_folder_strength = [];
+    for i in range(len(classes_folder)):
+        classes_folder_strength.append(len(os.listdir(tpath + &#34;/&#34; + classes_folder[i])));
+    return classes_folder, classes_folder_strength;
+
+
+
+
+
+
+def populate_from_folder_trainval(tpath, vpath):
+    &#39;&#39;&#39;
+    Find number of images in every class image folder - train and val
+
+    Args:
+        tpath (str): Path to image training folder
+        vpath (str): Path to image validation folder
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder, classes_folder_strength = populate_from_folder_train(tpath);
+    for i in range(len(os.listdir(vpath))):
+            classes_folder_strength[i] = classes_folder_strength[i] + len(os.listdir(vpath + &#34;/&#34; + classes_folder[i]));
+    return classes_folder, classes_folder_strength;
+
+
+
+
+def populate_from_csv_train(tpath, delimiter):
+    &#39;&#39;&#39;
+    Find number of images in every class image csv - train
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    img_list, label_list = get_img_label(tpath, delimiter);
+    classes_folder = list(np.unique(sorted(label_list)))
+    classes_folder_strength = [];
+    for i in range(len(classes_folder)):
+        classes_folder_strength.append(label_list.count(classes_folder[i]));
+    return classes_folder, classes_folder_strength;
+
+
+
+
+def populate_from_csv_trainval(tpath, vpath, delimiter):
+    &#39;&#39;&#39;
+    Find number of images in every class image csv - train and val
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        vpath (str): Path to csv pointing to validation dataset
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder, classes_folder_strength = populate_from_csv_train(tpath, delimiter);
+    img_list, label_list = get_img_label(vpath, delimiter);
+    for i in range(len(classes_folder)):
+        classes_folder_strength[i] += label_list.count(classes_folder[i]);
+    return classes_folder, classes_folder_strength;
+
+
+
+
+def populate_missing(tpath, dataset_path, delimiter):
+    &#39;&#39;&#39;
+    Find number of missing images in imageset
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        dataset_path (str): Path to dataset containing images
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of missing images
+    &#39;&#39;&#39;
+    lst = read_csv(tpath);
+    missing_images = [];
+    for i in range(len(lst)):
+        img, label = lst[i][:len(lst[i])-1].split(delimiter);
+        if(not os.path.isfile(dataset_path + &#34;/&#34; + img)):
+            missing_images.append(dataset_path + &#34;/&#34; + img);
+    return missing_images;
+
+
+
+
+def populate_corrupt_from_foldered(dataset_path, verbose=1):
+    &#39;&#39;&#39;
+    Find number of corrupted images in imageset - foldered type
+
+    Args:
+        dataset_path (str): Path to dataset containing images
+        verbose (str): If True, prints logs for analysis 
+
+    Returns:
+        list: List of corrupt images
+    &#39;&#39;&#39;
+    classes_folder = os.listdir(dataset_path);
+    corrupt_images = [];
+    if(verbose):
+        for i in tqdm(range(len(classes_folder))):
+            list_imgs = os.listdir(dataset_path + &#34;/&#34; + classes_folder[i]);  
+            for j in range(len(list_imgs)):
+                img_name = dataset_path + &#34;/&#34; + classes_folder[i] + &#34;/&#34; + list_imgs[j]
+                if(os.path.isfile(img_name)):
+                    img = Image.open(img_name)
+                    try:
+                        img.verify()
+                    except Exception:
+                        corrupt_images.append(img_name)
+    else:
+        for i in range(len(classes_folder)):
+            list_imgs = os.listdir(dataset_path + &#34;/&#34; + classes_folder[i]);  
+            for j in range(len(list_imgs)):
+                img_name = dataset_path + &#34;/&#34; + classes_folder[i] + &#34;/&#34; + list_imgs[j]
+                if(os.path.isfile(img_name)):
+                    img = Image.open(img_name)
+                    try:
+                        img.verify()
+                    except Exception:
+                        corrupt_images.append(img_name)
+    return corrupt_images;
+
+
+
+
+def populate_corrupt_from_csv(tpath, dataset_path, delimiter, verbose=1):
+    &#39;&#39;&#39;
+    Find number of corrupted images in imageset - csv type
+
+    Args:
+        dataset_path (str): Path to dataset containing images
+        verbose (str): If True, prints logs for analysis 
+
+    Returns:
+        list: List of corrupt images
+    &#39;&#39;&#39;
+    lst = read_csv(tpath);
+    corrupt_images = [];
+    if(verbose):
+        for i in tqdm(range(len(lst))):
+            img_name, label = lst[i][:len(lst[i])-1].split(delimiter);
+            img_name = dataset_path + &#34;/&#34; + img_name
+            if(os.path.isfile(img_name)):
+                img = Image.open(img_name)
+                try:
+                    img.verify()
+                except Exception:
+                    corrupt_images.append(img_name)
+    else:
+        for i in range(len(lst)):
+            img_name, label = lst[i][:len(lst[i])-1].split(delimiter);
+            img_name = dataset_path + &#34;/&#34; + img_name
+            if(os.path.isfile(img_name)):
+                img = Image.open(img_name)
+                try:
+                    img.verify()
+                except Exception:
+                    corrupt_images.append(img_name)
+    return corrupt_images;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="monk.system.eda.utils.get_img_label"><code class="name flex">
+<span>def <span class="ident">get_img_label</span></span>(<span>fname, delimiter)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find list of images and corresponding labels in csv file</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fname</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv file</dd>
+<dt><strong><code>delimiter</code></strong> :&ensp;<code>str</code></dt>
+<dd>Delimiter for csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of images in dataset</dd>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of labels corresponding every image in dataset</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_img_label(fname, delimiter):
+    &#39;&#39;&#39;
+    Find list of images and corresponding labels in csv file
+
+    Args:
+        fname (str): Path to csv file
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of images in dataset
+        list: List of labels corresponding every image in dataset
+    &#39;&#39;&#39;
+    f = open(fname);
+    lst = f.readlines();
+    f.close();
+    del lst[0]
+    img_list = [];
+    label_list = [];
+    for i in range(len(lst)):
+        img, label = lst[i][:len(lst[i])-1].split(delimiter);
+        img_list.append(img);
+        label_list.append(label);
+
+    return img_list, label_list;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_corrupt_from_csv"><code class="name flex">
+<span>def <span class="ident">populate_corrupt_from_csv</span></span>(<span>tpath, dataset_path, delimiter, verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of corrupted images in imageset - csv type</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dataset_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to dataset containing images</dd>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>str</code></dt>
+<dd>If True, prints logs for analysis </dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of corrupt images</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_corrupt_from_csv(tpath, dataset_path, delimiter, verbose=1):
+    &#39;&#39;&#39;
+    Find number of corrupted images in imageset - csv type
+
+    Args:
+        dataset_path (str): Path to dataset containing images
+        verbose (str): If True, prints logs for analysis 
+
+    Returns:
+        list: List of corrupt images
+    &#39;&#39;&#39;
+    lst = read_csv(tpath);
+    corrupt_images = [];
+    if(verbose):
+        for i in tqdm(range(len(lst))):
+            img_name, label = lst[i][:len(lst[i])-1].split(delimiter);
+            img_name = dataset_path + &#34;/&#34; + img_name
+            if(os.path.isfile(img_name)):
+                img = Image.open(img_name)
+                try:
+                    img.verify()
+                except Exception:
+                    corrupt_images.append(img_name)
+    else:
+        for i in range(len(lst)):
+            img_name, label = lst[i][:len(lst[i])-1].split(delimiter);
+            img_name = dataset_path + &#34;/&#34; + img_name
+            if(os.path.isfile(img_name)):
+                img = Image.open(img_name)
+                try:
+                    img.verify()
+                except Exception:
+                    corrupt_images.append(img_name)
+    return corrupt_images;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_corrupt_from_foldered"><code class="name flex">
+<span>def <span class="ident">populate_corrupt_from_foldered</span></span>(<span>dataset_path, verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of corrupted images in imageset - foldered type</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dataset_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to dataset containing images</dd>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>str</code></dt>
+<dd>If True, prints logs for analysis </dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of corrupt images</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_corrupt_from_foldered(dataset_path, verbose=1):
+    &#39;&#39;&#39;
+    Find number of corrupted images in imageset - foldered type
+
+    Args:
+        dataset_path (str): Path to dataset containing images
+        verbose (str): If True, prints logs for analysis 
+
+    Returns:
+        list: List of corrupt images
+    &#39;&#39;&#39;
+    classes_folder = os.listdir(dataset_path);
+    corrupt_images = [];
+    if(verbose):
+        for i in tqdm(range(len(classes_folder))):
+            list_imgs = os.listdir(dataset_path + &#34;/&#34; + classes_folder[i]);  
+            for j in range(len(list_imgs)):
+                img_name = dataset_path + &#34;/&#34; + classes_folder[i] + &#34;/&#34; + list_imgs[j]
+                if(os.path.isfile(img_name)):
+                    img = Image.open(img_name)
+                    try:
+                        img.verify()
+                    except Exception:
+                        corrupt_images.append(img_name)
+    else:
+        for i in range(len(classes_folder)):
+            list_imgs = os.listdir(dataset_path + &#34;/&#34; + classes_folder[i]);  
+            for j in range(len(list_imgs)):
+                img_name = dataset_path + &#34;/&#34; + classes_folder[i] + &#34;/&#34; + list_imgs[j]
+                if(os.path.isfile(img_name)):
+                    img = Image.open(img_name)
+                    try:
+                        img.verify()
+                    except Exception:
+                        corrupt_images.append(img_name)
+    return corrupt_images;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_from_csv_train"><code class="name flex">
+<span>def <span class="ident">populate_from_csv_train</span></span>(<span>tpath, delimiter)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of images in every class image csv - train</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv pointing to training dataset</dd>
+<dt><strong><code>delimiter</code></strong> :&ensp;<code>str</code></dt>
+<dd>Delimiter for csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of classes</dd>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of number of images in every class</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_from_csv_train(tpath, delimiter):
+    &#39;&#39;&#39;
+    Find number of images in every class image csv - train
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    img_list, label_list = get_img_label(tpath, delimiter);
+    classes_folder = list(np.unique(sorted(label_list)))
+    classes_folder_strength = [];
+    for i in range(len(classes_folder)):
+        classes_folder_strength.append(label_list.count(classes_folder[i]));
+    return classes_folder, classes_folder_strength;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_from_csv_trainval"><code class="name flex">
+<span>def <span class="ident">populate_from_csv_trainval</span></span>(<span>tpath, vpath, delimiter)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of images in every class image csv - train and val</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv pointing to training dataset</dd>
+<dt><strong><code>vpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv pointing to validation dataset</dd>
+<dt><strong><code>delimiter</code></strong> :&ensp;<code>str</code></dt>
+<dd>Delimiter for csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of classes</dd>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of number of images in every class</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_from_csv_trainval(tpath, vpath, delimiter):
+    &#39;&#39;&#39;
+    Find number of images in every class image csv - train and val
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        vpath (str): Path to csv pointing to validation dataset
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder, classes_folder_strength = populate_from_csv_train(tpath, delimiter);
+    img_list, label_list = get_img_label(vpath, delimiter);
+    for i in range(len(classes_folder)):
+        classes_folder_strength[i] += label_list.count(classes_folder[i]);
+    return classes_folder, classes_folder_strength;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_from_folder_train"><code class="name flex">
+<span>def <span class="ident">populate_from_folder_train</span></span>(<span>tpath)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of images in every class image folder - train</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to image training folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of classes</dd>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of number of images in every class</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_from_folder_train(tpath):
+    &#39;&#39;&#39;
+    Find number of images in every class image folder - train
+
+    Args:
+        tpath (str): Path to image training folder
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder = os.listdir(tpath);
+    classes_folder_strength = [];
+    for i in range(len(classes_folder)):
+        classes_folder_strength.append(len(os.listdir(tpath + &#34;/&#34; + classes_folder[i])));
+    return classes_folder, classes_folder_strength;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_from_folder_trainval"><code class="name flex">
+<span>def <span class="ident">populate_from_folder_trainval</span></span>(<span>tpath, vpath)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of images in every class image folder - train and val</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to image training folder</dd>
+<dt><strong><code>vpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to image validation folder</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of classes</dd>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of number of images in every class</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_from_folder_trainval(tpath, vpath):
+    &#39;&#39;&#39;
+    Find number of images in every class image folder - train and val
+
+    Args:
+        tpath (str): Path to image training folder
+        vpath (str): Path to image validation folder
+
+    Returns:
+        list: List of classes
+        list: List of number of images in every class
+    &#39;&#39;&#39;
+    classes_folder, classes_folder_strength = populate_from_folder_train(tpath);
+    for i in range(len(os.listdir(vpath))):
+            classes_folder_strength[i] = classes_folder_strength[i] + len(os.listdir(vpath + &#34;/&#34; + classes_folder[i]));
+    return classes_folder, classes_folder_strength;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.populate_missing"><code class="name flex">
+<span>def <span class="ident">populate_missing</span></span>(<span>tpath, dataset_path, delimiter)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Find number of missing images in imageset</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tpath</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv pointing to training dataset</dd>
+<dt><strong><code>dataset_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to dataset containing images</dd>
+<dt><strong><code>delimiter</code></strong> :&ensp;<code>str</code></dt>
+<dd>Delimiter for csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of missing images</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_missing(tpath, dataset_path, delimiter):
+    &#39;&#39;&#39;
+    Find number of missing images in imageset
+
+    Args:
+        tpath (str): Path to csv pointing to training dataset
+        dataset_path (str): Path to dataset containing images
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        list: List of missing images
+    &#39;&#39;&#39;
+    lst = read_csv(tpath);
+    missing_images = [];
+    for i in range(len(lst)):
+        img, label = lst[i][:len(lst[i])-1].split(delimiter);
+        if(not os.path.isfile(dataset_path + &#34;/&#34; + img)):
+            missing_images.append(dataset_path + &#34;/&#34; + img);
+    return missing_images;</code></pre>
+</details>
+</dd>
+<dt id="monk.system.eda.utils.read_csv"><code class="name flex">
+<span>def <span class="ident">read_csv</span></span>(<span>fname)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Read CSV File</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fname</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>list</code></strong></dt>
+<dd>List of every row in csv</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_csv(fname):
+    &#39;&#39;&#39;
+    Read CSV File
+
+    Args:
+        fname (str): Path to csv file
+
+    Returns:
+        list: List of every row in csv
+    &#39;&#39;&#39;
+    f = open(fname);
+    lst = f.readlines();
+    f.close();
+    del lst[0]
+    return lst;</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.system.eda" href="index.html">monk.system.eda</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="monk.system.eda.utils.get_img_label" href="#monk.system.eda.utils.get_img_label">get_img_label</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_corrupt_from_csv" href="#monk.system.eda.utils.populate_corrupt_from_csv">populate_corrupt_from_csv</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_corrupt_from_foldered" href="#monk.system.eda.utils.populate_corrupt_from_foldered">populate_corrupt_from_foldered</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_from_csv_train" href="#monk.system.eda.utils.populate_from_csv_train">populate_from_csv_train</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_from_csv_trainval" href="#monk.system.eda.utils.populate_from_csv_trainval">populate_from_csv_trainval</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_from_folder_train" href="#monk.system.eda.utils.populate_from_folder_train">populate_from_folder_train</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_from_folder_trainval" href="#monk.system.eda.utils.populate_from_folder_trainval">populate_from_folder_trainval</a></code></li>
+<li><code><a title="monk.system.eda.utils.populate_missing" href="#monk.system.eda.utils.populate_missing">populate_missing</a></code></li>
+<li><code><a title="monk.system.eda.utils.read_csv" href="#monk.system.eda.utils.read_csv">read_csv</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

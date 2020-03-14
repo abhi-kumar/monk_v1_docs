@@ -1,0 +1,1724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.pytorch.finetune.level_13_updates_main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.pytorch.finetune.level_13_updates_main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from pytorch.finetune.imports import *
+from system.imports import *
+
+from pytorch.finetune.level_12_losses_main import prototype_losses
+
+
+class prototype_updates(prototype_losses):
+    &#39;&#39;&#39;
+    Main class for all parametric update functions
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ##########################################################################################################################################################
+    def update_input_size(self, input_size):
+        &#39;&#39;&#39;
+        Update input size.
+
+        Args:
+            input_size (int): New input size
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_input_size(input_size, self.system_dict);
+        
+        self.custom_print(&#34;Update: Input size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;input_size&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+    def update_batch_size(self, batch_size):
+        &#39;&#39;&#39;
+        Update batch size.
+
+        Args:
+            batch_size (int): New batch size
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_batch_size(batch_size, self.system_dict);
+        
+        self.custom_print(&#34;Update: Batch size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+
+    def update_shuffle_data(self, shuffle):
+        &#39;&#39;&#39;
+        Update to shuffle data or not.
+
+        Args:
+            shuffle (bool): If True, will shuffle data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_data_shuffle(shuffle, self.system_dict);
+        
+        self.custom_print(&#34;Update: Data shuffle - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+    
+
+    def update_num_processors(self, num_processors):
+        &#39;&#39;&#39;
+        Update num processors for data loader.
+
+        Args:
+            num_processors (int): Max CPUs for data sampling
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_num_processors(num_processors, self.system_dict);
+        
+        self.custom_print(&#34;Update: Num processors - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+
+    def update_weighted_sampling(self, sample):
+        &#39;&#39;&#39;
+        Function inactive
+        &#39;&#39;&#39;
+        self.system_dict = set_weighted_sampling(sample, self.system_dict);
+        
+        self.custom_print(&#34;Update: Weighted Sampling - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;weighted_sample&#34;]));
+        self.custom_print(&#34;&#34;);
+
+
+
+
+    def update_trainval_split(self, value):
+        &#39;&#39;&#39;
+        Update training-validation split
+        Args:
+            split (float): Indicating train validation split
+                            Division happens as follows:
+                                train - total dataset * split * 100
+                                val   - total dataset * (1-split) * 100 
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train&#34;):
+            dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+            path_to_csv=False;
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train-val&#34;):
+            dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+            path_to_csv=False;
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train&#34;):
+            dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+            path_to_csv = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train-val&#34;):
+            dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+            path_to_csv = [self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;], self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;]];
+        else:
+            msg = &#34;Dataset Type invalid.\n&#34;;
+            msg += &#34;Cannot update split&#34;
+            ConstraintsWarning(msg)
+
+        self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, value, path_to_csv, self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;]);
+
+
+
+    def update_dataset(self, dataset_path=False, split=0.9, path_to_csv=False, delimiter=&#34;,&#34;):
+        &#39;&#39;&#39;
+        Update dataset path
+
+        Args:
+            dataset_path (str, list): Path to Dataset folder
+                                      1) Single string if validation data does not exist
+                                      2) List [train_path, val_path] in case of separate train and val data
+            path_to_csv (str, list): Path to csv file pointing towards images
+                                     1) Single string if validation data does not exist
+                                     2) List [train_path, val_path] in case of separate train and val data
+            value (float): Indicating train validation split
+                            Division happens as follows:
+                                train - total dataset * split * 100
+                                val   - total dataset * (1-split) * 100 
+            delimiter (str): Delimiter for csv file
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, split, path_to_csv, delimiter);
+    ##########################################################################################################################################################
+
+
+
+
+    ##########################################################################################################################################################
+    def update_model_name(self, model_name, force=False):
+        &#39;&#39;&#39;
+        Update model name
+
+        Args:
+            model_name (str): Select from available models. Check via List_Models() function
+            force (bool): Dummy function
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not force):
+            if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+                ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+                inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+                if(inp == &#34;y&#34;):
+                    self.system_dict = set_model_name(model_name, self.system_dict);
+                    self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                    self.custom_print(&#34;&#34;);
+                else:
+                    self.custom_print(&#34;Model not updated.&#34;);
+                    self.custom_print(&#34;&#34;);
+            else:
+                self.system_dict = set_model_name(model_name, self.system_dict);
+                self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_name(model_name, self.system_dict);
+            self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+            self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+    ##########################################################################################################################################################
+    def update_model_path(self, model_path, force=False):
+        &#39;&#39;&#39;
+        Update model path for inferencing
+
+        Args:
+            model_path (str): Path to model weights.
+            force (bool): Dummy function
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not force):
+            if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+                ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+                inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+                if(inp == &#34;y&#34;):
+                    self.system_dict = set_model_path(model_path, self.system_dict);
+                    self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+                    self.custom_print(&#34;&#34;);
+                else:
+                    self.custom_print(&#34;Model not updated.&#34;);
+                    self.custom_print(&#34;&#34;);
+            else:
+                self.system_dict = set_model_path(model_path, self.system_dict);
+                self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_path(model_path, self.system_dict);
+            self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+            self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_use_gpu(self, gpu):
+        &#39;&#39;&#39;
+        Update to use gpu or cpu
+
+        Args:
+            gpu (bool): If True, then use GPU
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_device(gpu, self.system_dict);
+        
+        self.custom_print(&#34;Update: Use Gpu - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_gpu&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_use_pretrained(self, pretrained):
+        &#39;&#39;&#39;
+        Update to use pretrained wights or randomly initialized weights
+
+        Args:
+            pretrained (bool): If True, use pretrained weights
+                                else, use randomly initialized weights
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_pretrained(pretrained, self.system_dict);
+        
+        self.custom_print(&#34;Update: Use pretrained - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_pretrained&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_freeze_base_network(self, freeze):
+        &#39;&#39;&#39;
+        Update whether freeze base network or not
+
+        Args:
+            freeze (bool): If True, then base network is non-trainable, works as a feature extractor
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_freeze_base_network(freeze, self.system_dict);
+        
+        self.custom_print(&#34;Update: Freeze Base Network - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;freeze_base_network&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+    ##########################################################################################################################################################
+    def update_freeze_layers(self, num_freeze):
+        &#39;&#39;&#39;
+        Update to freeze certain layers in the network
+
+        Args:
+            num_freeze (int): Number of layers to freeze in network starting from top
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;] = num_freeze;
+        
+        self.custom_print(&#34;Update: Freeze layers - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+
+    ##########################################################################################################################################################
+    def update_num_epochs(self, num_epochs):
+        &#39;&#39;&#39;
+        Update number of epochs to train the network
+
+        Args:
+            num_epochs (int): New number of epochs
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_num_epochs(num_epochs, self.system_dict);
+        
+        self.custom_print(&#34;Update: Num Epochs - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;num_epochs&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+    ##########################################################################################################################################################
+    def update_learning_rate(self, learning_rate):
+        &#39;&#39;&#39;
+        Update base learning rate for training
+
+        Args:
+            learning_rate (float): New base learning rate
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;] = learning_rate;
+        self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;][&#34;lr&#34;] = learning_rate;
+
+        self.custom_print(&#34;Update: Learning Rate - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+    ##########################################################################################################################################################
+    def update_display_progress_realtime(self, value):    
+        &#39;&#39;&#39;
+        Update display progress param
+
+        Args:
+            value (bool): If True, then real time progress is displayed
+            
+        Returns:
+            None
+        &#39;&#39;&#39; 
+        self.system_dict = set_display_progress_realtime(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Display progress realtime - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress_realtime&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_display_progress(self, value): 
+        &#39;&#39;&#39;
+        Update display progress param
+
+        Args:
+            value (bool): If True, then per epoch progress is displayed
+            
+        Returns:
+            None
+        &#39;&#39;&#39; 
+        self.system_dict = set_display_progress(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Display progress  - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_save_intermediate_models(self, value, prefix=&#34;intermediate_model_&#34;): 
+        &#39;&#39;&#39;
+        Update whether to save intermediate models or not
+
+        Args:
+            value (bool): If True, saves model weight post every epoch
+            prefix (str): Appends a prefix to intermediate weights
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(value):
+            if(not os.access(self.system_dict[&#34;model_dir&#34;], os.W_OK)):
+                msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(self.system_dict[&#34;model_dir&#34;])
+                msg += &#34;Cannot save Intermediate models&#34;;
+                raise ConstraintError(msg);
+
+        self.system_dict = set_save_intermediate_models(value, self.system_dict);
+        self.system_dict = set_intermediate_model_prefix(prefix, self.system_dict);
+        
+        self.custom_print(&#34;Update: Save Intermediate models - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]));
+        if(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]):
+            self.custom_print(&#34;Update: Intermediate model prefix - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;intermediate_model_prefix&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_save_training_logs(self, value):
+        &#39;&#39;&#39;
+        Update whether to save training logs or not
+
+        Args:
+            value (bool): If True, saves all training and validation metrics. Required for comparison.
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_save_training_logs(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Save Training logs - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_training_logs&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates"><code class="flex name class">
+<span>class <span class="ident">prototype_updates</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main class for all parametric update functions</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl>
+<p>Class that serves as a decorator to trace entry and exit from
+functions. Used by appending @TraceFunction on top of the
+definition of the function to trace.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class prototype_updates(prototype_losses):
+    &#39;&#39;&#39;
+    Main class for all parametric update functions
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ##########################################################################################################################################################
+    def update_input_size(self, input_size):
+        &#39;&#39;&#39;
+        Update input size.
+
+        Args:
+            input_size (int): New input size
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_input_size(input_size, self.system_dict);
+        
+        self.custom_print(&#34;Update: Input size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;input_size&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+    def update_batch_size(self, batch_size):
+        &#39;&#39;&#39;
+        Update batch size.
+
+        Args:
+            batch_size (int): New batch size
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_batch_size(batch_size, self.system_dict);
+        
+        self.custom_print(&#34;Update: Batch size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+
+    def update_shuffle_data(self, shuffle):
+        &#39;&#39;&#39;
+        Update to shuffle data or not.
+
+        Args:
+            shuffle (bool): If True, will shuffle data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_data_shuffle(shuffle, self.system_dict);
+        
+        self.custom_print(&#34;Update: Data shuffle - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+    
+
+    def update_num_processors(self, num_processors):
+        &#39;&#39;&#39;
+        Update num processors for data loader.
+
+        Args:
+            num_processors (int): Max CPUs for data sampling
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_num_processors(num_processors, self.system_dict);
+        
+        self.custom_print(&#34;Update: Num processors - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;]));
+        self.custom_print(&#34;&#34;);
+        
+
+
+    def update_weighted_sampling(self, sample):
+        &#39;&#39;&#39;
+        Function inactive
+        &#39;&#39;&#39;
+        self.system_dict = set_weighted_sampling(sample, self.system_dict);
+        
+        self.custom_print(&#34;Update: Weighted Sampling - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;weighted_sample&#34;]));
+        self.custom_print(&#34;&#34;);
+
+
+
+
+    def update_trainval_split(self, value):
+        &#39;&#39;&#39;
+        Update training-validation split
+        Args:
+            split (float): Indicating train validation split
+                            Division happens as follows:
+                                train - total dataset * split * 100
+                                val   - total dataset * (1-split) * 100 
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train&#34;):
+            dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+            path_to_csv=False;
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train-val&#34;):
+            dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+            path_to_csv=False;
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train&#34;):
+            dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+            path_to_csv = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+        elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train-val&#34;):
+            dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+            path_to_csv = [self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;], self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;]];
+        else:
+            msg = &#34;Dataset Type invalid.\n&#34;;
+            msg += &#34;Cannot update split&#34;
+            ConstraintsWarning(msg)
+
+        self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, value, path_to_csv, self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;]);
+
+
+
+    def update_dataset(self, dataset_path=False, split=0.9, path_to_csv=False, delimiter=&#34;,&#34;):
+        &#39;&#39;&#39;
+        Update dataset path
+
+        Args:
+            dataset_path (str, list): Path to Dataset folder
+                                      1) Single string if validation data does not exist
+                                      2) List [train_path, val_path] in case of separate train and val data
+            path_to_csv (str, list): Path to csv file pointing towards images
+                                     1) Single string if validation data does not exist
+                                     2) List [train_path, val_path] in case of separate train and val data
+            value (float): Indicating train validation split
+                            Division happens as follows:
+                                train - total dataset * split * 100
+                                val   - total dataset * (1-split) * 100 
+            delimiter (str): Delimiter for csv file
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, split, path_to_csv, delimiter);
+    ##########################################################################################################################################################
+
+
+
+
+    ##########################################################################################################################################################
+    def update_model_name(self, model_name, force=False):
+        &#39;&#39;&#39;
+        Update model name
+
+        Args:
+            model_name (str): Select from available models. Check via List_Models() function
+            force (bool): Dummy function
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not force):
+            if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+                ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+                inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+                if(inp == &#34;y&#34;):
+                    self.system_dict = set_model_name(model_name, self.system_dict);
+                    self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                    self.custom_print(&#34;&#34;);
+                else:
+                    self.custom_print(&#34;Model not updated.&#34;);
+                    self.custom_print(&#34;&#34;);
+            else:
+                self.system_dict = set_model_name(model_name, self.system_dict);
+                self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_name(model_name, self.system_dict);
+            self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+            self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+    ##########################################################################################################################################################
+    def update_model_path(self, model_path, force=False):
+        &#39;&#39;&#39;
+        Update model path for inferencing
+
+        Args:
+            model_path (str): Path to model weights.
+            force (bool): Dummy function
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not force):
+            if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+                ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+                inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+                if(inp == &#34;y&#34;):
+                    self.system_dict = set_model_path(model_path, self.system_dict);
+                    self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+                    self.custom_print(&#34;&#34;);
+                else:
+                    self.custom_print(&#34;Model not updated.&#34;);
+                    self.custom_print(&#34;&#34;);
+            else:
+                self.system_dict = set_model_path(model_path, self.system_dict);
+                self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_path(model_path, self.system_dict);
+            self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+            self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_use_gpu(self, gpu):
+        &#39;&#39;&#39;
+        Update to use gpu or cpu
+
+        Args:
+            gpu (bool): If True, then use GPU
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_device(gpu, self.system_dict);
+        
+        self.custom_print(&#34;Update: Use Gpu - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_gpu&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_use_pretrained(self, pretrained):
+        &#39;&#39;&#39;
+        Update to use pretrained wights or randomly initialized weights
+
+        Args:
+            pretrained (bool): If True, use pretrained weights
+                                else, use randomly initialized weights
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_pretrained(pretrained, self.system_dict);
+        
+        self.custom_print(&#34;Update: Use pretrained - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_pretrained&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+
+    ##########################################################################################################################################################
+    def update_freeze_base_network(self, freeze):
+        &#39;&#39;&#39;
+        Update whether freeze base network or not
+
+        Args:
+            freeze (bool): If True, then base network is non-trainable, works as a feature extractor
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_freeze_base_network(freeze, self.system_dict);
+        
+        self.custom_print(&#34;Update: Freeze Base Network - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;freeze_base_network&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+    ##########################################################################################################################################################
+    def update_freeze_layers(self, num_freeze):
+        &#39;&#39;&#39;
+        Update to freeze certain layers in the network
+
+        Args:
+            num_freeze (int): Number of layers to freeze in network starting from top
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;] = num_freeze;
+        
+        self.custom_print(&#34;Update: Freeze layers - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+
+    ##########################################################################################################################################################
+    def update_num_epochs(self, num_epochs):
+        &#39;&#39;&#39;
+        Update number of epochs to train the network
+
+        Args:
+            num_epochs (int): New number of epochs
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_num_epochs(num_epochs, self.system_dict);
+        
+        self.custom_print(&#34;Update: Num Epochs - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;num_epochs&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+    ##########################################################################################################################################################
+    def update_learning_rate(self, learning_rate):
+        &#39;&#39;&#39;
+        Update base learning rate for training
+
+        Args:
+            learning_rate (float): New base learning rate
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;] = learning_rate;
+        self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;][&#34;lr&#34;] = learning_rate;
+
+        self.custom_print(&#34;Update: Learning Rate - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+
+
+
+    ##########################################################################################################################################################
+    def update_display_progress_realtime(self, value):    
+        &#39;&#39;&#39;
+        Update display progress param
+
+        Args:
+            value (bool): If True, then real time progress is displayed
+            
+        Returns:
+            None
+        &#39;&#39;&#39; 
+        self.system_dict = set_display_progress_realtime(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Display progress realtime - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress_realtime&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_display_progress(self, value): 
+        &#39;&#39;&#39;
+        Update display progress param
+
+        Args:
+            value (bool): If True, then per epoch progress is displayed
+            
+        Returns:
+            None
+        &#39;&#39;&#39; 
+        self.system_dict = set_display_progress(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Display progress  - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_save_intermediate_models(self, value, prefix=&#34;intermediate_model_&#34;): 
+        &#39;&#39;&#39;
+        Update whether to save intermediate models or not
+
+        Args:
+            value (bool): If True, saves model weight post every epoch
+            prefix (str): Appends a prefix to intermediate weights
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(value):
+            if(not os.access(self.system_dict[&#34;model_dir&#34;], os.W_OK)):
+                msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(self.system_dict[&#34;model_dir&#34;])
+                msg += &#34;Cannot save Intermediate models&#34;;
+                raise ConstraintError(msg);
+
+        self.system_dict = set_save_intermediate_models(value, self.system_dict);
+        self.system_dict = set_intermediate_model_prefix(prefix, self.system_dict);
+        
+        self.custom_print(&#34;Update: Save Intermediate models - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]));
+        if(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]):
+            self.custom_print(&#34;Update: Intermediate model prefix - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;intermediate_model_prefix&#34;]));
+        self.custom_print(&#34;&#34;);
+    ##########################################################################################################################################################
+        
+
+    ##########################################################################################################################################################
+    def update_save_training_logs(self, value):
+        &#39;&#39;&#39;
+        Update whether to save training logs or not
+
+        Args:
+            value (bool): If True, saves all training and validation metrics. Required for comparison.
+            
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = set_save_training_logs(value, self.system_dict);
+        
+        self.custom_print(&#34;Update: Save Training logs - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_training_logs&#34;]));
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pytorch.finetune.level_12_losses_main.prototype_losses</li>
+<li>pytorch.finetune.level_11_optimizers_main.prototype_optimizers</li>
+<li>pytorch.finetune.level_10_schedulers_main.prototype_schedulers</li>
+<li>pytorch.finetune.level_9_transforms_main.prototype_transforms</li>
+<li>pytorch.finetune.level_8_layers_main.prototype_layers</li>
+<li>pytorch.finetune.level_7_aux_main.prototype_aux</li>
+<li>pytorch.finetune.level_6_params_main.prototype_params</li>
+<li>pytorch.finetune.level_5_state_base.finetune_state</li>
+<li>pytorch.finetune.level_4_evaluation_base.finetune_evaluation</li>
+<li>pytorch.finetune.level_3_training_base.finetune_training</li>
+<li>pytorch.finetune.level_2_model_base.finetune_model</li>
+<li>pytorch.finetune.level_1_dataset_base.finetune_dataset</li>
+<li>system.base_class.system</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_batch_size"><code class="name flex">
+<span>def <span class="ident">update_batch_size</span></span>(<span>self, batch_size)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update batch size.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>batch_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>New batch size</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_batch_size(self, batch_size):
+    &#39;&#39;&#39;
+    Update batch size.
+
+    Args:
+        batch_size (int): New batch size
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_batch_size(batch_size, self.system_dict);
+    
+    self.custom_print(&#34;Update: Batch size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_dataset"><code class="name flex">
+<span>def <span class="ident">update_dataset</span></span>(<span>self, dataset_path=False, split=0.9, path_to_csv=False, delimiter=',')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update dataset path</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dataset_path</code></strong> :&ensp;<code>str</code>, <code>list</code></dt>
+<dd>Path to Dataset folder
+1) Single string if validation data does not exist
+2) List [train_path, val_path] in case of separate train and val data</dd>
+<dt><strong><code>path_to_csv</code></strong> :&ensp;<code>str</code>, <code>list</code></dt>
+<dd>Path to csv file pointing towards images
+1) Single string if validation data does not exist
+2) List [train_path, val_path] in case of separate train and val data</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
+<dd>Indicating train validation split
+Division happens as follows:
+train - total dataset * split * 100
+val
+- total dataset * (1-split) * 100 </dd>
+<dt><strong><code>delimiter</code></strong> :&ensp;<code>str</code></dt>
+<dd>Delimiter for csv file</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_dataset(self, dataset_path=False, split=0.9, path_to_csv=False, delimiter=&#34;,&#34;):
+    &#39;&#39;&#39;
+    Update dataset path
+
+    Args:
+        dataset_path (str, list): Path to Dataset folder
+                                  1) Single string if validation data does not exist
+                                  2) List [train_path, val_path] in case of separate train and val data
+        path_to_csv (str, list): Path to csv file pointing towards images
+                                 1) Single string if validation data does not exist
+                                 2) List [train_path, val_path] in case of separate train and val data
+        value (float): Indicating train validation split
+                        Division happens as follows:
+                            train - total dataset * split * 100
+                            val   - total dataset * (1-split) * 100 
+        delimiter (str): Delimiter for csv file
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, split, path_to_csv, delimiter);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress"><code class="name flex">
+<span>def <span class="ident">update_display_progress</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update display progress param</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then per epoch progress is displayed</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_display_progress(self, value): 
+    &#39;&#39;&#39;
+    Update display progress param
+
+    Args:
+        value (bool): If True, then per epoch progress is displayed
+        
+    Returns:
+        None
+    &#39;&#39;&#39; 
+    self.system_dict = set_display_progress(value, self.system_dict);
+    
+    self.custom_print(&#34;Update: Display progress  - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress_realtime"><code class="name flex">
+<span>def <span class="ident">update_display_progress_realtime</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update display progress param</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then real time progress is displayed</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_display_progress_realtime(self, value):    
+    &#39;&#39;&#39;
+    Update display progress param
+
+    Args:
+        value (bool): If True, then real time progress is displayed
+        
+    Returns:
+        None
+    &#39;&#39;&#39; 
+    self.system_dict = set_display_progress_realtime(value, self.system_dict);
+    
+    self.custom_print(&#34;Update: Display progress realtime - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;display_progress_realtime&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_base_network"><code class="name flex">
+<span>def <span class="ident">update_freeze_base_network</span></span>(<span>self, freeze)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update whether freeze base network or not</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>freeze</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then base network is non-trainable, works as a feature extractor</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_freeze_base_network(self, freeze):
+    &#39;&#39;&#39;
+    Update whether freeze base network or not
+
+    Args:
+        freeze (bool): If True, then base network is non-trainable, works as a feature extractor
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_freeze_base_network(freeze, self.system_dict);
+    
+    self.custom_print(&#34;Update: Freeze Base Network - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;freeze_base_network&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_layers"><code class="name flex">
+<span>def <span class="ident">update_freeze_layers</span></span>(<span>self, num_freeze)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update to freeze certain layers in the network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_freeze</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of layers to freeze in network starting from top</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_freeze_layers(self, num_freeze):
+    &#39;&#39;&#39;
+    Update to freeze certain layers in the network
+
+    Args:
+        num_freeze (int): Number of layers to freeze in network starting from top
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;] = num_freeze;
+    
+    self.custom_print(&#34;Update: Freeze layers - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_freeze&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_input_size"><code class="name flex">
+<span>def <span class="ident">update_input_size</span></span>(<span>self, input_size)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update input size.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>input_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>New input size</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_input_size(self, input_size):
+    &#39;&#39;&#39;
+    Update input size.
+
+    Args:
+        input_size (int): New input size
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_input_size(input_size, self.system_dict);
+    
+    self.custom_print(&#34;Update: Input size - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;input_size&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_learning_rate"><code class="name flex">
+<span>def <span class="ident">update_learning_rate</span></span>(<span>self, learning_rate)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update base learning rate for training</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>learning_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>New base learning rate</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_learning_rate(self, learning_rate):
+    &#39;&#39;&#39;
+    Update base learning rate for training
+
+    Args:
+        learning_rate (float): New base learning rate
+        
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;] = learning_rate;
+    self.system_dict[&#34;hyper-parameters&#34;][&#34;optimizer&#34;][&#34;params&#34;][&#34;lr&#34;] = learning_rate;
+
+    self.custom_print(&#34;Update: Learning Rate - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;learning_rate&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_name"><code class="name flex">
+<span>def <span class="ident">update_model_name</span></span>(<span>self, model_name, force=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update model name</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Select from available models. Check via List_Models() function</dd>
+<dt><strong><code>force</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Dummy function</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_model_name(self, model_name, force=False):
+    &#39;&#39;&#39;
+    Update model name
+
+    Args:
+        model_name (str): Select from available models. Check via List_Models() function
+        force (bool): Dummy function
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(not force):
+        if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+            ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+            ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+            inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+            if(inp == &#34;y&#34;):
+                self.system_dict = set_model_name(model_name, self.system_dict);
+                self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+                self.custom_print(&#34;&#34;);
+            else:
+                self.custom_print(&#34;Model not updated.&#34;);
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_name(model_name, self.system_dict);
+            self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+            self.custom_print(&#34;&#34;);
+    else:
+        self.system_dict = set_model_name(model_name, self.system_dict);
+        self.custom_print(&#34;Update: Model name - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_path"><code class="name flex">
+<span>def <span class="ident">update_model_path</span></span>(<span>self, model_path, force=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update model path for inferencing</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model_path</code></strong> :&ensp;<code>str</code></dt>
+<dd>Path to model weights.</dd>
+<dt><strong><code>force</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Dummy function</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_model_path(self, model_path, force=False):
+    &#39;&#39;&#39;
+    Update model path for inferencing
+
+    Args:
+        model_path (str): Path to model weights.
+        force (bool): Dummy function
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(not force):
+        if(self.system_dict[&#34;training&#34;][&#34;status&#34;]):
+            ConstraintWarning(&#34;Model trained using {}\n&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_name&#34;]));
+            ConstraintWarning(&#34;Changing the model will overwrite previously trained models if training is executed.\n&#34;);
+            inp = input(&#34;Do you wish to continue further (y/n):&#34;);
+
+            if(inp == &#34;y&#34;):
+                self.system_dict = set_model_path(model_path, self.system_dict);
+                self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+                self.custom_print(&#34;&#34;);
+            else:
+                self.custom_print(&#34;Model not updated.&#34;);
+                self.custom_print(&#34;&#34;);
+        else:
+            self.system_dict = set_model_path(model_path, self.system_dict);
+            self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+            self.custom_print(&#34;&#34;);
+    else:
+        self.system_dict = set_model_path(model_path, self.system_dict);
+        self.custom_print(&#34;Update: Model path - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;model_path&#34;]));
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_epochs"><code class="name flex">
+<span>def <span class="ident">update_num_epochs</span></span>(<span>self, num_epochs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update number of epochs to train the network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_epochs</code></strong> :&ensp;<code>int</code></dt>
+<dd>New number of epochs</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_num_epochs(self, num_epochs):
+    &#39;&#39;&#39;
+    Update number of epochs to train the network
+
+    Args:
+        num_epochs (int): New number of epochs
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_num_epochs(num_epochs, self.system_dict);
+    
+    self.custom_print(&#34;Update: Num Epochs - {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;num_epochs&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_processors"><code class="name flex">
+<span>def <span class="ident">update_num_processors</span></span>(<span>self, num_processors)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update num processors for data loader.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_processors</code></strong> :&ensp;<code>int</code></dt>
+<dd>Max CPUs for data sampling</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_num_processors(self, num_processors):
+    &#39;&#39;&#39;
+    Update num processors for data loader.
+
+    Args:
+        num_processors (int): Max CPUs for data sampling
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_num_processors(num_processors, self.system_dict);
+    
+    self.custom_print(&#34;Update: Num processors - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_intermediate_models"><code class="name flex">
+<span>def <span class="ident">update_save_intermediate_models</span></span>(<span>self, value, prefix='intermediate_model_')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update whether to save intermediate models or not</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, saves model weight post every epoch</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Appends a prefix to intermediate weights</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_save_intermediate_models(self, value, prefix=&#34;intermediate_model_&#34;): 
+    &#39;&#39;&#39;
+    Update whether to save intermediate models or not
+
+    Args:
+        value (bool): If True, saves model weight post every epoch
+        prefix (str): Appends a prefix to intermediate weights
+        
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(value):
+        if(not os.access(self.system_dict[&#34;model_dir&#34;], os.W_OK)):
+            msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(self.system_dict[&#34;model_dir&#34;])
+            msg += &#34;Cannot save Intermediate models&#34;;
+            raise ConstraintError(msg);
+
+    self.system_dict = set_save_intermediate_models(value, self.system_dict);
+    self.system_dict = set_intermediate_model_prefix(prefix, self.system_dict);
+    
+    self.custom_print(&#34;Update: Save Intermediate models - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]));
+    if(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_intermediate_models&#34;]):
+        self.custom_print(&#34;Update: Intermediate model prefix - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;intermediate_model_prefix&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_training_logs"><code class="name flex">
+<span>def <span class="ident">update_save_training_logs</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update whether to save training logs or not</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, saves all training and validation metrics. Required for comparison.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_save_training_logs(self, value):
+    &#39;&#39;&#39;
+    Update whether to save training logs or not
+
+    Args:
+        value (bool): If True, saves all training and validation metrics. Required for comparison.
+        
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_save_training_logs(value, self.system_dict);
+    
+    self.custom_print(&#34;Update: Save Training logs - {}&#34;.format(self.system_dict[&#34;training&#34;][&#34;settings&#34;][&#34;save_training_logs&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_shuffle_data"><code class="name flex">
+<span>def <span class="ident">update_shuffle_data</span></span>(<span>self, shuffle)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update to shuffle data or not.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>shuffle</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, will shuffle data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_shuffle_data(self, shuffle):
+    &#39;&#39;&#39;
+    Update to shuffle data or not.
+
+    Args:
+        shuffle (bool): If True, will shuffle data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_data_shuffle(shuffle, self.system_dict);
+    
+    self.custom_print(&#34;Update: Data shuffle - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_trainval_split"><code class="name flex">
+<span>def <span class="ident">update_trainval_split</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update training-validation split</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>split</code></strong> :&ensp;<code>float</code></dt>
+<dd>Indicating train validation split
+Division happens as follows:
+train - total dataset * split * 100
+val
+- total dataset * (1-split) * 100 </dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_trainval_split(self, value):
+    &#39;&#39;&#39;
+    Update training-validation split
+    Args:
+        split (float): Indicating train validation split
+                        Division happens as follows:
+                            train - total dataset * split * 100
+                            val   - total dataset * (1-split) * 100 
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train&#34;):
+        dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+        path_to_csv=False;
+    elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;train-val&#34;):
+        dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+        path_to_csv=False;
+    elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train&#34;):
+        dataset_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+        path_to_csv = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+    elif(self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;] == &#34;csv_train-val&#34;):
+        dataset_path = [self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;], self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;]];
+        path_to_csv = [self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;], self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;]];
+    else:
+        msg = &#34;Dataset Type invalid.\n&#34;;
+        msg += &#34;Cannot update split&#34;
+        ConstraintsWarning(msg)
+
+    self.system_dict = set_dataset_train_path(self.system_dict, dataset_path, value, path_to_csv, self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;]);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_gpu"><code class="name flex">
+<span>def <span class="ident">update_use_gpu</span></span>(<span>self, gpu)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update to use gpu or cpu</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>gpu</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then use GPU</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_use_gpu(self, gpu):
+    &#39;&#39;&#39;
+    Update to use gpu or cpu
+
+    Args:
+        gpu (bool): If True, then use GPU
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_device(gpu, self.system_dict);
+    
+    self.custom_print(&#34;Update: Use Gpu - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_gpu&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_pretrained"><code class="name flex">
+<span>def <span class="ident">update_use_pretrained</span></span>(<span>self, pretrained)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update to use pretrained wights or randomly initialized weights</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pretrained</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, use pretrained weights
+else, use randomly initialized weights</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_use_pretrained(self, pretrained):
+    &#39;&#39;&#39;
+    Update to use pretrained wights or randomly initialized weights
+
+    Args:
+        pretrained (bool): If True, use pretrained weights
+                            else, use randomly initialized weights
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = set_pretrained(pretrained, self.system_dict);
+    
+    self.custom_print(&#34;Update: Use pretrained - {}&#34;.format(self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_pretrained&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_weighted_sampling"><code class="name flex">
+<span>def <span class="ident">update_weighted_sampling</span></span>(<span>self, sample)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Function inactive</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_weighted_sampling(self, sample):
+    &#39;&#39;&#39;
+    Function inactive
+    &#39;&#39;&#39;
+    self.system_dict = set_weighted_sampling(sample, self.system_dict);
+    
+    self.custom_print(&#34;Update: Weighted Sampling - {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;weighted_sample&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.pytorch.finetune" href="index.html">monk.pytorch.finetune</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates">prototype_updates</a></code></h4>
+<ul class="">
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_batch_size" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_batch_size">update_batch_size</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_dataset" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_dataset">update_dataset</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress">update_display_progress</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress_realtime" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_display_progress_realtime">update_display_progress_realtime</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_base_network" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_base_network">update_freeze_base_network</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_layers" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_freeze_layers">update_freeze_layers</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_input_size" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_input_size">update_input_size</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_learning_rate" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_learning_rate">update_learning_rate</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_name" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_name">update_model_name</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_path" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_model_path">update_model_path</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_epochs" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_epochs">update_num_epochs</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_processors" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_num_processors">update_num_processors</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_intermediate_models" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_intermediate_models">update_save_intermediate_models</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_training_logs" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_save_training_logs">update_save_training_logs</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_shuffle_data" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_shuffle_data">update_shuffle_data</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_trainval_split" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_trainval_split">update_trainval_split</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_gpu" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_gpu">update_use_gpu</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_pretrained" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_use_pretrained">update_use_pretrained</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_weighted_sampling" href="#monk.pytorch.finetune.level_13_updates_main.prototype_updates.update_weighted_sampling">update_weighted_sampling</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.pytorch.finetune.level_12_losses_main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.pytorch.finetune.level_12_losses_main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from pytorch.finetune.imports import *
+from system.imports import *
+
+from pytorch.finetune.level_11_optimizers_main import prototype_optimizers
+
+
+class prototype_losses(prototype_optimizers):
+    &#39;&#39;&#39;
+    Main class for all parameters in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def loss_l1(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select L1 Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = l1(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_l2(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select L2 Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = l2(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_softmax_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                    label_as_categories=True, label_smoothing=False):
+        &#39;&#39;&#39;
+        Select soaftmax crossentropy Loss - Auto softmax before applying loss 
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            label_as_categories (bool): Fixed as True
+            label_smoothing (bool): If True, label smoothning is applied.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = softmax_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                                axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                                label_smoothing=label_smoothing);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                    label_as_categories=True, label_smoothing=False):
+        &#39;&#39;&#39;
+        Select crossentropy Loss - Need to manually apply softmax
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            label_as_categories (bool): Fixed as True
+            label_smoothing (bool): If True, label smoothning is applied.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                                axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                                label_smoothing=label_smoothing);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_sigmoid_binary_crossentropy(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select sigmoid binary crossentropy Loss - Auto sigmoid before applying loss 
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = sigmoid_binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_binary_crossentropy(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select binary crossentropy Loss - Need to manually apply sigmoid
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_kldiv(self, log_pre_applied=False, weight=None, batch_axis=0, axis_to_sum_over=-1):
+        &#39;&#39;&#39;
+        Select lkdiv Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = kldiv(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                axis_to_sum_over=axis_to_sum_over, log_pre_applied=log_pre_applied);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_poisson_nll(self, log_pre_applied=False, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select poisson_nll Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = poisson_nll(self.system_dict, log_pre_applied=log_pre_applied,
+                                        weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_huber(self, weight=None, batch_axis=0, threshold_for_mean_estimator=1):
+        &#39;&#39;&#39;
+        Select huber Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            threshold_for_mean_estimator (int): Threshold for trimmed mean estimator.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = huber(self.system_dict, threshold_for_mean_estimator=threshold_for_mean_estimator,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def loss_hinge(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select hinge Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = hinge(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_squared_hinge(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select squared hinge Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = squared_hinge(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multimargin(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select multi margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multimargin(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_squared_multimargin(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select squared multi margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = squared_multimargin(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multilabel_margin(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select multilabel margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multilabelmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multilabel_softmargin(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select multilabel softmargin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multilabelsoftmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses"><code class="flex name class">
+<span>class <span class="ident">prototype_losses</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main class for all parameters in expert mode</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl>
+<p>Class that serves as a decorator to trace entry and exit from
+functions. Used by appending @TraceFunction on top of the
+definition of the function to trace.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class prototype_losses(prototype_optimizers):
+    &#39;&#39;&#39;
+    Main class for all parameters in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def loss_l1(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select L1 Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = l1(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_l2(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select L2 Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = l2(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_softmax_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                    label_as_categories=True, label_smoothing=False):
+        &#39;&#39;&#39;
+        Select soaftmax crossentropy Loss - Auto softmax before applying loss 
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            label_as_categories (bool): Fixed as True
+            label_smoothing (bool): If True, label smoothning is applied.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = softmax_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                                axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                                label_smoothing=label_smoothing);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                    label_as_categories=True, label_smoothing=False):
+        &#39;&#39;&#39;
+        Select crossentropy Loss - Need to manually apply softmax
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            label_as_categories (bool): Fixed as True
+            label_smoothing (bool): If True, label smoothning is applied.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                                axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                                label_smoothing=label_smoothing);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_sigmoid_binary_crossentropy(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select sigmoid binary crossentropy Loss - Auto sigmoid before applying loss 
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = sigmoid_binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_binary_crossentropy(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select binary crossentropy Loss - Need to manually apply sigmoid
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_kldiv(self, log_pre_applied=False, weight=None, batch_axis=0, axis_to_sum_over=-1):
+        &#39;&#39;&#39;
+        Select lkdiv Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            axis_to_sum_over (int): Set as -1
+            log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = kldiv(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                axis_to_sum_over=axis_to_sum_over, log_pre_applied=log_pre_applied);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_poisson_nll(self, log_pre_applied=False, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select poisson_nll Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = poisson_nll(self.system_dict, log_pre_applied=log_pre_applied,
+                                        weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_huber(self, weight=None, batch_axis=0, threshold_for_mean_estimator=1):
+        &#39;&#39;&#39;
+        Select huber Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            threshold_for_mean_estimator (int): Threshold for trimmed mean estimator.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = huber(self.system_dict, threshold_for_mean_estimator=threshold_for_mean_estimator,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def loss_hinge(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select hinge Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = hinge(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_squared_hinge(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select squared hinge Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = squared_hinge(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multimargin(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select multi margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multimargin(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_squared_multimargin(self, weight=None, batch_axis=0, margin=1):
+        &#39;&#39;&#39;
+        Select squared multi margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+            margin (float): MArgin value.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = squared_multimargin(self.system_dict, margin=margin,
+                                weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multilabel_margin(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select multilabel margin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multilabelmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def loss_multilabel_softmargin(self, weight=None, batch_axis=0):
+        &#39;&#39;&#39;
+        Select multilabel softmargin Loss
+
+        Args:
+            weight (float): global scalar for weight loss
+            batch_axis (int): Axis representing number of elements in the batch - N
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = multilabelsoftmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+        self.custom_print(&#34;Loss&#34;);
+        self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+        self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pytorch.finetune.level_11_optimizers_main.prototype_optimizers</li>
+<li>pytorch.finetune.level_10_schedulers_main.prototype_schedulers</li>
+<li>pytorch.finetune.level_9_transforms_main.prototype_transforms</li>
+<li>pytorch.finetune.level_8_layers_main.prototype_layers</li>
+<li>pytorch.finetune.level_7_aux_main.prototype_aux</li>
+<li>pytorch.finetune.level_6_params_main.prototype_params</li>
+<li>pytorch.finetune.level_5_state_base.finetune_state</li>
+<li>pytorch.finetune.level_4_evaluation_base.finetune_evaluation</li>
+<li>pytorch.finetune.level_3_training_base.finetune_training</li>
+<li>pytorch.finetune.level_2_model_base.finetune_model</li>
+<li>pytorch.finetune.level_1_dataset_base.finetune_dataset</li>
+<li>system.base_class.system</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_binary_crossentropy"><code class="name flex">
+<span>def <span class="ident">loss_binary_crossentropy</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select binary crossentropy Loss - Need to manually apply sigmoid</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_binary_crossentropy(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select binary crossentropy Loss - Need to manually apply sigmoid
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_crossentropy"><code class="name flex">
+<span>def <span class="ident">loss_crossentropy</span></span>(<span>self, weight=None, batch_axis=0, axis_to_sum_over=-1, label_as_categories=True, label_smoothing=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select crossentropy Loss - Need to manually apply softmax</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>axis_to_sum_over</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set as -1</dd>
+<dt><strong><code>label_as_categories</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Fixed as True</dd>
+<dt><strong><code>label_smoothing</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, label smoothning is applied.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                label_as_categories=True, label_smoothing=False):
+    &#39;&#39;&#39;
+    Select crossentropy Loss - Need to manually apply softmax
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        axis_to_sum_over (int): Set as -1
+        label_as_categories (bool): Fixed as True
+        label_smoothing (bool): If True, label smoothning is applied.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                            axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                            label_smoothing=label_smoothing);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_hinge"><code class="name flex">
+<span>def <span class="ident">loss_hinge</span></span>(<span>self, weight=None, batch_axis=0, margin=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select hinge Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>margin</code></strong> :&ensp;<code>float</code></dt>
+<dd>MArgin value.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_hinge(self, weight=None, batch_axis=0, margin=1):
+    &#39;&#39;&#39;
+    Select hinge Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        margin (float): MArgin value.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = hinge(self.system_dict, margin=margin,
+                            weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_huber"><code class="name flex">
+<span>def <span class="ident">loss_huber</span></span>(<span>self, weight=None, batch_axis=0, threshold_for_mean_estimator=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select huber Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>threshold_for_mean_estimator</code></strong> :&ensp;<code>int</code></dt>
+<dd>Threshold for trimmed mean estimator.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_huber(self, weight=None, batch_axis=0, threshold_for_mean_estimator=1):
+    &#39;&#39;&#39;
+    Select huber Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        threshold_for_mean_estimator (int): Threshold for trimmed mean estimator.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = huber(self.system_dict, threshold_for_mean_estimator=threshold_for_mean_estimator,
+                            weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_kldiv"><code class="name flex">
+<span>def <span class="ident">loss_kldiv</span></span>(<span>self, log_pre_applied=False, weight=None, batch_axis=0, axis_to_sum_over=-1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select lkdiv Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>axis_to_sum_over</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set as -1</dd>
+<dt><strong><code>log_pre_applied</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If set as False, then logarithmic function is auto applied over target variables</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_kldiv(self, log_pre_applied=False, weight=None, batch_axis=0, axis_to_sum_over=-1):
+    &#39;&#39;&#39;
+    Select lkdiv Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        axis_to_sum_over (int): Set as -1
+        log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = kldiv(self.system_dict, weight=weight, batch_axis=batch_axis,
+                            axis_to_sum_over=axis_to_sum_over, log_pre_applied=log_pre_applied);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l1"><code class="name flex">
+<span>def <span class="ident">loss_l1</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select L1 Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_l1(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select L1 Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = l1(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l2"><code class="name flex">
+<span>def <span class="ident">loss_l2</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select L2 Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_l2(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select L2 Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = l2(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_margin"><code class="name flex">
+<span>def <span class="ident">loss_multilabel_margin</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select multilabel margin Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_multilabel_margin(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select multilabel margin Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = multilabelmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_softmargin"><code class="name flex">
+<span>def <span class="ident">loss_multilabel_softmargin</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select multilabel softmargin Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_multilabel_softmargin(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select multilabel softmargin Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = multilabelsoftmargin(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multimargin"><code class="name flex">
+<span>def <span class="ident">loss_multimargin</span></span>(<span>self, weight=None, batch_axis=0, margin=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select multi margin Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>margin</code></strong> :&ensp;<code>float</code></dt>
+<dd>MArgin value.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_multimargin(self, weight=None, batch_axis=0, margin=1):
+    &#39;&#39;&#39;
+    Select multi margin Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        margin (float): MArgin value.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = multimargin(self.system_dict, margin=margin,
+                            weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_poisson_nll"><code class="name flex">
+<span>def <span class="ident">loss_poisson_nll</span></span>(<span>self, log_pre_applied=False, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select poisson_nll Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>log_pre_applied</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If set as False, then logarithmic function is auto applied over target variables</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_poisson_nll(self, log_pre_applied=False, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select poisson_nll Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        log_pre_applied (bool): If set as False, then logarithmic function is auto applied over target variables
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = poisson_nll(self.system_dict, log_pre_applied=log_pre_applied,
+                                    weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_sigmoid_binary_crossentropy"><code class="name flex">
+<span>def <span class="ident">loss_sigmoid_binary_crossentropy</span></span>(<span>self, weight=None, batch_axis=0)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select sigmoid binary crossentropy Loss - Auto sigmoid before applying loss </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_sigmoid_binary_crossentropy(self, weight=None, batch_axis=0):
+    &#39;&#39;&#39;
+    Select sigmoid binary crossentropy Loss - Auto sigmoid before applying loss 
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = sigmoid_binary_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_softmax_crossentropy"><code class="name flex">
+<span>def <span class="ident">loss_softmax_crossentropy</span></span>(<span>self, weight=None, batch_axis=0, axis_to_sum_over=-1, label_as_categories=True, label_smoothing=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select soaftmax crossentropy Loss - Auto softmax before applying loss </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>axis_to_sum_over</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set as -1</dd>
+<dt><strong><code>label_as_categories</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Fixed as True</dd>
+<dt><strong><code>label_smoothing</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, label smoothning is applied.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_softmax_crossentropy(self, weight=None, batch_axis=0, axis_to_sum_over=-1, 
+                                label_as_categories=True, label_smoothing=False):
+    &#39;&#39;&#39;
+    Select soaftmax crossentropy Loss - Auto softmax before applying loss 
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        axis_to_sum_over (int): Set as -1
+        label_as_categories (bool): Fixed as True
+        label_smoothing (bool): If True, label smoothning is applied.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = softmax_crossentropy(self.system_dict, weight=weight, batch_axis=batch_axis,
+                                            axis_to_sum_over=axis_to_sum_over, label_as_categories=label_as_categories, 
+                                            label_smoothing=label_smoothing);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_hinge"><code class="name flex">
+<span>def <span class="ident">loss_squared_hinge</span></span>(<span>self, weight=None, batch_axis=0, margin=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select squared hinge Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>margin</code></strong> :&ensp;<code>float</code></dt>
+<dd>MArgin value.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_squared_hinge(self, weight=None, batch_axis=0, margin=1):
+    &#39;&#39;&#39;
+    Select squared hinge Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        margin (float): MArgin value.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = squared_hinge(self.system_dict, margin=margin,
+                            weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_multimargin"><code class="name flex">
+<span>def <span class="ident">loss_squared_multimargin</span></span>(<span>self, weight=None, batch_axis=0, margin=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select squared multi margin Loss</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>weight</code></strong> :&ensp;<code>float</code></dt>
+<dd>global scalar for weight loss</dd>
+<dt><strong><code>batch_axis</code></strong> :&ensp;<code>int</code></dt>
+<dd>Axis representing number of elements in the batch - N</dd>
+<dt><strong><code>margin</code></strong> :&ensp;<code>float</code></dt>
+<dd>MArgin value.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def loss_squared_multimargin(self, weight=None, batch_axis=0, margin=1):
+    &#39;&#39;&#39;
+    Select squared multi margin Loss
+
+    Args:
+        weight (float): global scalar for weight loss
+        batch_axis (int): Axis representing number of elements in the batch - N
+        margin (float): MArgin value.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = squared_multimargin(self.system_dict, margin=margin,
+                            weight=weight, batch_axis=batch_axis);
+
+    self.custom_print(&#34;Loss&#34;);
+    self.custom_print(&#34;    Name:          {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;name&#34;]));
+    self.custom_print(&#34;    Params:        {}&#34;.format(self.system_dict[&#34;hyper-parameters&#34;][&#34;loss&#34;][&#34;params&#34;]));
+    self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.pytorch.finetune" href="index.html">monk.pytorch.finetune</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses">prototype_losses</a></code></h4>
+<ul class="">
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_binary_crossentropy" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_binary_crossentropy">loss_binary_crossentropy</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_crossentropy" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_crossentropy">loss_crossentropy</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_hinge" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_hinge">loss_hinge</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_huber" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_huber">loss_huber</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_kldiv" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_kldiv">loss_kldiv</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l1" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l1">loss_l1</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l2" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_l2">loss_l2</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_margin" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_margin">loss_multilabel_margin</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_softmargin" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multilabel_softmargin">loss_multilabel_softmargin</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multimargin" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_multimargin">loss_multimargin</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_poisson_nll" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_poisson_nll">loss_poisson_nll</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_sigmoid_binary_crossentropy" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_sigmoid_binary_crossentropy">loss_sigmoid_binary_crossentropy</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_softmax_crossentropy" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_softmax_crossentropy">loss_softmax_crossentropy</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_hinge" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_hinge">loss_squared_hinge</a></code></li>
+<li><code><a title="monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_multimargin" href="#monk.pytorch.finetune.level_12_losses_main.prototype_losses.loss_squared_multimargin">loss_squared_multimargin</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

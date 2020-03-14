@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.tf_keras_1.finetune.level_14_master_main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.tf_keras_1.finetune.level_14_master_main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from tf_keras_1.finetune.imports import *
+from system.imports import *
+
+from tf_keras_1.finetune.level_13_updates_main import prototype_updates
+
+
+
+class prototype_master(prototype_updates):
+    &#39;&#39;&#39;
+    Main class for all functions in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def Dataset(self):
+        &#39;&#39;&#39;
+        Load transforms and set dataloader
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.set_dataset_final(test=self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]);
+        save(self.system_dict);
+
+        if(self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]):
+            
+            self.custom_print(&#34;Pre-Composed Test Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;test&#34;]);
+            self.custom_print(&#34;&#34;);
+
+            self.custom_print(&#34;Dataset Numbers&#34;);
+            self.custom_print(&#34;    Num test images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_test_images&#34;]));
+            self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+            self.custom_print(&#34;&#34;);
+
+        else:
+            
+            self.custom_print(&#34;Pre-Composed Train Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;train&#34;]);
+            self.custom_print(&#34;&#34;);
+            self.custom_print(&#34;Pre-Composed Val Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;val&#34;]);
+            self.custom_print(&#34;&#34;);
+
+            self.custom_print(&#34;Dataset Numbers&#34;);
+            self.custom_print(&#34;    Num train images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_train_images&#34;]));
+            self.custom_print(&#34;    Num val images:   {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_val_images&#34;]));
+            self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+            self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def Dataset_Percent(self, percent):
+        &#39;&#39;&#39;
+        Select a portion of dataset
+
+        Args:
+            percent (bool): percentage of sub-dataset
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        sampled_dataset = None;
+        image_datasets = {};
+        dataset_type = self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;];
+        dataset_train_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+        dataset_val_path = self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;];
+        csv_train = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+        csv_val = self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;];
+        train_val_split = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_val_split&#34;];
+        delimiter = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;];
+        batch_size = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;];
+        shuffle = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;];
+        num_workers = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;];
+
+        
+        if(dataset_type == &#34;train&#34;):
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+        elif(dataset_type == &#34;train-val&#34;):
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_val_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);
+        elif(dataset_type == &#34;csv_train&#34;):
+            df = pd.read_csv(csv_train);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+        elif(dataset_type == &#34;csv_train-val&#34;):
+            df = pd.read_csv(csv_train);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+            df = pd.read_csv(csv_val);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);
+
+
+
+    ###############################################################################################################################################
+
+    
+
+
+
+    ###############################################################################################################################################
+    def Model(self):
+        &#39;&#39;&#39;
+        Load Model as per paraameters set
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;states&#34;][&#34;copy_from&#34;]):
+            msg = &#34;Cannot set model in Copy-From mode.\n&#34;;
+            raise ConstraintError(msg)
+        self.set_model_final();
+        save(self.system_dict)
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def Train(self):
+        &#39;&#39;&#39;
+        Master function for training
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.set_training_final();
+        save(self.system_dict);
+    ###############################################################################################################################################
+
+
+
+
+
+    ###############################################################################################################################################
+    def Evaluate(self):
+        &#39;&#39;&#39;
+        Master function for external validation
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        accuracy, class_based_accuracy = self.set_evaluation_final();
+        save(self.system_dict);
+        return accuracy, class_based_accuracy;
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def Infer(self, img_name=False, img_dir=False, return_raw=False):
+        &#39;&#39;&#39;
+        Master function for inference 
+
+        Args:
+            img_name (str): path to image
+            img_dir (str): path to folders containing images. 
+                            (Optional)
+            return_raw (bool): If True, then output dictionary contains image probability for every class in the set.
+                                Else, only the most probable class score is returned back.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not img_dir):
+            predictions = self.set_prediction_final(img_name=img_name, return_raw=return_raw);
+        else:
+            predictions = self.set_prediction_final(img_dir=img_dir, return_raw=return_raw);
+        return predictions;
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def Compile_Network(self, network, data_shape=(3, 224, 224), use_gpu=True, network_initializer=&#34;xavier_normal&#34;):
+        &#39;&#39;&#39;
+        Master function for compiling custom network and initializing it 
+
+        Args:
+            network: Network stacked as list of lists
+            data_shape (tuple): Input shape of data in format C, H, W
+            use_gpu (bool): If True, model loaded on gpu
+            network_initializer (str): Initialize network with random weights. Select the random generator type function.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;custom_model&#34;][&#34;network_stack&#34;] = network;
+        self.system_dict[&#34;custom_model&#34;][&#34;network_initializer&#34;] = network_initializer;
+        self.system_dict[&#34;model&#34;][&#34;type&#34;] = &#34;custom&#34;;
+        self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;data_shape&#34;] = data_shape;
+        self.system_dict = set_device(use_gpu, self.system_dict);
+        save(self.system_dict);
+        self.set_model_final();
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def Visualize_With_Netron(self, data_shape=None, port=None):
+        &#39;&#39;&#39;
+        Visualize network with netron library 
+
+        Args:
+            data_shape (tuple): Input shape of data in format C, H, W
+            port (int): Local host free port.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Using Netron To Visualize&#34;);
+        self.custom_print(&#34;Not compatible on kaggle&#34;);
+        self.custom_print(&#34;Compatible only for Jupyter Notebooks&#34;);
+
+        if not data_shape:
+            self.custom_print(&#34;Provide data_shape argument&#34;);
+            pass;
+        else:
+            c, h, w = data_shape;
+
+        
+        batch_size=1;
+        x = tf.placeholder(tf.float32, shape=(batch_size, h, w, c))
+        y = self.system_dict[&#34;local&#34;][&#34;model&#34;](x)
+
+        self.system_dict[&#34;local&#34;][&#34;model&#34;].save(&#34;final.h5&#34;);
+
+
+
+        import netron
+        if(not port):
+            netron.start(&#39;final.h5&#39;)
+        else:
+            netron.start(&#39;final.h5&#39;, port=port)
+
+
+
+    ###############################################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master"><code class="flex name class">
+<span>class <span class="ident">prototype_master</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main class for all functions in expert mode</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class prototype_master(prototype_updates):
+    &#39;&#39;&#39;
+    Main class for all functions in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+
+
+    ###############################################################################################################################################
+    def Dataset(self):
+        &#39;&#39;&#39;
+        Load transforms and set dataloader
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.set_dataset_final(test=self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]);
+        save(self.system_dict);
+
+        if(self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]):
+            
+            self.custom_print(&#34;Pre-Composed Test Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;test&#34;]);
+            self.custom_print(&#34;&#34;);
+
+            self.custom_print(&#34;Dataset Numbers&#34;);
+            self.custom_print(&#34;    Num test images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_test_images&#34;]));
+            self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+            self.custom_print(&#34;&#34;);
+
+        else:
+            
+            self.custom_print(&#34;Pre-Composed Train Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;train&#34;]);
+            self.custom_print(&#34;&#34;);
+            self.custom_print(&#34;Pre-Composed Val Transforms&#34;);
+            self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;val&#34;]);
+            self.custom_print(&#34;&#34;);
+
+            self.custom_print(&#34;Dataset Numbers&#34;);
+            self.custom_print(&#34;    Num train images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_train_images&#34;]));
+            self.custom_print(&#34;    Num val images:   {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_val_images&#34;]));
+            self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+            self.custom_print(&#34;&#34;);
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def Dataset_Percent(self, percent):
+        &#39;&#39;&#39;
+        Select a portion of dataset
+
+        Args:
+            percent (bool): percentage of sub-dataset
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        sampled_dataset = None;
+        image_datasets = {};
+        dataset_type = self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;];
+        dataset_train_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+        dataset_val_path = self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;];
+        csv_train = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+        csv_val = self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;];
+        train_val_split = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_val_split&#34;];
+        delimiter = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;];
+        batch_size = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;];
+        shuffle = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;];
+        num_workers = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;];
+
+        
+        if(dataset_type == &#34;train&#34;):
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+        elif(dataset_type == &#34;train-val&#34;):
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+
+            label_list = [];
+            image_list = [];
+            classes = os.listdir(dataset_train_path);
+            for i in range(len(classes)):
+                tmp_image_list = os.listdir(dataset_val_path + &#34;/&#34; + classes[i]);
+                subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+                result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+                tmp_label_list = [classes[i]]*len(subset_image_list);
+                label_list += tmp_label_list;
+                image_list += result;
+            image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+            df = pd.DataFrame(image_label_dict);
+            df.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);
+        elif(dataset_type == &#34;csv_train&#34;):
+            df = pd.read_csv(csv_train);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+        elif(dataset_type == &#34;csv_train-val&#34;):
+            df = pd.read_csv(csv_train);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+            df = pd.read_csv(csv_val);
+            df = df.iloc[np.random.permutation(len(df))]
+            df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+            df_sampled.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);
+
+
+
+    ###############################################################################################################################################
+
+    
+
+
+
+    ###############################################################################################################################################
+    def Model(self):
+        &#39;&#39;&#39;
+        Load Model as per paraameters set
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(self.system_dict[&#34;states&#34;][&#34;copy_from&#34;]):
+            msg = &#34;Cannot set model in Copy-From mode.\n&#34;;
+            raise ConstraintError(msg)
+        self.set_model_final();
+        save(self.system_dict)
+    ###############################################################################################################################################
+
+
+    ###############################################################################################################################################
+    def Train(self):
+        &#39;&#39;&#39;
+        Master function for training
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.set_training_final();
+        save(self.system_dict);
+    ###############################################################################################################################################
+
+
+
+
+
+    ###############################################################################################################################################
+    def Evaluate(self):
+        &#39;&#39;&#39;
+        Master function for external validation
+
+        Args:
+            None
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        accuracy, class_based_accuracy = self.set_evaluation_final();
+        save(self.system_dict);
+        return accuracy, class_based_accuracy;
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def Infer(self, img_name=False, img_dir=False, return_raw=False):
+        &#39;&#39;&#39;
+        Master function for inference 
+
+        Args:
+            img_name (str): path to image
+            img_dir (str): path to folders containing images. 
+                            (Optional)
+            return_raw (bool): If True, then output dictionary contains image probability for every class in the set.
+                                Else, only the most probable class score is returned back.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        if(not img_dir):
+            predictions = self.set_prediction_final(img_name=img_name, return_raw=return_raw);
+        else:
+            predictions = self.set_prediction_final(img_dir=img_dir, return_raw=return_raw);
+        return predictions;
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def Compile_Network(self, network, data_shape=(3, 224, 224), use_gpu=True, network_initializer=&#34;xavier_normal&#34;):
+        &#39;&#39;&#39;
+        Master function for compiling custom network and initializing it 
+
+        Args:
+            network: Network stacked as list of lists
+            data_shape (tuple): Input shape of data in format C, H, W
+            use_gpu (bool): If True, model loaded on gpu
+            network_initializer (str): Initialize network with random weights. Select the random generator type function.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict[&#34;custom_model&#34;][&#34;network_stack&#34;] = network;
+        self.system_dict[&#34;custom_model&#34;][&#34;network_initializer&#34;] = network_initializer;
+        self.system_dict[&#34;model&#34;][&#34;type&#34;] = &#34;custom&#34;;
+        self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;data_shape&#34;] = data_shape;
+        self.system_dict = set_device(use_gpu, self.system_dict);
+        save(self.system_dict);
+        self.set_model_final();
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def Visualize_With_Netron(self, data_shape=None, port=None):
+        &#39;&#39;&#39;
+        Visualize network with netron library 
+
+        Args:
+            data_shape (tuple): Input shape of data in format C, H, W
+            port (int): Local host free port.
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.custom_print(&#34;Using Netron To Visualize&#34;);
+        self.custom_print(&#34;Not compatible on kaggle&#34;);
+        self.custom_print(&#34;Compatible only for Jupyter Notebooks&#34;);
+
+        if not data_shape:
+            self.custom_print(&#34;Provide data_shape argument&#34;);
+            pass;
+        else:
+            c, h, w = data_shape;
+
+        
+        batch_size=1;
+        x = tf.placeholder(tf.float32, shape=(batch_size, h, w, c))
+        y = self.system_dict[&#34;local&#34;][&#34;model&#34;](x)
+
+        self.system_dict[&#34;local&#34;][&#34;model&#34;].save(&#34;final.h5&#34;);
+
+
+
+        import netron
+        if(not port):
+            netron.start(&#39;final.h5&#39;)
+        else:
+            netron.start(&#39;final.h5&#39;, port=port)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tf_keras_1.finetune.level_13_updates_main.prototype_updates</li>
+<li>tf_keras_1.finetune.level_12_losses_main.prototype_losses</li>
+<li>tf_keras_1.finetune.level_11_optimizers_main.prototype_optimizers</li>
+<li>tf_keras_1.finetune.level_10_schedulers_main.prototype_schedulers</li>
+<li>tf_keras_1.finetune.level_9_transforms_main.prototype_transforms</li>
+<li>tf_keras_1.finetune.level_8_layers_main.prototype_layers</li>
+<li>tf_keras_1.finetune.level_7_aux_main.prototype_aux</li>
+<li>tf_keras_1.finetune.level_6_params_main.prototype_params</li>
+<li>tf_keras_1.finetune.level_5_state_base.finetune_state</li>
+<li>tf_keras_1.finetune.level_4_evaluation_base.finetune_evaluation</li>
+<li>tf_keras_1.finetune.level_3_training_base.finetune_training</li>
+<li>tf_keras_1.finetune.level_2_model_base.finetune_model</li>
+<li>tf_keras_1.finetune.level_1_dataset_base.finetune_dataset</li>
+<li>system.base_class.system</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Compile_Network"><code class="name flex">
+<span>def <span class="ident">Compile_Network</span></span>(<span>self, network, data_shape=(3, 224, 224), use_gpu=True, network_initializer='xavier_normal')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Master function for compiling custom network and initializing it </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network</code></strong></dt>
+<dd>Network stacked as list of lists</dd>
+<dt><strong><code>data_shape</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>Input shape of data in format C, H, W</dd>
+<dt><strong><code>use_gpu</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, model loaded on gpu</dd>
+<dt><strong><code>network_initializer</code></strong> :&ensp;<code>str</code></dt>
+<dd>Initialize network with random weights. Select the random generator type function.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Compile_Network(self, network, data_shape=(3, 224, 224), use_gpu=True, network_initializer=&#34;xavier_normal&#34;):
+    &#39;&#39;&#39;
+    Master function for compiling custom network and initializing it 
+
+    Args:
+        network: Network stacked as list of lists
+        data_shape (tuple): Input shape of data in format C, H, W
+        use_gpu (bool): If True, model loaded on gpu
+        network_initializer (str): Initialize network with random weights. Select the random generator type function.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict[&#34;custom_model&#34;][&#34;network_stack&#34;] = network;
+    self.system_dict[&#34;custom_model&#34;][&#34;network_initializer&#34;] = network_initializer;
+    self.system_dict[&#34;model&#34;][&#34;type&#34;] = &#34;custom&#34;;
+    self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;data_shape&#34;] = data_shape;
+    self.system_dict = set_device(use_gpu, self.system_dict);
+    save(self.system_dict);
+    self.set_model_final();</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset"><code class="name flex">
+<span>def <span class="ident">Dataset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Load transforms and set dataloader</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Dataset(self):
+    &#39;&#39;&#39;
+    Load transforms and set dataloader
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.set_dataset_final(test=self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]);
+    save(self.system_dict);
+
+    if(self.system_dict[&#34;states&#34;][&#34;eval_infer&#34;]):
+        
+        self.custom_print(&#34;Pre-Composed Test Transforms&#34;);
+        self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;test&#34;]);
+        self.custom_print(&#34;&#34;);
+
+        self.custom_print(&#34;Dataset Numbers&#34;);
+        self.custom_print(&#34;    Num test images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_test_images&#34;]));
+        self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+        self.custom_print(&#34;&#34;);
+
+    else:
+        
+        self.custom_print(&#34;Pre-Composed Train Transforms&#34;);
+        self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;train&#34;]);
+        self.custom_print(&#34;&#34;);
+        self.custom_print(&#34;Pre-Composed Val Transforms&#34;);
+        self.custom_print(self.system_dict[&#34;dataset&#34;][&#34;transforms&#34;][&#34;val&#34;]);
+        self.custom_print(&#34;&#34;);
+
+        self.custom_print(&#34;Dataset Numbers&#34;);
+        self.custom_print(&#34;    Num train images: {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_train_images&#34;]));
+        self.custom_print(&#34;    Num val images:   {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_val_images&#34;]));
+        self.custom_print(&#34;    Num classes:      {}&#34;.format(self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_classes&#34;]))
+        self.custom_print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset_Percent"><code class="name flex">
+<span>def <span class="ident">Dataset_Percent</span></span>(<span>self, percent)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Select a portion of dataset</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>percent</code></strong> :&ensp;<code>bool</code></dt>
+<dd>percentage of sub-dataset</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Dataset_Percent(self, percent):
+    &#39;&#39;&#39;
+    Select a portion of dataset
+
+    Args:
+        percent (bool): percentage of sub-dataset
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    sampled_dataset = None;
+    image_datasets = {};
+    dataset_type = self.system_dict[&#34;dataset&#34;][&#34;dataset_type&#34;];
+    dataset_train_path = self.system_dict[&#34;dataset&#34;][&#34;train_path&#34;];
+    dataset_val_path = self.system_dict[&#34;dataset&#34;][&#34;val_path&#34;];
+    csv_train = self.system_dict[&#34;dataset&#34;][&#34;csv_train&#34;];
+    csv_val = self.system_dict[&#34;dataset&#34;][&#34;csv_val&#34;];
+    train_val_split = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_val_split&#34;];
+    delimiter = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;delimiter&#34;];
+    batch_size = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;batch_size&#34;];
+    shuffle = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;train_shuffle&#34;];
+    num_workers = self.system_dict[&#34;dataset&#34;][&#34;params&#34;][&#34;num_workers&#34;];
+
+    
+    if(dataset_type == &#34;train&#34;):
+        label_list = [];
+        image_list = [];
+        classes = os.listdir(dataset_train_path);
+        for i in range(len(classes)):
+            tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+            subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+            result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+            tmp_label_list = [classes[i]]*len(subset_image_list);
+            label_list += tmp_label_list;
+            image_list += result;
+        image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+        df = pd.DataFrame(image_label_dict);
+        df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+    elif(dataset_type == &#34;train-val&#34;):
+        label_list = [];
+        image_list = [];
+        classes = os.listdir(dataset_train_path);
+        for i in range(len(classes)):
+            tmp_image_list = os.listdir(dataset_train_path + &#34;/&#34; + classes[i]);
+            subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+            result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+            tmp_label_list = [classes[i]]*len(subset_image_list);
+            label_list += tmp_label_list;
+            image_list += result;
+        image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+        df = pd.DataFrame(image_label_dict);
+        df.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+
+        label_list = [];
+        image_list = [];
+        classes = os.listdir(dataset_train_path);
+        for i in range(len(classes)):
+            tmp_image_list = os.listdir(dataset_val_path + &#34;/&#34; + classes[i]);
+            subset_image_list = tmp_image_list[:int(len(tmp_image_list)*percent/100.0)];
+            result = list(map(lambda x: classes[i] + &#34;/&#34; + x, subset_image_list))
+            tmp_label_list = [classes[i]]*len(subset_image_list);
+            label_list += tmp_label_list;
+            image_list += result;
+        image_label_dict = {&#39;ID&#39;: image_list, &#39;Label&#39;: label_list}  
+        df = pd.DataFrame(image_label_dict);
+        df.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);
+    elif(dataset_type == &#34;csv_train&#34;):
+        df = pd.read_csv(csv_train);
+        df = df.iloc[np.random.permutation(len(df))]
+        df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+        df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+    elif(dataset_type == &#34;csv_train-val&#34;):
+        df = pd.read_csv(csv_train);
+        df = df.iloc[np.random.permutation(len(df))]
+        df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+        df_sampled.to_csv(&#34;sampled_dataset_train.csv&#34;, index=False);
+        df = pd.read_csv(csv_val);
+        df = df.iloc[np.random.permutation(len(df))]
+        df_sampled = df.iloc[:int(len(df)*percent/100.0)];
+        df_sampled.to_csv(&#34;sampled_dataset_val.csv&#34;, index=False);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Evaluate"><code class="name flex">
+<span>def <span class="ident">Evaluate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Master function for external validation</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Evaluate(self):
+    &#39;&#39;&#39;
+    Master function for external validation
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    accuracy, class_based_accuracy = self.set_evaluation_final();
+    save(self.system_dict);
+    return accuracy, class_based_accuracy;</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Infer"><code class="name flex">
+<span>def <span class="ident">Infer</span></span>(<span>self, img_name=False, img_dir=False, return_raw=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Master function for inference </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>img_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to image</dd>
+<dt><strong><code>img_dir</code></strong> :&ensp;<code>str</code></dt>
+<dd>path to folders containing images.
+(Optional)</dd>
+<dt><strong><code>return_raw</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then output dictionary contains image probability for every class in the set.
+Else, only the most probable class score is returned back.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Infer(self, img_name=False, img_dir=False, return_raw=False):
+    &#39;&#39;&#39;
+    Master function for inference 
+
+    Args:
+        img_name (str): path to image
+        img_dir (str): path to folders containing images. 
+                        (Optional)
+        return_raw (bool): If True, then output dictionary contains image probability for every class in the set.
+                            Else, only the most probable class score is returned back.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(not img_dir):
+        predictions = self.set_prediction_final(img_name=img_name, return_raw=return_raw);
+    else:
+        predictions = self.set_prediction_final(img_dir=img_dir, return_raw=return_raw);
+    return predictions;</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Model"><code class="name flex">
+<span>def <span class="ident">Model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Load Model as per paraameters set</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Model(self):
+    &#39;&#39;&#39;
+    Load Model as per paraameters set
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    if(self.system_dict[&#34;states&#34;][&#34;copy_from&#34;]):
+        msg = &#34;Cannot set model in Copy-From mode.\n&#34;;
+        raise ConstraintError(msg)
+    self.set_model_final();
+    save(self.system_dict)</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Train"><code class="name flex">
+<span>def <span class="ident">Train</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Master function for training</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Train(self):
+    &#39;&#39;&#39;
+    Master function for training
+
+    Args:
+        None
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.set_training_final();
+    save(self.system_dict);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Visualize_With_Netron"><code class="name flex">
+<span>def <span class="ident">Visualize_With_Netron</span></span>(<span>self, data_shape=None, port=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Visualize network with netron library </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data_shape</code></strong> :&ensp;<code>tuple</code></dt>
+<dd>Input shape of data in format C, H, W</dd>
+<dt><strong><code>port</code></strong> :&ensp;<code>int</code></dt>
+<dd>Local host free port.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Visualize_With_Netron(self, data_shape=None, port=None):
+    &#39;&#39;&#39;
+    Visualize network with netron library 
+
+    Args:
+        data_shape (tuple): Input shape of data in format C, H, W
+        port (int): Local host free port.
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.custom_print(&#34;Using Netron To Visualize&#34;);
+    self.custom_print(&#34;Not compatible on kaggle&#34;);
+    self.custom_print(&#34;Compatible only for Jupyter Notebooks&#34;);
+
+    if not data_shape:
+        self.custom_print(&#34;Provide data_shape argument&#34;);
+        pass;
+    else:
+        c, h, w = data_shape;
+
+    
+    batch_size=1;
+    x = tf.placeholder(tf.float32, shape=(batch_size, h, w, c))
+    y = self.system_dict[&#34;local&#34;][&#34;model&#34;](x)
+
+    self.system_dict[&#34;local&#34;][&#34;model&#34;].save(&#34;final.h5&#34;);
+
+
+
+    import netron
+    if(not port):
+        netron.start(&#39;final.h5&#39;)
+    else:
+        netron.start(&#39;final.h5&#39;, port=port)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.tf_keras_1.finetune" href="index.html">monk.tf_keras_1.finetune</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master">prototype_master</a></code></h4>
+<ul class="">
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Compile_Network" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Compile_Network">Compile_Network</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset">Dataset</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset_Percent" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Dataset_Percent">Dataset_Percent</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Evaluate" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Evaluate">Evaluate</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Infer" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Infer">Infer</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Model" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Model">Model</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Train" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Train">Train</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Visualize_With_Netron" href="#monk.tf_keras_1.finetune.level_14_master_main.prototype_master.Visualize_With_Netron">Visualize_With_Netron</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

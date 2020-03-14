@@ -1,0 +1,3436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.gluon.models.layers API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.gluon.models.layers</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from gluon.models.imports import *
+from system.imports import *
+
+
+def get_layer(network_layer):
+    &#39;&#39;&#39;
+    Get layer for appending it to transfer learning base model
+
+    Args:
+        network_layer (dict): Dictionary conatining all params relating to the layer
+
+    Returns:
+        neural network layer
+    &#39;&#39;&#39;
+    layer_name = network_layer[&#34;name&#34;];
+    layer_params = network_layer[&#34;params&#34;];
+    num_ftrs = 0;
+    if(layer_name == &#34;linear&#34;):
+        layer = nn.Dense(layer_params[&#34;out_features&#34;], weight_initializer=init.Xavier());
+        num_ftrs = layer_params[&#34;out_features&#34;];
+
+    elif(layer_name == &#34;dropout&#34;):
+        layer = nn.Dropout(layer_params[&#34;p&#34;]);
+    
+    elif(layer_name == &#34;relu&#34;):
+        layer = nn.Activation(&#39;relu&#39;);
+
+    elif(layer_name == &#34;sigmoid&#34;):
+        layer = nn.Activation(&#39;sigmoid&#39;);
+
+    elif(layer_name == &#34;tanh&#34;):
+        layer = nn.Activation(&#39;tanh&#39;);
+
+    elif(layer_name == &#34;softplus&#34;):
+        layer = nn.Activation(&#39;softrelu&#39;);
+
+    elif(layer_name == &#34;leakyrelu&#34;):
+        layer = nn.LeakyReLU(alpha=layer_params[&#34;negative_slope&#34;]);
+
+    elif(layer_name == &#34;prelu&#34;):
+        layer = nn.PReLU(alpha_initializer=init.Xavier());
+
+    elif(layer_name == &#34;elu&#34;):
+        layer = nn.ELU(alpha=layer_params[&#34;alpha&#34;]);
+
+    elif(layer_name == &#34;selu&#34;):
+        layer = nn.SELU();
+
+    elif(layer_name == &#34;swish&#34;):
+        layer = nn.Swish(beta=layer_params[&#34;beta&#34;]);
+
+    return layer
+
+
+def layer_dropout(system_dict, probability=0.5, final_layer=False):
+    &#39;&#39;&#39;
+    Append dropout layer to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        probability (float): Droping probability of neurons in next layer
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;dropout&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;p&#34;] = probability;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def layer_linear(system_dict, num_neurons=512, final_layer=False):
+    &#39;&#39;&#39;
+    Append dense (fully connected) layer to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        num_neurons (int): Number of neurons in the dense layer
+        final_layer (bool): If True, then number of neurons are directly set as number of classes in dataset for single label type classification
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;linear&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;out_features&#34;] = num_neurons;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+
+
+def activation_elu(system_dict, alpha=1.0, final_layer=False):
+    &#39;&#39;&#39;
+    Append exponential linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        alpha (float): Multiplicatve factor.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;elu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;alpha&#34;] = alpha;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def activation_leakyrelu(system_dict, negative_slope=0.01, final_layer=False):
+    &#39;&#39;&#39;
+    Append Leaky - ReLU activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        negative_slope (float): Multiplicatve factor towards negative spectrum of real numbers.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;leakyrelu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;negative_slope&#34;] = negative_slope; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def activation_prelu(system_dict, num_parameters=1, init=0.25, final_layer=False):
+    &#39;&#39;&#39;
+    Append Learnable parameterized rectified linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        init (float): Initialization value for multiplicatve factor towards negative spectrum of real numbers.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;prelu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;num_parameters&#34;] = num_parameters; 
+    tmp[&#34;params&#34;][&#34;init&#34;] = init; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def activation_relu(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append rectified linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;relu&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+def activation_selu(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append scaled exponential linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;selu&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def activation_sigmoid(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append sigmoid activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;sigmoid&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+def activation_softplus(system_dict, beta=1, threshold=20, final_layer=False):
+    &#39;&#39;&#39;
+    Append softplus activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        beta (int): Multiplicative factor
+        threshold (int): softplus (thresholded relu) limit 
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;softplus&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;beta&#34;] = beta; 
+    tmp[&#34;params&#34;][&#34;threshold&#34;] = threshold; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+def activation_softsign(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append softsign activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;softsign&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+def activation_swish(system_dict, beta=1.0, final_layer=False):
+    &#39;&#39;&#39;
+    Append swish activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        beta (bool): Multiplicative factor
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;swish&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;beta&#34;] = beta;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;
+
+
+
+
+def activation_tanh(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append tanh activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;tanh&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+    
+    return system_dict;
+
+
+
+
+
+
+def custom_model_get_layer(network_layer):
+    &#39;&#39;&#39;
+    Get layer for custom network design
+
+    Args:
+        network_layer (dict): Network layer as dict
+
+    Returns:
+        neural network layer: Actual layer in native backend library
+    &#39;&#39;&#39;
+    layer_name = network_layer[&#34;name&#34;];
+    layer_params = network_layer[&#34;params&#34;];
+    if(layer_name == &#34;convolution1d&#34;):
+        return custom_model_layer_convolution1d(layer_params);
+    elif(layer_name == &#34;convolution2d&#34;):
+        return custom_model_layer_convolution2d(layer_params);
+    elif(layer_name == &#34;convolution3d&#34;):
+        return custom_model_layer_convolution3d(layer_params);
+
+    elif(layer_name == &#34;transposed_convolution1d&#34;):
+        return custom_model_layer_transposed_convolution1d(layer_params);
+    elif(layer_name == &#34;transposed_convolution2d&#34;):
+        return custom_model_layer_transposed_convolution2d(layer_params);
+    elif(layer_name == &#34;transposed_convolution3d&#34;):
+        return custom_model_layer_transposed_convolution3d(layer_params);
+
+    elif(layer_name == &#34;max_pooling1d&#34;):
+        return custom_model_layer_max_pooling1d(layer_params);
+    elif(layer_name == &#34;max_pooling2d&#34;):
+        return custom_model_layer_max_pooling2d(layer_params);
+    elif(layer_name == &#34;max_pooling3d&#34;):
+        return custom_model_layer_max_pooling3d(layer_params);
+
+    elif(layer_name == &#34;average_pooling1d&#34;):
+        return custom_model_layer_average_pooling1d(layer_params);
+    elif(layer_name == &#34;average_pooling2d&#34;):
+        return custom_model_layer_average_pooling2d(layer_params);
+    elif(layer_name == &#34;average_pooling3d&#34;):
+        return custom_model_layer_average_pooling3d(layer_params);
+
+    elif(layer_name == &#34;global_max_pooling1d&#34;):
+        return custom_model_layer_global_max_pooling1d(layer_params);
+    elif(layer_name == &#34;global_max_pooling2d&#34;):
+        return custom_model_layer_global_max_pooling2d(layer_params);
+    elif(layer_name == &#34;global_max_pooling3d&#34;):
+        return custom_model_layer_global_max_pooling3d(layer_params);
+
+    elif(layer_name == &#34;global_average_pooling1d&#34;):
+        return custom_model_layer_global_average_pooling1d(layer_params);
+    elif(layer_name == &#34;global_average_pooling2d&#34;):
+        return custom_model_layer_global_average_pooling2d(layer_params);
+    elif(layer_name == &#34;global_average_pooling3d&#34;):
+        return custom_model_layer_global_average_pooling3d(layer_params);
+
+    elif(layer_name == &#34;fully_connected&#34;):
+        return custom_model_layer_fully_connected(layer_params);
+    elif(layer_name == &#34;dropout&#34;):
+        return custom_model_layer_dropout(layer_params);
+    elif(layer_name == &#34;flatten&#34;):
+        return custom_model_layer_flatten(layer_params);
+    elif(layer_name == &#34;identity&#34;):
+        return custom_model_layer_identity(layer_params);
+
+    elif(layer_name == &#34;batch_normalization&#34;):
+        return custom_model_layer_batch_normalization(layer_params);
+    elif(layer_name == &#34;instance_normalization&#34;):
+        return custom_model_layer_instance_normalization(layer_params);
+    elif(layer_name == &#34;layer_normalization&#34;):
+        return custom_model_layer_layer_normalization(layer_params);
+
+    elif(layer_name == &#34;relu&#34;):
+        return custom_model_activation_relu(layer_params);
+    elif(layer_name == &#34;sigmoid&#34;):
+        return custom_model_activation_sigmoid(layer_params);
+    elif(layer_name == &#34;tanh&#34;):
+        return custom_model_activation_tanh(layer_params);
+    elif(layer_name == &#34;softplus&#34;):
+        return custom_model_activation_softplus(layer_params);
+    elif(layer_name == &#34;softsign&#34;):
+        return custom_model_activation_softsign(layer_params);
+
+    elif(layer_name == &#34;elu&#34;):
+        return custom_model_activation_elu(layer_params);
+    elif(layer_name == &#34;gelu&#34;):
+        return custom_model_activation_gelu(layer_params);
+    elif(layer_name == &#34;leaky_relu&#34;):
+        return custom_model_activation_leaky_relu(layer_params);
+    elif(layer_name == &#34;prelu&#34;):
+        return custom_model_activation_prelu(layer_params);
+    elif(layer_name == &#34;selu&#34;):
+        return custom_model_activation_selu(layer_params);
+    elif(layer_name == &#34;swish&#34;):
+        return custom_model_activation_swish(layer_params);
+
+
+
+
+
+
+
+
+
+def custom_model_layer_convolution1d(params):
+    &#39;&#39;&#39;
+    Append 1d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+
+    layer = nn.Conv1D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer
+
+
+
+
+
+def custom_model_layer_convolution2d(params):
+    &#39;&#39;&#39;
+    Append 2d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+
+    layer = nn.Conv2D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer
+
+
+
+
+
+def custom_model_layer_convolution3d(params):
+    &#39;&#39;&#39;
+    Append 3d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+        
+    layer = nn.Conv3D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer
+
+
+
+
+def custom_model_layer_transposed_convolution1d(params):
+    &#39;&#39;&#39;
+    Append 1d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv1DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer
+
+
+
+
+def custom_model_layer_transposed_convolution2d(params):
+    &#39;&#39;&#39;
+    Append 2d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv2DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer
+
+
+
+
+
+def custom_model_layer_transposed_convolution3d(params):
+    &#39;&#39;&#39;
+    Append 3d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv3DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer
+
+
+
+def custom_model_layer_max_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool1D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_max_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool2D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_max_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool3D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_average_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.AvgPool1D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_average_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-average-pooling layer
+    &#39;&#39;&#39;
+
+    layer = nn.AvgPool2D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_average_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-average-pooling layer
+    &#39;&#39;&#39;
+
+    layer = nn.AvgPool3D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_max_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool1D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_max_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool2D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_max_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool3D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_average_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool1D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_average_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool2D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_global_average_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool3D(layout=params[&#34;layout&#34;]);
+    return layer
+
+
+
+
+def custom_model_layer_fully_connected(params):
+    &#39;&#39;&#39;
+    Append fc (dense) to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: fc (dense) layer
+    &#39;&#39;&#39;
+    layer = nn.Dense(params[&#34;units&#34;], 
+                    activation=None, 
+                    use_bias=params[&#34;use_bias&#34;], 
+                    flatten=params[&#34;flatten&#34;], 
+                    dtype=&#39;float32&#39;, 
+                    weight_initializer=None, 
+                    bias_initializer=&#39;zeros&#39;, 
+                    in_units=0);
+    return layer
+
+
+
+
+def custom_model_layer_dropout(params):
+    &#39;&#39;&#39;
+    Append dropout to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: dropout layer
+    &#39;&#39;&#39;
+    layer = nn.Dropout(params[&#34;drop_probability&#34;],
+                        axes=params[&#34;axes&#34;]);
+    return layer;
+
+
+
+
+def custom_model_layer_flatten(params):
+    &#39;&#39;&#39;
+    Append flatten to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: flatten layer
+    &#39;&#39;&#39;
+    layer = nn.Flatten();
+    return layer;
+
+
+
+
+def custom_model_layer_identity(params):
+    &#39;&#39;&#39;
+    Append idenity to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: idenity layer
+    &#39;&#39;&#39;
+    layer = contrib_nn.Identity();
+    return layer
+
+
+
+
+def custom_model_layer_batch_normalization(params):
+    &#39;&#39;&#39;
+    Append batchnorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural netwrk layer: batchnorm layer
+    &#39;&#39;&#39;
+    layer = nn.BatchNorm(axis=1, 
+                        momentum=params[&#34;moving_average_momentum&#34;], 
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;], 
+                        use_global_stats=params[&#34;activate_scale_shift_operation&#34;]);
+    return layer;
+
+
+
+
+def custom_model_layer_instance_normalization(params):
+    &#39;&#39;&#39;
+    Append instancenorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: instancenorm layer
+    &#39;&#39;&#39;
+    layer = nn.InstanceNorm(axis=1,
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;]);
+    return layer;
+
+
+
+
+def custom_model_layer_layer_normalization(params):
+    &#39;&#39;&#39;
+    Append layernorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: layernorm layer
+    &#39;&#39;&#39;
+    layer = nn.LayerNorm(axis=1, 
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;]);
+    return layer;
+
+
+
+
+def custom_model_activation_relu(params):
+    &#39;&#39;&#39;
+    Append relu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: relu activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;relu&#34;);
+    return layer;
+
+
+
+
+def custom_model_activation_sigmoid(params):
+    &#39;&#39;&#39;
+    Append sigmoid to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: sigmoid activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;sigmoid&#34;);
+    return layer;
+
+
+
+
+def custom_model_activation_tanh(params):
+    &#39;&#39;&#39;
+    Append tanh to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: tanh activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;tanh&#34;);
+    return layer;
+
+
+
+
+def custom_model_activation_softplus(params):
+    &#39;&#39;&#39;
+    Append softplus to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: softplus activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;softrelu&#34;);
+    return layer;
+
+
+
+
+def custom_model_activation_softsign(params):
+    &#39;&#39;&#39;
+    Append softsign to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: softsign activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;softsign&#34;);
+    return layer;
+
+
+
+
+def custom_model_activation_elu(params):
+    &#39;&#39;&#39;
+    Append elu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: elu activation
+    &#39;&#39;&#39;
+    layer = nn.ELU(alpha=params[&#34;alpha&#34;]);
+    return layer;
+
+
+
+
+def custom_model_activation_gelu(params):
+    &#39;&#39;&#39;
+    Append gelu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: gelu activation
+    &#39;&#39;&#39;
+    layer = nn.GELU();
+    return layer;
+
+
+
+
+def custom_model_activation_prelu(params):
+    &#39;&#39;&#39;
+    Append prelu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: prelu activation
+    &#39;&#39;&#39;
+    layer = nn.PReLU();
+    return layer;
+
+
+
+
+def custom_model_activation_leaky_relu(params):
+    &#39;&#39;&#39;
+    Append leaky-relu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: leaky-relu activation
+    &#39;&#39;&#39;
+    layer = nn.LeakyReLU(alpha=params[&#34;alpha&#34;]);
+    return layer;
+
+
+
+
+def custom_model_activation_selu(params):
+    &#39;&#39;&#39;
+    Append selu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: selu activation
+    &#39;&#39;&#39;
+    layer = nn.SELU();
+    return layer;
+
+
+
+
+def custom_model_activation_swish(params):
+    &#39;&#39;&#39;
+    Append swish to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: swish activation
+    &#39;&#39;&#39;
+    layer = nn.Swish(beta=params[&#34;beta&#34;]);
+    return layer;
+
+
+
+class addBlock(nn.HybridBlock):
+    &#39;&#39;&#39;
+    Class for creating a custom block (layer) representing elementwise addition
+
+    Args:
+        branches (list): List of layers to merge with elementwise addition
+    &#39;&#39;&#39;
+    def __init__(self, branches, **kwargs):
+        super(addBlock, self).__init__(**kwargs)
+        self.child_names = [];     
+        
+        with self.name_scope():
+            for i in range(len(branches)):
+                vars(self)[&#34;body&#34; + str(i)] = nn.HybridSequential(prefix=&#39;&#39;);
+                for j in range(len(branches[i])):
+                    vars(self)[&#34;body&#34; + str(i)].add(branches[i][j]);
+                self.child_names.append(&#34;body&#34; + str(i));
+        
+        for i, child in enumerate(self.child_names):
+            setattr(self, &#39;body{0}&#39;.format(i), vars(self)[&#34;body&#34; + str(i)])
+        
+            
+    def hybrid_forward(self, F, x):
+        for i in range(len(self.child_names)):
+            if(i==0):
+                y = vars(self)[&#34;body&#34; + str(i)](x);
+            else:
+                y = y + vars(self)[&#34;body&#34; + str(i)](x);
+            
+        return y
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="monk.gluon.models.layers.activation_elu"><code class="name flex">
+<span>def <span class="ident">activation_elu</span></span>(<span>system_dict, alpha=1.0, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append exponential linear unit activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>alpha</code></strong> :&ensp;<code>float</code></dt>
+<dd>Multiplicatve factor.</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_elu(system_dict, alpha=1.0, final_layer=False):
+    &#39;&#39;&#39;
+    Append exponential linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        alpha (float): Multiplicatve factor.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;elu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;alpha&#34;] = alpha;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_leakyrelu"><code class="name flex">
+<span>def <span class="ident">activation_leakyrelu</span></span>(<span>system_dict, negative_slope=0.01, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append Leaky - ReLU activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>negative_slope</code></strong> :&ensp;<code>float</code></dt>
+<dd>Multiplicatve factor towards negative spectrum of real numbers.</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_leakyrelu(system_dict, negative_slope=0.01, final_layer=False):
+    &#39;&#39;&#39;
+    Append Leaky - ReLU activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        negative_slope (float): Multiplicatve factor towards negative spectrum of real numbers.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;leakyrelu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;negative_slope&#34;] = negative_slope; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_prelu"><code class="name flex">
+<span>def <span class="ident">activation_prelu</span></span>(<span>system_dict, num_parameters=1, init=0.25, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append Learnable parameterized rectified linear unit activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>init</code></strong> :&ensp;<code>float</code></dt>
+<dd>Initialization value for multiplicatve factor towards negative spectrum of real numbers.</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_prelu(system_dict, num_parameters=1, init=0.25, final_layer=False):
+    &#39;&#39;&#39;
+    Append Learnable parameterized rectified linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        init (float): Initialization value for multiplicatve factor towards negative spectrum of real numbers.
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;prelu&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;num_parameters&#34;] = num_parameters; 
+    tmp[&#34;params&#34;][&#34;init&#34;] = init; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_relu"><code class="name flex">
+<span>def <span class="ident">activation_relu</span></span>(<span>system_dict, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append rectified linear unit activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_relu(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append rectified linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;relu&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_selu"><code class="name flex">
+<span>def <span class="ident">activation_selu</span></span>(<span>system_dict, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append scaled exponential linear unit activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_selu(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append scaled exponential linear unit activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;selu&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_sigmoid"><code class="name flex">
+<span>def <span class="ident">activation_sigmoid</span></span>(<span>system_dict, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append sigmoid activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_sigmoid(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append sigmoid activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;sigmoid&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_softplus"><code class="name flex">
+<span>def <span class="ident">activation_softplus</span></span>(<span>system_dict, beta=1, threshold=20, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append softplus activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>beta</code></strong> :&ensp;<code>int</code></dt>
+<dd>Multiplicative factor</dd>
+<dt><strong><code>threshold</code></strong> :&ensp;<code>int</code></dt>
+<dd>softplus (thresholded relu) limit </dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_softplus(system_dict, beta=1, threshold=20, final_layer=False):
+    &#39;&#39;&#39;
+    Append softplus activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        beta (int): Multiplicative factor
+        threshold (int): softplus (thresholded relu) limit 
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;softplus&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;beta&#34;] = beta; 
+    tmp[&#34;params&#34;][&#34;threshold&#34;] = threshold; 
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_softsign"><code class="name flex">
+<span>def <span class="ident">activation_softsign</span></span>(<span>system_dict, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append softsign activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_softsign(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append softsign activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;softsign&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_swish"><code class="name flex">
+<span>def <span class="ident">activation_swish</span></span>(<span>system_dict, beta=1.0, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append swish activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>beta</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Multiplicative factor</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_swish(system_dict, beta=1.0, final_layer=False):
+    &#39;&#39;&#39;
+    Append swish activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        beta (bool): Multiplicative factor
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;swish&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;beta&#34;] = beta;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.activation_tanh"><code class="name flex">
+<span>def <span class="ident">activation_tanh</span></span>(<span>system_dict, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append tanh activation to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def activation_tanh(system_dict, final_layer=False):
+    &#39;&#39;&#39;
+    Append tanh activation to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;tanh&#34;;
+    tmp[&#34;params&#34;] = {};
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+    
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_elu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_elu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append elu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>elu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_elu(params):
+    &#39;&#39;&#39;
+    Append elu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: elu activation
+    &#39;&#39;&#39;
+    layer = nn.ELU(alpha=params[&#34;alpha&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_gelu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_gelu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append gelu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>gelu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_gelu(params):
+    &#39;&#39;&#39;
+    Append gelu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: gelu activation
+    &#39;&#39;&#39;
+    layer = nn.GELU();
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_leaky_relu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_leaky_relu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append leaky-relu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>leaky</code>-<code>relu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_leaky_relu(params):
+    &#39;&#39;&#39;
+    Append leaky-relu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: leaky-relu activation
+    &#39;&#39;&#39;
+    layer = nn.LeakyReLU(alpha=params[&#34;alpha&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_prelu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_prelu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append prelu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>prelu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_prelu(params):
+    &#39;&#39;&#39;
+    Append prelu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: prelu activation
+    &#39;&#39;&#39;
+    layer = nn.PReLU();
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_relu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_relu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append relu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>relu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_relu(params):
+    &#39;&#39;&#39;
+    Append relu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: relu activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;relu&#34;);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_selu"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_selu</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append selu to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>selu</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_selu(params):
+    &#39;&#39;&#39;
+    Append selu to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: selu activation
+    &#39;&#39;&#39;
+    layer = nn.SELU();
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_sigmoid"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_sigmoid</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append sigmoid to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>sigmoid</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_sigmoid(params):
+    &#39;&#39;&#39;
+    Append sigmoid to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: sigmoid activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;sigmoid&#34;);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_softplus"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_softplus</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append softplus to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>softplus</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_softplus(params):
+    &#39;&#39;&#39;
+    Append softplus to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: softplus activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;softrelu&#34;);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_softsign"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_softsign</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append softsign to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>softsign</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_softsign(params):
+    &#39;&#39;&#39;
+    Append softsign to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: softsign activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;softsign&#34;);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_swish"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_swish</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append swish to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>swish</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_swish(params):
+    &#39;&#39;&#39;
+    Append swish to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: swish activation
+    &#39;&#39;&#39;
+    layer = nn.Swish(beta=params[&#34;beta&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_activation_tanh"><code class="name flex">
+<span>def <span class="ident">custom_model_activation_tanh</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append tanh to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>activation</code>: <code>tanh</code> <code>activation</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_activation_tanh(params):
+    &#39;&#39;&#39;
+    Append tanh to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network activation: tanh activation
+    &#39;&#39;&#39;
+    layer = nn.Activation(&#34;tanh&#34;);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_get_layer"><code class="name flex">
+<span>def <span class="ident">custom_model_get_layer</span></span>(<span>network_layer)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get layer for custom network design</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_layer</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Network layer as dict</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>Actual</code> <code>layer</code> <code>in</code> <code>native</code> <code>backend</code> <code>library</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_get_layer(network_layer):
+    &#39;&#39;&#39;
+    Get layer for custom network design
+
+    Args:
+        network_layer (dict): Network layer as dict
+
+    Returns:
+        neural network layer: Actual layer in native backend library
+    &#39;&#39;&#39;
+    layer_name = network_layer[&#34;name&#34;];
+    layer_params = network_layer[&#34;params&#34;];
+    if(layer_name == &#34;convolution1d&#34;):
+        return custom_model_layer_convolution1d(layer_params);
+    elif(layer_name == &#34;convolution2d&#34;):
+        return custom_model_layer_convolution2d(layer_params);
+    elif(layer_name == &#34;convolution3d&#34;):
+        return custom_model_layer_convolution3d(layer_params);
+
+    elif(layer_name == &#34;transposed_convolution1d&#34;):
+        return custom_model_layer_transposed_convolution1d(layer_params);
+    elif(layer_name == &#34;transposed_convolution2d&#34;):
+        return custom_model_layer_transposed_convolution2d(layer_params);
+    elif(layer_name == &#34;transposed_convolution3d&#34;):
+        return custom_model_layer_transposed_convolution3d(layer_params);
+
+    elif(layer_name == &#34;max_pooling1d&#34;):
+        return custom_model_layer_max_pooling1d(layer_params);
+    elif(layer_name == &#34;max_pooling2d&#34;):
+        return custom_model_layer_max_pooling2d(layer_params);
+    elif(layer_name == &#34;max_pooling3d&#34;):
+        return custom_model_layer_max_pooling3d(layer_params);
+
+    elif(layer_name == &#34;average_pooling1d&#34;):
+        return custom_model_layer_average_pooling1d(layer_params);
+    elif(layer_name == &#34;average_pooling2d&#34;):
+        return custom_model_layer_average_pooling2d(layer_params);
+    elif(layer_name == &#34;average_pooling3d&#34;):
+        return custom_model_layer_average_pooling3d(layer_params);
+
+    elif(layer_name == &#34;global_max_pooling1d&#34;):
+        return custom_model_layer_global_max_pooling1d(layer_params);
+    elif(layer_name == &#34;global_max_pooling2d&#34;):
+        return custom_model_layer_global_max_pooling2d(layer_params);
+    elif(layer_name == &#34;global_max_pooling3d&#34;):
+        return custom_model_layer_global_max_pooling3d(layer_params);
+
+    elif(layer_name == &#34;global_average_pooling1d&#34;):
+        return custom_model_layer_global_average_pooling1d(layer_params);
+    elif(layer_name == &#34;global_average_pooling2d&#34;):
+        return custom_model_layer_global_average_pooling2d(layer_params);
+    elif(layer_name == &#34;global_average_pooling3d&#34;):
+        return custom_model_layer_global_average_pooling3d(layer_params);
+
+    elif(layer_name == &#34;fully_connected&#34;):
+        return custom_model_layer_fully_connected(layer_params);
+    elif(layer_name == &#34;dropout&#34;):
+        return custom_model_layer_dropout(layer_params);
+    elif(layer_name == &#34;flatten&#34;):
+        return custom_model_layer_flatten(layer_params);
+    elif(layer_name == &#34;identity&#34;):
+        return custom_model_layer_identity(layer_params);
+
+    elif(layer_name == &#34;batch_normalization&#34;):
+        return custom_model_layer_batch_normalization(layer_params);
+    elif(layer_name == &#34;instance_normalization&#34;):
+        return custom_model_layer_instance_normalization(layer_params);
+    elif(layer_name == &#34;layer_normalization&#34;):
+        return custom_model_layer_layer_normalization(layer_params);
+
+    elif(layer_name == &#34;relu&#34;):
+        return custom_model_activation_relu(layer_params);
+    elif(layer_name == &#34;sigmoid&#34;):
+        return custom_model_activation_sigmoid(layer_params);
+    elif(layer_name == &#34;tanh&#34;):
+        return custom_model_activation_tanh(layer_params);
+    elif(layer_name == &#34;softplus&#34;):
+        return custom_model_activation_softplus(layer_params);
+    elif(layer_name == &#34;softsign&#34;):
+        return custom_model_activation_softsign(layer_params);
+
+    elif(layer_name == &#34;elu&#34;):
+        return custom_model_activation_elu(layer_params);
+    elif(layer_name == &#34;gelu&#34;):
+        return custom_model_activation_gelu(layer_params);
+    elif(layer_name == &#34;leaky_relu&#34;):
+        return custom_model_activation_leaky_relu(layer_params);
+    elif(layer_name == &#34;prelu&#34;):
+        return custom_model_activation_prelu(layer_params);
+    elif(layer_name == &#34;selu&#34;):
+        return custom_model_activation_selu(layer_params);
+    elif(layer_name == &#34;swish&#34;):
+        return custom_model_activation_swish(layer_params);</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_average_pooling1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_average_pooling1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_average_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.AvgPool1D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_average_pooling2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_average_pooling2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_average_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-average-pooling layer
+    &#39;&#39;&#39;
+
+    layer = nn.AvgPool2D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_average_pooling3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_average_pooling3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_average_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-average-pooling layer
+    &#39;&#39;&#39;
+
+    layer = nn.AvgPool3D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        count_include_pad=params[&#34;include_padding_in_calculation&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_batch_normalization"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_batch_normalization</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append batchnorm to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>netwrk</code> <code>layer</code>: <code>batchnorm</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_batch_normalization(params):
+    &#39;&#39;&#39;
+    Append batchnorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural netwrk layer: batchnorm layer
+    &#39;&#39;&#39;
+    layer = nn.BatchNorm(axis=1, 
+                        momentum=params[&#34;moving_average_momentum&#34;], 
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;], 
+                        use_global_stats=params[&#34;activate_scale_shift_operation&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_convolution1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_convolution1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_convolution1d(params):
+    &#39;&#39;&#39;
+    Append 1d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+
+    layer = nn.Conv1D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_convolution2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_convolution2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_convolution2d(params):
+    &#39;&#39;&#39;
+    Append 2d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+
+    layer = nn.Conv2D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_convolution3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_convolution3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_convolution3d(params):
+    &#39;&#39;&#39;
+    Append 3d-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;dilation&#34;]*(params[&#34;kernel_size&#34;] - 1) - params[&#34;stride&#34;] + 1)//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+        
+    layer = nn.Conv3D(params[&#34;output_channels&#34;], 
+                        params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;], 
+                        dilation=params[&#34;dilation&#34;], 
+                        groups=params[&#34;groups&#34;], 
+                        layout=params[&#34;layout&#34;], 
+                        activation=None, 
+                        use_bias=params[&#34;use_bias&#34;], 
+                        weight_initializer=None, 
+                        bias_initializer=&#39;zeros&#39;, 
+                        in_channels=0);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_dropout"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_dropout</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append dropout to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>dropout</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_dropout(params):
+    &#39;&#39;&#39;
+    Append dropout to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: dropout layer
+    &#39;&#39;&#39;
+    layer = nn.Dropout(params[&#34;drop_probability&#34;],
+                        axes=params[&#34;axes&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_flatten"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_flatten</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append flatten to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>flatten</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_flatten(params):
+    &#39;&#39;&#39;
+    Append flatten to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: flatten layer
+    &#39;&#39;&#39;
+    layer = nn.Flatten();
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_fully_connected"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_fully_connected</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append fc (dense) to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>fc</code> (<code>dense</code>) <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_fully_connected(params):
+    &#39;&#39;&#39;
+    Append fc (dense) to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: fc (dense) layer
+    &#39;&#39;&#39;
+    layer = nn.Dense(params[&#34;units&#34;], 
+                    activation=None, 
+                    use_bias=params[&#34;use_bias&#34;], 
+                    flatten=params[&#34;flatten&#34;], 
+                    dtype=&#39;float32&#39;, 
+                    weight_initializer=None, 
+                    bias_initializer=&#39;zeros&#39;, 
+                    in_units=0);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_average_pooling1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_average_pooling1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-global-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>global</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_average_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool1D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_average_pooling2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_average_pooling2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-global-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>global</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_average_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool2D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_average_pooling3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_average_pooling3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-global-average-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>global</code>-<code>average</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_average_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-global-average-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-global-average-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalAvgPool3D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_max_pooling1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_max_pooling1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-global-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>global</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_max_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool1D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_max_pooling2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_max_pooling2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-global-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>global</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_max_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool2D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_global_max_pooling3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_global_max_pooling3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-global-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>global</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_global_max_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-global-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-global-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.GlobalMaxPool3D(layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_identity"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_identity</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append idenity to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>idenity</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_identity(params):
+    &#39;&#39;&#39;
+    Append idenity to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: idenity layer
+    &#39;&#39;&#39;
+    layer = contrib_nn.Identity();
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_instance_normalization"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_instance_normalization</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append instancenorm to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>instancenorm</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_instance_normalization(params):
+    &#39;&#39;&#39;
+    Append instancenorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: instancenorm layer
+    &#39;&#39;&#39;
+    layer = nn.InstanceNorm(axis=1,
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_layer_normalization"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_layer_normalization</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append layernorm to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>layernorm</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_layer_normalization(params):
+    &#39;&#39;&#39;
+    Append layernorm to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: layernorm layer
+    &#39;&#39;&#39;
+    layer = nn.LayerNorm(axis=1, 
+                        epsilon=params[&#34;epsilon&#34;], 
+                        center=params[&#34;use_trainable_parameters&#34;],
+                        scale=params[&#34;use_trainable_parameters&#34;]);
+    return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_max_pooling1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_max_pooling1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_max_pooling1d(params):
+    &#39;&#39;&#39;
+    Append 1d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool1D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_max_pooling2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_max_pooling2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_max_pooling2d(params):
+    &#39;&#39;&#39;
+    Append 2d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool2D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_max_pooling3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_max_pooling3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-max-pooling to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>max</code>-<code>pooling</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_max_pooling3d(params):
+    &#39;&#39;&#39;
+    Append 3d-max-pooling to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-max-pooling layer
+    &#39;&#39;&#39;
+    layer = nn.MaxPool3D(pool_size=params[&#34;kernel_size&#34;], 
+                        strides=params[&#34;stride&#34;], 
+                        padding=params[&#34;padding&#34;],
+                        ceil_mode=params[&#34;ceil_mode&#34;],
+                        layout=params[&#34;layout&#34;]);
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_transposed_convolution1d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_transposed_convolution1d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 1d-transposed-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>1d</code>-<code>transposed</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_transposed_convolution1d(params):
+    &#39;&#39;&#39;
+    Append 1d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 1d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv1DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_transposed_convolution2d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_transposed_convolution2d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 2d-transposed-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>2d</code>-<code>transposed</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_transposed_convolution2d(params):
+    &#39;&#39;&#39;
+    Append 2d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 2d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv2DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.custom_model_layer_transposed_convolution3d"><code class="name flex">
+<span>def <span class="ident">custom_model_layer_transposed_convolution3d</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append 3d-transposed-convolution to custom network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>All layer parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code>: <code>3d</code>-<code>transposed</code>-<code>convolution</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_model_layer_transposed_convolution3d(params):
+    &#39;&#39;&#39;
+    Append 3d-transposed-convolution to custom network
+
+    Args:
+        params (dict): All layer parameters
+
+    Returns:
+        neural network layer: 3d-transposed-convolution layer
+    &#39;&#39;&#39;
+    if(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]==1):
+        params[&#34;padding&#34;] = (params[&#34;kernel_size&#34;] + params[&#34;output_padding&#34;])//2;
+    elif(params[&#34;padding&#34;] == &#34;in_eq_out&#34; and params[&#34;stride&#34;]!=1):
+        params[&#34;padding&#34;] = 0;
+    layer = nn.Conv3DTranspose(params[&#34;output_channels&#34;], 
+                                params[&#34;kernel_size&#34;], 
+                                strides=params[&#34;stride&#34;], 
+                                padding=params[&#34;padding&#34;], 
+                                dilation=params[&#34;dilation&#34;], 
+                                groups=params[&#34;groups&#34;], 
+                                layout=params[&#34;layout&#34;], 
+                                activation=None, 
+                                use_bias=params[&#34;use_bias&#34;], 
+                                weight_initializer=None, 
+                                bias_initializer=&#39;zeros&#39;, 
+                                in_channels=0)
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.get_layer"><code class="name flex">
+<span>def <span class="ident">get_layer</span></span>(<span>network_layer)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get layer for appending it to transfer learning base model</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_layer</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary conatining all params relating to the layer</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>neural</code> <code>network</code> <code>layer</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_layer(network_layer):
+    &#39;&#39;&#39;
+    Get layer for appending it to transfer learning base model
+
+    Args:
+        network_layer (dict): Dictionary conatining all params relating to the layer
+
+    Returns:
+        neural network layer
+    &#39;&#39;&#39;
+    layer_name = network_layer[&#34;name&#34;];
+    layer_params = network_layer[&#34;params&#34;];
+    num_ftrs = 0;
+    if(layer_name == &#34;linear&#34;):
+        layer = nn.Dense(layer_params[&#34;out_features&#34;], weight_initializer=init.Xavier());
+        num_ftrs = layer_params[&#34;out_features&#34;];
+
+    elif(layer_name == &#34;dropout&#34;):
+        layer = nn.Dropout(layer_params[&#34;p&#34;]);
+    
+    elif(layer_name == &#34;relu&#34;):
+        layer = nn.Activation(&#39;relu&#39;);
+
+    elif(layer_name == &#34;sigmoid&#34;):
+        layer = nn.Activation(&#39;sigmoid&#39;);
+
+    elif(layer_name == &#34;tanh&#34;):
+        layer = nn.Activation(&#39;tanh&#39;);
+
+    elif(layer_name == &#34;softplus&#34;):
+        layer = nn.Activation(&#39;softrelu&#39;);
+
+    elif(layer_name == &#34;leakyrelu&#34;):
+        layer = nn.LeakyReLU(alpha=layer_params[&#34;negative_slope&#34;]);
+
+    elif(layer_name == &#34;prelu&#34;):
+        layer = nn.PReLU(alpha_initializer=init.Xavier());
+
+    elif(layer_name == &#34;elu&#34;):
+        layer = nn.ELU(alpha=layer_params[&#34;alpha&#34;]);
+
+    elif(layer_name == &#34;selu&#34;):
+        layer = nn.SELU();
+
+    elif(layer_name == &#34;swish&#34;):
+        layer = nn.Swish(beta=layer_params[&#34;beta&#34;]);
+
+    return layer</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.layer_dropout"><code class="name flex">
+<span>def <span class="ident">layer_dropout</span></span>(<span>system_dict, probability=0.5, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append dropout layer to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>probability</code></strong> :&ensp;<code>float</code></dt>
+<dd>Droping probability of neurons in next layer</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Indicator that this layer marks the end of network.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def layer_dropout(system_dict, probability=0.5, final_layer=False):
+    &#39;&#39;&#39;
+    Append dropout layer to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        probability (float): Droping probability of neurons in next layer
+        final_layer (bool): Indicator that this layer marks the end of network.
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;dropout&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;p&#34;] = probability;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.layers.layer_linear"><code class="name flex">
+<span>def <span class="ident">layer_linear</span></span>(<span>system_dict, num_neurons=512, final_layer=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Append dense (fully connected) layer to base network in transfer learning</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dictionary storing experiment state and set variables</dd>
+<dt><strong><code>num_neurons</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of neurons in the dense layer</dd>
+<dt><strong><code>final_layer</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, then number of neurons are directly set as number of classes in dataset for single label type classification</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def layer_linear(system_dict, num_neurons=512, final_layer=False):
+    &#39;&#39;&#39;
+    Append dense (fully connected) layer to base network in transfer learning
+
+    Args:
+        system_dict (dict): System dictionary storing experiment state and set variables
+        num_neurons (int): Number of neurons in the dense layer
+        final_layer (bool): If True, then number of neurons are directly set as number of classes in dataset for single label type classification
+
+    Returns:
+        dict: updated system dict
+    &#39;&#39;&#39;
+    tmp = {};
+    tmp[&#34;name&#34;] = &#34;linear&#34;;
+    tmp[&#34;params&#34;] = {};
+    tmp[&#34;params&#34;][&#34;out_features&#34;] = num_neurons;
+    system_dict[&#34;model&#34;][&#34;custom_network&#34;].append(tmp);
+    system_dict[&#34;model&#34;][&#34;final_layer&#34;] = final_layer;
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.gluon.models.layers.addBlock"><code class="flex name class">
+<span>class <span class="ident">addBlock</span></span>
+<span>(</span><span>branches, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Class for creating a custom block (layer) representing elementwise addition</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>branches</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of layers to merge with elementwise addition</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class addBlock(nn.HybridBlock):
+    &#39;&#39;&#39;
+    Class for creating a custom block (layer) representing elementwise addition
+
+    Args:
+        branches (list): List of layers to merge with elementwise addition
+    &#39;&#39;&#39;
+    def __init__(self, branches, **kwargs):
+        super(addBlock, self).__init__(**kwargs)
+        self.child_names = [];     
+        
+        with self.name_scope():
+            for i in range(len(branches)):
+                vars(self)[&#34;body&#34; + str(i)] = nn.HybridSequential(prefix=&#39;&#39;);
+                for j in range(len(branches[i])):
+                    vars(self)[&#34;body&#34; + str(i)].add(branches[i][j]);
+                self.child_names.append(&#34;body&#34; + str(i));
+        
+        for i, child in enumerate(self.child_names):
+            setattr(self, &#39;body{0}&#39;.format(i), vars(self)[&#34;body&#34; + str(i)])
+        
+            
+    def hybrid_forward(self, F, x):
+        for i in range(len(self.child_names)):
+            if(i==0):
+                y = vars(self)[&#34;body&#34; + str(i)](x);
+            else:
+                y = y + vars(self)[&#34;body&#34; + str(i)](x);
+            
+        return y</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mxnet.gluon.block.HybridBlock</li>
+<li>mxnet.gluon.block.Block</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.gluon.models.layers.addBlock.hybrid_forward"><code class="name flex">
+<span>def <span class="ident">hybrid_forward</span></span>(<span>self, F, x)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Overrides to construct symbolic graph for this <code>Block</code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>Symbol</code> or <code>NDArray</code></dt>
+<dd>The first input tensor.</dd>
+<dt><strong><code>*args</code></strong> :&ensp;<code>list</code> of <code>Symbol</code> or <code>list</code> of <code>NDArray</code></dt>
+<dd>Additional input tensors.</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hybrid_forward(self, F, x):
+    for i in range(len(self.child_names)):
+        if(i==0):
+            y = vars(self)[&#34;body&#34; + str(i)](x);
+        else:
+            y = y + vars(self)[&#34;body&#34; + str(i)](x);
+        
+    return y</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.gluon.models" href="index.html">monk.gluon.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="monk.gluon.models.layers.activation_elu" href="#monk.gluon.models.layers.activation_elu">activation_elu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_leakyrelu" href="#monk.gluon.models.layers.activation_leakyrelu">activation_leakyrelu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_prelu" href="#monk.gluon.models.layers.activation_prelu">activation_prelu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_relu" href="#monk.gluon.models.layers.activation_relu">activation_relu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_selu" href="#monk.gluon.models.layers.activation_selu">activation_selu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_sigmoid" href="#monk.gluon.models.layers.activation_sigmoid">activation_sigmoid</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_softplus" href="#monk.gluon.models.layers.activation_softplus">activation_softplus</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_softsign" href="#monk.gluon.models.layers.activation_softsign">activation_softsign</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_swish" href="#monk.gluon.models.layers.activation_swish">activation_swish</a></code></li>
+<li><code><a title="monk.gluon.models.layers.activation_tanh" href="#monk.gluon.models.layers.activation_tanh">activation_tanh</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_elu" href="#monk.gluon.models.layers.custom_model_activation_elu">custom_model_activation_elu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_gelu" href="#monk.gluon.models.layers.custom_model_activation_gelu">custom_model_activation_gelu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_leaky_relu" href="#monk.gluon.models.layers.custom_model_activation_leaky_relu">custom_model_activation_leaky_relu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_prelu" href="#monk.gluon.models.layers.custom_model_activation_prelu">custom_model_activation_prelu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_relu" href="#monk.gluon.models.layers.custom_model_activation_relu">custom_model_activation_relu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_selu" href="#monk.gluon.models.layers.custom_model_activation_selu">custom_model_activation_selu</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_sigmoid" href="#monk.gluon.models.layers.custom_model_activation_sigmoid">custom_model_activation_sigmoid</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_softplus" href="#monk.gluon.models.layers.custom_model_activation_softplus">custom_model_activation_softplus</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_softsign" href="#monk.gluon.models.layers.custom_model_activation_softsign">custom_model_activation_softsign</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_swish" href="#monk.gluon.models.layers.custom_model_activation_swish">custom_model_activation_swish</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_activation_tanh" href="#monk.gluon.models.layers.custom_model_activation_tanh">custom_model_activation_tanh</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_get_layer" href="#monk.gluon.models.layers.custom_model_get_layer">custom_model_get_layer</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_average_pooling1d" href="#monk.gluon.models.layers.custom_model_layer_average_pooling1d">custom_model_layer_average_pooling1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_average_pooling2d" href="#monk.gluon.models.layers.custom_model_layer_average_pooling2d">custom_model_layer_average_pooling2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_average_pooling3d" href="#monk.gluon.models.layers.custom_model_layer_average_pooling3d">custom_model_layer_average_pooling3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_batch_normalization" href="#monk.gluon.models.layers.custom_model_layer_batch_normalization">custom_model_layer_batch_normalization</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_convolution1d" href="#monk.gluon.models.layers.custom_model_layer_convolution1d">custom_model_layer_convolution1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_convolution2d" href="#monk.gluon.models.layers.custom_model_layer_convolution2d">custom_model_layer_convolution2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_convolution3d" href="#monk.gluon.models.layers.custom_model_layer_convolution3d">custom_model_layer_convolution3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_dropout" href="#monk.gluon.models.layers.custom_model_layer_dropout">custom_model_layer_dropout</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_flatten" href="#monk.gluon.models.layers.custom_model_layer_flatten">custom_model_layer_flatten</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_fully_connected" href="#monk.gluon.models.layers.custom_model_layer_fully_connected">custom_model_layer_fully_connected</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_average_pooling1d" href="#monk.gluon.models.layers.custom_model_layer_global_average_pooling1d">custom_model_layer_global_average_pooling1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_average_pooling2d" href="#monk.gluon.models.layers.custom_model_layer_global_average_pooling2d">custom_model_layer_global_average_pooling2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_average_pooling3d" href="#monk.gluon.models.layers.custom_model_layer_global_average_pooling3d">custom_model_layer_global_average_pooling3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_max_pooling1d" href="#monk.gluon.models.layers.custom_model_layer_global_max_pooling1d">custom_model_layer_global_max_pooling1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_max_pooling2d" href="#monk.gluon.models.layers.custom_model_layer_global_max_pooling2d">custom_model_layer_global_max_pooling2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_global_max_pooling3d" href="#monk.gluon.models.layers.custom_model_layer_global_max_pooling3d">custom_model_layer_global_max_pooling3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_identity" href="#monk.gluon.models.layers.custom_model_layer_identity">custom_model_layer_identity</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_instance_normalization" href="#monk.gluon.models.layers.custom_model_layer_instance_normalization">custom_model_layer_instance_normalization</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_layer_normalization" href="#monk.gluon.models.layers.custom_model_layer_layer_normalization">custom_model_layer_layer_normalization</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_max_pooling1d" href="#monk.gluon.models.layers.custom_model_layer_max_pooling1d">custom_model_layer_max_pooling1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_max_pooling2d" href="#monk.gluon.models.layers.custom_model_layer_max_pooling2d">custom_model_layer_max_pooling2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_max_pooling3d" href="#monk.gluon.models.layers.custom_model_layer_max_pooling3d">custom_model_layer_max_pooling3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_transposed_convolution1d" href="#monk.gluon.models.layers.custom_model_layer_transposed_convolution1d">custom_model_layer_transposed_convolution1d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_transposed_convolution2d" href="#monk.gluon.models.layers.custom_model_layer_transposed_convolution2d">custom_model_layer_transposed_convolution2d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.custom_model_layer_transposed_convolution3d" href="#monk.gluon.models.layers.custom_model_layer_transposed_convolution3d">custom_model_layer_transposed_convolution3d</a></code></li>
+<li><code><a title="monk.gluon.models.layers.get_layer" href="#monk.gluon.models.layers.get_layer">get_layer</a></code></li>
+<li><code><a title="monk.gluon.models.layers.layer_dropout" href="#monk.gluon.models.layers.layer_dropout">layer_dropout</a></code></li>
+<li><code><a title="monk.gluon.models.layers.layer_linear" href="#monk.gluon.models.layers.layer_linear">layer_linear</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.gluon.models.layers.addBlock" href="#monk.gluon.models.layers.addBlock">addBlock</a></code></h4>
+<ul class="">
+<li><code><a title="monk.gluon.models.layers.addBlock.hybrid_forward" href="#monk.gluon.models.layers.addBlock.hybrid_forward">hybrid_forward</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

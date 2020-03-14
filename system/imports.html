@@ -1,0 +1,1820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.system.imports API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.system.imports</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os
+import sys
+import shutil
+import json
+import pandas as pd
+import numpy as np
+import logging
+import datetime
+import functools
+import inspect
+import string
+import warnings
+
+from pylg import TraceFunction
+from pylg import trace
+
+  
+class ArgumentValidationError(ValueError):
+    def __init__(self, arg_num, func_name, accepted_arg_type, given_arg_type, list_type):
+        if(list_type):
+            self.error = &#39;The {0} argument of {1}() is not in the list {2}, but is {3}&#39;.format(arg_num,
+                                                                         func_name,
+                                                                         accepted_arg_type,
+                                                                         given_arg_type)
+        else:
+            self.error = &#39;The {0} argument of {1}() is not a {2}, but is {3}&#39;.format(arg_num,
+                                                                     func_name,
+                                                                     accepted_arg_type,
+                                                                     given_arg_type)
+ 
+    def __str__(self):
+        return self.error
+ 
+ 
+ 
+class InvalidArgumentNumberError(ValueError):
+    def __init__(self, func_name):
+        self.error = &#39;Invalid number of arguments for {0}()&#39;.format(func_name)
+ 
+    def __str__(self):
+        return self.error
+ 
+ 
+ 
+class InvalidReturnType(ValueError):
+    def __init__(self, return_type, func_name):
+        self.error = &#39;Invalid return type {0} for {1}()&#39;.format(return_type,
+                                                                func_name)
+ 
+    def __str__(self):
+        return self.error
+
+
+
+def ordinal(num):
+    if 10 &lt;= num % 100 &lt; 20:
+        return &#39;{0}th&#39;.format(num)
+    else:
+        ord = {1 : &#39;st&#39;, 2 : &#39;nd&#39;, 3 : &#39;rd&#39;}.get(num % 10, &#39;th&#39;)
+        return &#39;{0}{1}&#39;.format(num, ord)
+
+
+def accepts(*accepted_arg_types, **accepted_arg_dicts): 
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(accepted_arg_types) is not len(accepted_arg_types):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+ 
+            # We&#39;re using enumerate to get the index, so we can pass the
+            # argument number with the incorrect type to ArgumentValidationError.
+            i = 0;
+            for arg_num, (actual_arg, accepted_arg_type) in enumerate(zip(function_args, accepted_arg_types)):
+                if(accepted_arg_type==&#34;self&#34;):
+                    continue;
+                if(type(accepted_arg_type)) == list:
+                    if type(actual_arg) not in accepted_arg_type:
+                        ord_num = ordinal(arg_num + 1)
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      True)
+                        else:
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      True)
+                else:     
+                    if not type(actual_arg) is accepted_arg_type:
+                        ord_num = ordinal(arg_num + 1)
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      False)
+                        else:
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      False)
+                i += 1;
+
+
+            keys = list(function_args_dicts.keys());
+            for i in range(len(keys)):
+                func_arg_type = type(function_args_dicts[keys[i]]);
+                accepted_arg_type = accepted_arg_dicts[keys[i]];
+                if(type(accepted_arg_type) == list):
+                    if(func_arg_type not in accepted_arg_type):
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      True)
+                        else:
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      True)
+                else:
+                    if(func_arg_type != accepted_arg_type):
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      False)
+                        else:
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      False)
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator
+
+
+
+
+class ConstraintError(ValueError):
+
+    def __init__(self, msg):
+        self.error = msg
+ 
+    def __str__(self):
+        return self.error
+
+
+
+def ConstraintWarning(msg):
+    warnings.warn(msg)
+
+
+
+
+def error_checks(*arg_constraints, **kwargs_constraints):
+
+    def check_gte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt; limit):
+                msg += &#34;Value expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_gt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt;= limit):
+                msg += &#34;Value expected to be strictly greater than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_lte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt; limit):
+                msg += &#34;Value expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_lt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt;= limit):
+                msg += &#34;Value expected to be strictly less than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_eq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value != limit):
+                msg += &#34;Value expected to be strictly equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_neq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value == limit):
+                msg += &#34;Value expected to be strictly not equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_in(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value not in limit):
+                msg += &#34;Value expected to be one among \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_nin(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value in limit):
+                msg += &#34;Value expected to be anything except \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_folder(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value)
+                raise ConstraintError(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    raise ConstraintError(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+
+
+    def check_file(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isfile(actual_value)):
+                msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value)
+                raise ConstraintError(msg);
+        
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isfile(actual_value[i])):
+                    msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    raise ConstraintError(msg);
+            
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+
+
+    def check_inc(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value) != actual_value):
+                msg += &#34;List expected to be incremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                raise ConstraintError(msg);
+
+    def check_dec(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value, reverse=True) != actual_value):
+                msg += &#34;List expected to be decremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                raise ConstraintError(msg);
+
+
+    def check_name(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            total_list = [];
+            for i in range(len(limit)):
+                if(limit[i] == &#34;a-z&#34;):
+                    total_list += list(string.ascii_lowercase)
+                elif(limit[i] == &#34;A-Z&#34;):
+                    total_list += list(string.ascii_uppercase)
+                elif(limit[i] == &#34;0-9&#34;):
+                    total_list += list(string.digits)
+                else:
+                    total_list += limit[i];
+            
+            actual_value = list(actual_value)
+            for j in range(len(actual_value)):
+                if(actual_value[j] not in total_list):
+                    msg += &#34;Character \&#34;{}\&#34; not allowed as per constrains \&#34;{}\&#34;&#34;.format(actual_value[j], limit);
+                    raise ConstraintError(msg);
+
+
+
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(arg_constraints) is not len(function_args):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+
+            if(kwargs_constraints[&#34;post_trace&#34;]):
+                function_name = validate_function.function.function.__name__;
+            else:
+                function_name = validate_function.__name__;
+
+            for arg_num, (actual_arg, arg_constraint) in enumerate(zip(function_args, arg_constraints)):
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+
+                                 
+
+
+            keys = list(function_args_dicts.keys());
+            for x in range(len(keys)):
+                actual_arg = function_args_dicts[keys[x]];
+                arg_constraint = kwargs_constraints[keys[x]];
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+
+
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator
+
+
+
+def warning_checks(*arg_constraints, **kwargs_constraints):
+
+    def check_gte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt; limit):
+                msg += &#34;Value expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+    def check_gt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt;= limit):
+                msg += &#34;Value expected to be strictly greater than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+
+    def check_lte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt; limit):
+                msg += &#34;Value expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+
+    def check_lt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt;= limit):
+                msg += &#34;Value expected to be strictly less than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+    def check_eq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value != limit):
+                msg += &#34;Value expected to be strictly equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_neq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value == limit):
+                msg += &#34;Value expected to be strictly not equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_in(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value not in limit):
+                msg += &#34;Value expected to be one among \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_nin(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value in limit):
+                msg += &#34;Value expected to be anything except \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_folder(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value)
+                ConstraintWarning(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    ConstraintWarning(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+
+
+    def check_file(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value)
+                ConstraintWarning(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    ConstraintWarning(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+
+
+    def check_inc(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value) != actual_value):
+                msg += &#34;List expected to be incremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                ConstraintWarning(msg);
+
+    def check_dec(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value, reverse=True) != actual_value):
+                msg += &#34;List expected to be decremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                ConstraintWarning(msg);
+
+
+    def check_name(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            total_list = [];
+            for i in range(len(limit)):
+                if(limit[i] == &#34;a-z&#34;):
+                    total_list += list(string.ascii_lowercase)
+                elif(limit[i] == &#34;A-Z&#34;):
+                    total_list += list(string.ascii_uppercase)
+                elif(limit[i] == &#34;0-9&#34;):
+                    total_list += list(string.digits)
+                else:
+                    total_list += limit[i];
+            
+            actual_value = list(actual_value)
+            for j in range(len(actual_value)):
+                if(actual_value[j] not in total_list):
+                    msg += &#34;Character \&#34;{}\&#34; not allowed as per constrains \&#34;{}\&#34;&#34;.format(actual_value[j], limit);
+                    ConstraintWarning(msg);
+
+
+
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(arg_constraints) is not len(function_args):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+
+            if(kwargs_constraints[&#34;post_trace&#34;]):
+                function_name = validate_function.function.function.__name__;
+            else:
+                function_name = validate_function.__name__;
+
+            for arg_num, (actual_arg, arg_constraint) in enumerate(zip(function_args, arg_constraints)):
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+
+                                 
+
+
+            keys = list(function_args_dicts.keys());
+            for x in range(len(keys)):
+                actual_arg = function_args_dicts[keys[x]];
+                arg_constraint = kwargs_constraints[keys[x]];
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+
+
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="monk.system.imports.ConstraintWarning"><code class="name flex">
+<span>def <span class="ident">ConstraintWarning</span></span>(<span>msg)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ConstraintWarning(msg):
+    warnings.warn(msg)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.imports.accepts"><code class="name flex">
+<span>def <span class="ident">accepts</span></span>(<span>*accepted_arg_types, **accepted_arg_dicts)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def accepts(*accepted_arg_types, **accepted_arg_dicts): 
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(accepted_arg_types) is not len(accepted_arg_types):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+ 
+            # We&#39;re using enumerate to get the index, so we can pass the
+            # argument number with the incorrect type to ArgumentValidationError.
+            i = 0;
+            for arg_num, (actual_arg, accepted_arg_type) in enumerate(zip(function_args, accepted_arg_types)):
+                if(accepted_arg_type==&#34;self&#34;):
+                    continue;
+                if(type(accepted_arg_type)) == list:
+                    if type(actual_arg) not in accepted_arg_type:
+                        ord_num = ordinal(arg_num + 1)
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      True)
+                        else:
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      True)
+                else:     
+                    if not type(actual_arg) is accepted_arg_type:
+                        ord_num = ordinal(arg_num + 1)
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      False)
+                        else:
+                            raise ArgumentValidationError(ord_num,
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      type(actual_arg),
+                                                      False)
+                i += 1;
+
+
+            keys = list(function_args_dicts.keys());
+            for i in range(len(keys)):
+                func_arg_type = type(function_args_dicts[keys[i]]);
+                accepted_arg_type = accepted_arg_dicts[keys[i]];
+                if(type(accepted_arg_type) == list):
+                    if(func_arg_type not in accepted_arg_type):
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      True)
+                        else:
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      True)
+                else:
+                    if(func_arg_type != accepted_arg_type):
+                        if(accepted_arg_dicts[&#34;post_trace&#34;]):
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.function.function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      False)
+                        else:
+                            raise ArgumentValidationError(keys[i],
+                                                      validate_function.__name__,
+                                                      accepted_arg_type,
+                                                      func_arg_type,
+                                                      False)
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator</code></pre>
+</details>
+</dd>
+<dt id="monk.system.imports.error_checks"><code class="name flex">
+<span>def <span class="ident">error_checks</span></span>(<span>*arg_constraints, **kwargs_constraints)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def error_checks(*arg_constraints, **kwargs_constraints):
+
+    def check_gte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt; limit):
+                msg += &#34;Value expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_gt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt;= limit):
+                msg += &#34;Value expected to be strictly greater than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_lte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt; limit):
+                msg += &#34;Value expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_lt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt;= limit):
+                msg += &#34;Value expected to be strictly less than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    raise ConstraintError(msg);
+
+
+
+    def check_eq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value != limit):
+                msg += &#34;Value expected to be strictly equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_neq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value == limit):
+                msg += &#34;Value expected to be strictly not equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_in(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value not in limit):
+                msg += &#34;Value expected to be one among \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_nin(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value in limit):
+                msg += &#34;Value expected to be anything except \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                raise ConstraintError(msg);
+
+    def check_folder(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value)
+                raise ConstraintError(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    raise ConstraintError(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+
+
+    def check_file(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isfile(actual_value)):
+                msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value)
+                raise ConstraintError(msg);
+        
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    raise ConstraintError(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isfile(actual_value[i])):
+                    msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    raise ConstraintError(msg);
+            
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        raise ConstraintError(msg);
+
+
+    def check_inc(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value) != actual_value):
+                msg += &#34;List expected to be incremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                raise ConstraintError(msg);
+
+    def check_dec(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value, reverse=True) != actual_value):
+                msg += &#34;List expected to be decremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                raise ConstraintError(msg);
+
+
+    def check_name(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            total_list = [];
+            for i in range(len(limit)):
+                if(limit[i] == &#34;a-z&#34;):
+                    total_list += list(string.ascii_lowercase)
+                elif(limit[i] == &#34;A-Z&#34;):
+                    total_list += list(string.ascii_uppercase)
+                elif(limit[i] == &#34;0-9&#34;):
+                    total_list += list(string.digits)
+                else:
+                    total_list += limit[i];
+            
+            actual_value = list(actual_value)
+            for j in range(len(actual_value)):
+                if(actual_value[j] not in total_list):
+                    msg += &#34;Character \&#34;{}\&#34; not allowed as per constrains \&#34;{}\&#34;&#34;.format(actual_value[j], limit);
+                    raise ConstraintError(msg);
+
+
+
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(arg_constraints) is not len(function_args):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+
+            if(kwargs_constraints[&#34;post_trace&#34;]):
+                function_name = validate_function.function.function.__name__;
+            else:
+                function_name = validate_function.__name__;
+
+            for arg_num, (actual_arg, arg_constraint) in enumerate(zip(function_args, arg_constraints)):
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+
+                                 
+
+
+            keys = list(function_args_dicts.keys());
+            for x in range(len(keys)):
+                actual_arg = function_args_dicts[keys[x]];
+                arg_constraint = kwargs_constraints[keys[x]];
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+
+
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator</code></pre>
+</details>
+</dd>
+<dt id="monk.system.imports.ordinal"><code class="name flex">
+<span>def <span class="ident">ordinal</span></span>(<span>num)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ordinal(num):
+    if 10 &lt;= num % 100 &lt; 20:
+        return &#39;{0}th&#39;.format(num)
+    else:
+        ord = {1 : &#39;st&#39;, 2 : &#39;nd&#39;, 3 : &#39;rd&#39;}.get(num % 10, &#39;th&#39;)
+        return &#39;{0}{1}&#39;.format(num, ord)</code></pre>
+</details>
+</dd>
+<dt id="monk.system.imports.warning_checks"><code class="name flex">
+<span>def <span class="ident">warning_checks</span></span>(<span>*arg_constraints, **kwargs_constraints)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def warning_checks(*arg_constraints, **kwargs_constraints):
+
+    def check_gte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt; limit):
+                msg += &#34;Value expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+    def check_gt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &lt;= limit):
+                msg += &#34;Value expected to be strictly greater than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &lt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly greater than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+
+    def check_lte(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt; limit):
+                msg += &#34;Value expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt; limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+
+    def check_lt(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float]):
+            if(actual_value &gt;= limit):
+                msg += &#34;Value expected to be strictly less than to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+        if(type(actual_value) in [list, tuple]):
+            for i in range(len(actual_value)):
+                if(actual_value[i] &gt;= limit):
+                    msg += &#34;List&#39;s arg number \&#34;{}\&#34; expected to be strictly less than equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(i+1, limit, actual_value[i]);
+                    ConstraintWarning(msg);
+
+
+    def check_eq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value != limit):
+                msg += &#34;Value expected to be strictly equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_neq(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in [int, float, str, list, tuple]):
+            if(actual_value == limit):
+                msg += &#34;Value expected to be strictly not equal to \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_in(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value not in limit):
+                msg += &#34;Value expected to be one among \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_nin(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) in list(map(type, limit))):
+            if(actual_value in limit):
+                msg += &#34;Value expected to be anything except \&#34;{}\&#34;, but is \&#34;{}\&#34;&#34;.format(limit, actual_value);
+                ConstraintWarning(msg);
+
+    def check_folder(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value)
+                ConstraintWarning(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;Folder \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    ConstraintWarning(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;Folder \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+
+
+    def check_file(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            if(not os.path.isdir(actual_value)):
+                msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value)
+                ConstraintWarning(msg);
+            if(limit == &#34;r&#34;):
+                if(not os.access(actual_value, os.R_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+            if(limit == &#34;w&#34;):
+                if(not os.access(actual_value, os.W_OK)):
+                    msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value)
+                    ConstraintWarning(msg);
+        if(type(actual_value) == list):
+            for i in range(len(actual_value)):
+                if(not os.path.isdir(actual_value[i])):
+                    msg = &#34;File \&#34;{}\&#34; not found&#34;.format(actual_value[i])
+                    ConstraintWarning(msg);
+                if(limit == &#34;r&#34;):
+                    if(not os.access(actual_value[i], os.R_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no read access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+                if(limit == &#34;w&#34;):
+                    if(not os.access(actual_value[i], os.W_OK)):
+                        msg = &#34;File \&#34;{}\&#34; has no write access&#34;.format(actual_value[i])
+                        ConstraintWarning(msg);
+
+
+    def check_inc(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value) != actual_value):
+                msg += &#34;List expected to be incremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                ConstraintWarning(msg);
+
+    def check_dec(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == list):
+            if(sorted(actual_value, reverse=True) != actual_value):
+                msg += &#34;List expected to be decremental, but is \&#34;{}\&#34;&#34;.format(actual_value);
+                ConstraintWarning(msg);
+
+
+    def check_name(actual_value, limit, function_name, arg_num=None, arg_name=None):
+        if(arg_num):
+            arg = arg_num;
+            msg = &#34;Constraint Mismatch for argument number \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(arg_name):
+            arg = arg_name;
+            msg = &#34;Constraint Mismatch for argument name \&#34;{}\&#34; in function \&#34;{}\&#34;.\n&#34;.format(arg, function_name);
+        if(type(actual_value) == str):
+            total_list = [];
+            for i in range(len(limit)):
+                if(limit[i] == &#34;a-z&#34;):
+                    total_list += list(string.ascii_lowercase)
+                elif(limit[i] == &#34;A-Z&#34;):
+                    total_list += list(string.ascii_uppercase)
+                elif(limit[i] == &#34;0-9&#34;):
+                    total_list += list(string.digits)
+                else:
+                    total_list += limit[i];
+            
+            actual_value = list(actual_value)
+            for j in range(len(actual_value)):
+                if(actual_value[j] not in total_list):
+                    msg += &#34;Character \&#34;{}\&#34; not allowed as per constrains \&#34;{}\&#34;&#34;.format(actual_value[j], limit);
+                    ConstraintWarning(msg);
+
+
+
+    def accept_decorator(validate_function):
+        @functools.wraps(validate_function)
+        def decorator_wrapper(*function_args, **function_args_dicts):
+            if len(arg_constraints) is not len(function_args):
+                raise InvalidArgumentNumberError(validate_function.__name__)
+
+            if(kwargs_constraints[&#34;post_trace&#34;]):
+                function_name = validate_function.function.function.__name__;
+            else:
+                function_name = validate_function.__name__;
+
+            for arg_num, (actual_arg, arg_constraint) in enumerate(zip(function_args, arg_constraints)):
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_num=arg_num+1);
+
+                                 
+
+
+            keys = list(function_args_dicts.keys());
+            for x in range(len(keys)):
+                actual_arg = function_args_dicts[keys[x]];
+                arg_constraint = kwargs_constraints[keys[x]];
+                if(arg_constraint):
+                    for i in range(len(arg_constraint)//2):
+                        if(arg_constraint[i*2] == &#34;gte&#34;):
+                            check_gte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;gt&#34;):
+                            check_gt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lte&#34;):
+                            check_lte(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;lt&#34;):
+                            check_lt(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;eq&#34;):
+                            check_eq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;neq&#34;):
+                            check_neq(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;in&#34;):
+                            check_in(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;nin&#34;):
+                            check_nin(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;folder&#34;):
+                            check_folder(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;file&#34;):
+                            check_file(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;inc&#34;):
+                            check_inc(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;dec&#34;):
+                            check_dec(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+                        if(arg_constraint[i*2] == &#34;name&#34;):
+                            check_name(actual_arg, arg_constraint[i*2+1], function_name, arg_name=keys[x]);
+
+
+
+            return validate_function(*function_args, **function_args_dicts)
+        return decorator_wrapper
+    return accept_decorator</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.system.imports.ArgumentValidationError"><code class="flex name class">
+<span>class <span class="ident">ArgumentValidationError</span></span>
+<span>(</span><span>arg_num, func_name, accepted_arg_type, given_arg_type, list_type)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Inappropriate argument value (of correct type).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ArgumentValidationError(ValueError):
+    def __init__(self, arg_num, func_name, accepted_arg_type, given_arg_type, list_type):
+        if(list_type):
+            self.error = &#39;The {0} argument of {1}() is not in the list {2}, but is {3}&#39;.format(arg_num,
+                                                                         func_name,
+                                                                         accepted_arg_type,
+                                                                         given_arg_type)
+        else:
+            self.error = &#39;The {0} argument of {1}() is not a {2}, but is {3}&#39;.format(arg_num,
+                                                                     func_name,
+                                                                     accepted_arg_type,
+                                                                     given_arg_type)
+ 
+    def __str__(self):
+        return self.error</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.ValueError</li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="monk.system.imports.ConstraintError"><code class="flex name class">
+<span>class <span class="ident">ConstraintError</span></span>
+<span>(</span><span>msg)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Inappropriate argument value (of correct type).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConstraintError(ValueError):
+
+    def __init__(self, msg):
+        self.error = msg
+ 
+    def __str__(self):
+        return self.error</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.ValueError</li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="monk.system.imports.InvalidArgumentNumberError"><code class="flex name class">
+<span>class <span class="ident">InvalidArgumentNumberError</span></span>
+<span>(</span><span>func_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Inappropriate argument value (of correct type).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InvalidArgumentNumberError(ValueError):
+    def __init__(self, func_name):
+        self.error = &#39;Invalid number of arguments for {0}()&#39;.format(func_name)
+ 
+    def __str__(self):
+        return self.error</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.ValueError</li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="monk.system.imports.InvalidReturnType"><code class="flex name class">
+<span>class <span class="ident">InvalidReturnType</span></span>
+<span>(</span><span>return_type, func_name)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Inappropriate argument value (of correct type).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InvalidReturnType(ValueError):
+    def __init__(self, return_type, func_name):
+        self.error = &#39;Invalid return type {0} for {1}()&#39;.format(return_type,
+                                                                func_name)
+ 
+    def __str__(self):
+        return self.error</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.ValueError</li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.system" href="index.html">monk.system</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="monk.system.imports.ConstraintWarning" href="#monk.system.imports.ConstraintWarning">ConstraintWarning</a></code></li>
+<li><code><a title="monk.system.imports.accepts" href="#monk.system.imports.accepts">accepts</a></code></li>
+<li><code><a title="monk.system.imports.error_checks" href="#monk.system.imports.error_checks">error_checks</a></code></li>
+<li><code><a title="monk.system.imports.ordinal" href="#monk.system.imports.ordinal">ordinal</a></code></li>
+<li><code><a title="monk.system.imports.warning_checks" href="#monk.system.imports.warning_checks">warning_checks</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.system.imports.ArgumentValidationError" href="#monk.system.imports.ArgumentValidationError">ArgumentValidationError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="monk.system.imports.ConstraintError" href="#monk.system.imports.ConstraintError">ConstraintError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="monk.system.imports.InvalidArgumentNumberError" href="#monk.system.imports.InvalidArgumentNumberError">InvalidArgumentNumberError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="monk.system.imports.InvalidReturnType" href="#monk.system.imports.InvalidReturnType">InvalidReturnType</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

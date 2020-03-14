@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.tf_keras_1.finetune.level_9_transforms_main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.tf_keras_1.finetune.level_9_transforms_main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from tf_keras_1.finetune.imports import *
+from system.imports import *
+
+from tf_keras_1.finetune.level_8_layers_main import prototype_layers
+
+
+class prototype_transforms(prototype_layers):
+    &#39;&#39;&#39;
+    Main class for all transforms in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+        tmp = {};
+        tmp[&#34;featurewise_center&#34;] = False;
+        tmp[&#34;featurewise_std_normalization&#34;] = False;
+        tmp[&#34;rotation_range&#34;] = 0;
+        tmp[&#34;width_shift_range&#34;] = 0;
+        tmp[&#34;height_shift_range&#34;] = 0;
+        tmp[&#34;shear_range&#34;] = 0;
+        tmp[&#34;zoom_range&#34;] = 0;
+        tmp[&#34;brightness_range&#34;] = None;
+        tmp[&#34;horizontal_flip&#34;] = False;
+        tmp[&#34;vertical_flip&#34;] = False;
+        tmp[&#34;mean&#34;] = False;
+        tmp[&#34;std&#34;] = False;
+
+        self.system_dict[&#34;local&#34;][&#34;transforms_train&#34;] = tmp;
+        self.system_dict[&#34;local&#34;][&#34;transforms_val&#34;] = tmp;
+        self.system_dict[&#34;local&#34;][&#34;transforms_test&#34;] = tmp;
+
+
+
+
+
+    ###############################################################################################################################################
+    def apply_color_jitter(self, brightness=0, contrast=0, saturation=0, hue=0, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply Color jittering transformations
+
+        Args:
+            brightness (float): Levels to jitter brightness.
+                                        0 - min
+                                        1 - max
+            contrast (float): Levels to jitter contrast.
+                                        0 - min
+                                        1 - max
+            saturation (float): Levels to jitter saturation.
+                                        0 - min
+                                        1 - max
+            hue (float): Levels to jitter hue.
+                                        0 - min
+                                        1 - max
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_color_jitter(self.system_dict, brightness, contrast, saturation, hue, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def apply_random_affine(self, degrees, translate=None, scale=None, shear=None, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random affine transformations
+
+        Args:
+            degrees (float): Max Rotation range limit for transforms
+            scale (float, list): Range for randomly scaling 
+            shear (float, list): Range for randomly applying sheer changes
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_affine(self.system_dict, degrees, translate, scale, shear, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_horizontal_flip(self, probability=0.5, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random horizontal flip transformations
+
+        Args:
+            probability (float): Probability of flipping the input image
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_horizontal_flip(self.system_dict, probability, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_vertical_flip(self, probability=0.5, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random vertical flip transformations
+
+        Args:
+            probability (float): Probability of flipping the input image
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_vertical_flip(self.system_dict, probability, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_rotation(self, degrees, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random rotation transformations
+
+        Args:
+            degrees (float): Max Rotation range limit for transforms
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_rotation(self.system_dict, degrees, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def apply_mean_subtraction(self, mean=[123, 116, 103], train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply mean subtraction
+
+        Args:
+            mean (float, list): Mean value for subtraction
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_mean_subtraction(self.system_dict, mean, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+
+    ###############################################################################################################################################
+    def apply_normalize(self, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply mean subtraction and standard normalization
+
+        Args:
+            mean (float, list): Mean value for subtraction
+            std (float, list): Normalization factor
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_normalize(self.system_dict, mean, std, train, val, test);
+    ###############################################################################################################################################</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms"><code class="flex name class">
+<span>class <span class="ident">prototype_transforms</span></span>
+<span>(</span><span>verbose=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main class for all transforms in expert mode</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verbose</code></strong> :&ensp;<code>int</code></dt>
+<dd>Set verbosity levels
+0 - Print Nothing
+1 - Print desired details</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class prototype_transforms(prototype_layers):
+    &#39;&#39;&#39;
+    Main class for all transforms in expert mode
+
+    Args:
+        verbose (int): Set verbosity levels
+                        0 - Print Nothing
+                        1 - Print desired details
+    &#39;&#39;&#39;
+
+
+    def __init__(self, verbose=1):
+        super().__init__(verbose=verbose);
+        tmp = {};
+        tmp[&#34;featurewise_center&#34;] = False;
+        tmp[&#34;featurewise_std_normalization&#34;] = False;
+        tmp[&#34;rotation_range&#34;] = 0;
+        tmp[&#34;width_shift_range&#34;] = 0;
+        tmp[&#34;height_shift_range&#34;] = 0;
+        tmp[&#34;shear_range&#34;] = 0;
+        tmp[&#34;zoom_range&#34;] = 0;
+        tmp[&#34;brightness_range&#34;] = None;
+        tmp[&#34;horizontal_flip&#34;] = False;
+        tmp[&#34;vertical_flip&#34;] = False;
+        tmp[&#34;mean&#34;] = False;
+        tmp[&#34;std&#34;] = False;
+
+        self.system_dict[&#34;local&#34;][&#34;transforms_train&#34;] = tmp;
+        self.system_dict[&#34;local&#34;][&#34;transforms_val&#34;] = tmp;
+        self.system_dict[&#34;local&#34;][&#34;transforms_test&#34;] = tmp;
+
+
+
+
+
+    ###############################################################################################################################################
+    def apply_color_jitter(self, brightness=0, contrast=0, saturation=0, hue=0, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply Color jittering transformations
+
+        Args:
+            brightness (float): Levels to jitter brightness.
+                                        0 - min
+                                        1 - max
+            contrast (float): Levels to jitter contrast.
+                                        0 - min
+                                        1 - max
+            saturation (float): Levels to jitter saturation.
+                                        0 - min
+                                        1 - max
+            hue (float): Levels to jitter hue.
+                                        0 - min
+                                        1 - max
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_color_jitter(self.system_dict, brightness, contrast, saturation, hue, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def apply_random_affine(self, degrees, translate=None, scale=None, shear=None, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random affine transformations
+
+        Args:
+            degrees (float): Max Rotation range limit for transforms
+            scale (float, list): Range for randomly scaling 
+            shear (float, list): Range for randomly applying sheer changes
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_affine(self.system_dict, degrees, translate, scale, shear, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_horizontal_flip(self, probability=0.5, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random horizontal flip transformations
+
+        Args:
+            probability (float): Probability of flipping the input image
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_horizontal_flip(self.system_dict, probability, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_vertical_flip(self, probability=0.5, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random vertical flip transformations
+
+        Args:
+            probability (float): Probability of flipping the input image
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_vertical_flip(self.system_dict, probability, train, val, test);
+    ###############################################################################################################################################
+
+
+
+    ###############################################################################################################################################
+    def apply_random_rotation(self, degrees, train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply random rotation transformations
+
+        Args:
+            degrees (float): Max Rotation range limit for transforms
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_random_rotation(self.system_dict, degrees, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+    ###############################################################################################################################################
+    def apply_mean_subtraction(self, mean=[123, 116, 103], train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply mean subtraction
+
+        Args:
+            mean (float, list): Mean value for subtraction
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_mean_subtraction(self.system_dict, mean, train, val, test);
+    ###############################################################################################################################################
+
+
+
+
+
+    ###############################################################################################################################################
+    def apply_normalize(self, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], train=False, val=False, test=False):
+        &#39;&#39;&#39;
+        Apply mean subtraction and standard normalization
+
+        Args:
+            mean (float, list): Mean value for subtraction
+            std (float, list): Normalization factor
+            train (bool): If True, transform applied to training data
+            val (bool): If True, transform applied to validation data
+            test (bool): If True, transform applied to testing/inferencing data
+
+        Returns:
+            None
+        &#39;&#39;&#39;
+        self.system_dict = transform_normalize(self.system_dict, mean, std, train, val, test);</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>tf_keras_1.finetune.level_8_layers_main.prototype_layers</li>
+<li>tf_keras_1.finetune.level_7_aux_main.prototype_aux</li>
+<li>tf_keras_1.finetune.level_6_params_main.prototype_params</li>
+<li>tf_keras_1.finetune.level_5_state_base.finetune_state</li>
+<li>tf_keras_1.finetune.level_4_evaluation_base.finetune_evaluation</li>
+<li>tf_keras_1.finetune.level_3_training_base.finetune_training</li>
+<li>tf_keras_1.finetune.level_2_model_base.finetune_model</li>
+<li>tf_keras_1.finetune.level_1_dataset_base.finetune_dataset</li>
+<li>system.base_class.system</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_color_jitter"><code class="name flex">
+<span>def <span class="ident">apply_color_jitter</span></span>(<span>self, brightness=0, contrast=0, saturation=0, hue=0, train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply Color jittering transformations</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>brightness</code></strong> :&ensp;<code>float</code></dt>
+<dd>Levels to jitter brightness.
+0 - min
+1 - max</dd>
+<dt><strong><code>contrast</code></strong> :&ensp;<code>float</code></dt>
+<dd>Levels to jitter contrast.
+0 - min
+1 - max</dd>
+<dt><strong><code>saturation</code></strong> :&ensp;<code>float</code></dt>
+<dd>Levels to jitter saturation.
+0 - min
+1 - max</dd>
+<dt><strong><code>hue</code></strong> :&ensp;<code>float</code></dt>
+<dd>Levels to jitter hue.
+0 - min
+1 - max</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_color_jitter(self, brightness=0, contrast=0, saturation=0, hue=0, train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply Color jittering transformations
+
+    Args:
+        brightness (float): Levels to jitter brightness.
+                                    0 - min
+                                    1 - max
+        contrast (float): Levels to jitter contrast.
+                                    0 - min
+                                    1 - max
+        saturation (float): Levels to jitter saturation.
+                                    0 - min
+                                    1 - max
+        hue (float): Levels to jitter hue.
+                                    0 - min
+                                    1 - max
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_color_jitter(self.system_dict, brightness, contrast, saturation, hue, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_mean_subtraction"><code class="name flex">
+<span>def <span class="ident">apply_mean_subtraction</span></span>(<span>self, mean=[123, 116, 103], train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply mean subtraction</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>mean</code></strong> :&ensp;<code>float</code>, <code>list</code></dt>
+<dd>Mean value for subtraction</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_mean_subtraction(self, mean=[123, 116, 103], train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply mean subtraction
+
+    Args:
+        mean (float, list): Mean value for subtraction
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_mean_subtraction(self.system_dict, mean, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_normalize"><code class="name flex">
+<span>def <span class="ident">apply_normalize</span></span>(<span>self, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply mean subtraction and standard normalization</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>mean</code></strong> :&ensp;<code>float</code>, <code>list</code></dt>
+<dd>Mean value for subtraction</dd>
+<dt><strong><code>std</code></strong> :&ensp;<code>float</code>, <code>list</code></dt>
+<dd>Normalization factor</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_normalize(self, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply mean subtraction and standard normalization
+
+    Args:
+        mean (float, list): Mean value for subtraction
+        std (float, list): Normalization factor
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_normalize(self.system_dict, mean, std, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_affine"><code class="name flex">
+<span>def <span class="ident">apply_random_affine</span></span>(<span>self, degrees, translate=None, scale=None, shear=None, train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply random affine transformations</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>degrees</code></strong> :&ensp;<code>float</code></dt>
+<dd>Max Rotation range limit for transforms</dd>
+<dt><strong><code>scale</code></strong> :&ensp;<code>float</code>, <code>list</code></dt>
+<dd>Range for randomly scaling </dd>
+<dt><strong><code>shear</code></strong> :&ensp;<code>float</code>, <code>list</code></dt>
+<dd>Range for randomly applying sheer changes</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_random_affine(self, degrees, translate=None, scale=None, shear=None, train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply random affine transformations
+
+    Args:
+        degrees (float): Max Rotation range limit for transforms
+        scale (float, list): Range for randomly scaling 
+        shear (float, list): Range for randomly applying sheer changes
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_random_affine(self.system_dict, degrees, translate, scale, shear, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_horizontal_flip"><code class="name flex">
+<span>def <span class="ident">apply_random_horizontal_flip</span></span>(<span>self, probability=0.5, train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply random horizontal flip transformations</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>probability</code></strong> :&ensp;<code>float</code></dt>
+<dd>Probability of flipping the input image</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_random_horizontal_flip(self, probability=0.5, train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply random horizontal flip transformations
+
+    Args:
+        probability (float): Probability of flipping the input image
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_random_horizontal_flip(self.system_dict, probability, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_rotation"><code class="name flex">
+<span>def <span class="ident">apply_random_rotation</span></span>(<span>self, degrees, train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply random rotation transformations</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>degrees</code></strong> :&ensp;<code>float</code></dt>
+<dd>Max Rotation range limit for transforms</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_random_rotation(self, degrees, train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply random rotation transformations
+
+    Args:
+        degrees (float): Max Rotation range limit for transforms
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_random_rotation(self.system_dict, degrees, train, val, test);</code></pre>
+</details>
+</dd>
+<dt id="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_vertical_flip"><code class="name flex">
+<span>def <span class="ident">apply_random_vertical_flip</span></span>(<span>self, probability=0.5, train=False, val=False, test=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Apply random vertical flip transformations</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>probability</code></strong> :&ensp;<code>float</code></dt>
+<dd>Probability of flipping the input image</dd>
+<dt><strong><code>train</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to training data</dd>
+<dt><strong><code>val</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to validation data</dd>
+<dt><strong><code>test</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, transform applied to testing/inferencing data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def apply_random_vertical_flip(self, probability=0.5, train=False, val=False, test=False):
+    &#39;&#39;&#39;
+    Apply random vertical flip transformations
+
+    Args:
+        probability (float): Probability of flipping the input image
+        train (bool): If True, transform applied to training data
+        val (bool): If True, transform applied to validation data
+        test (bool): If True, transform applied to testing/inferencing data
+
+    Returns:
+        None
+    &#39;&#39;&#39;
+    self.system_dict = transform_random_vertical_flip(self.system_dict, probability, train, val, test);</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.tf_keras_1.finetune" href="index.html">monk.tf_keras_1.finetune</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms">prototype_transforms</a></code></h4>
+<ul class="">
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_color_jitter" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_color_jitter">apply_color_jitter</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_mean_subtraction" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_mean_subtraction">apply_mean_subtraction</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_normalize" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_normalize">apply_normalize</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_affine" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_affine">apply_random_affine</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_horizontal_flip" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_horizontal_flip">apply_random_horizontal_flip</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_rotation" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_rotation">apply_random_rotation</a></code></li>
+<li><code><a title="monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_vertical_flip" href="#monk.tf_keras_1.finetune.level_9_transforms_main.prototype_transforms.apply_random_vertical_flip">apply_random_vertical_flip</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

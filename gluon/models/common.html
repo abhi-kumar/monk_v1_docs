@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.2" />
+<title>monk.gluon.models.common API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>monk.gluon.models.common</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from gluon.models.imports import *
+from system.imports import *
+from gluon.models.layers import get_layer
+
+
+
+def set_parameter_requires_grad(finetune_net, freeze_base_network):
+    &#39;&#39;&#39;
+    Freeze based network as per params set
+
+    Args:
+        finetune_net (network): Model network
+        freeze_base_network (bool): If True, all trainable params are freezed
+
+    Returns:
+        network: Updated Model network
+    &#39;&#39;&#39;
+    if(freeze_base_network):
+        for param in finetune_net.collect_params().values():
+            param.grad_req = &#39;null&#39;;
+    return finetune_net
+
+
+
+def get_final_layer(network_layer, activation=&#39;relu&#39;):
+    &#39;&#39;&#39;
+    Setup final layer
+
+    Args:
+        network_layer (dict): Dictionary containing all parameters for layer
+        activation (str): Activation function to use  
+                            - Available functions: &#39;relu&#39;, &#39;sigmoid&#39;, &#39;tanh&#39;, &#39;softrelu&#39;, &#39;softsign&#39;
+
+    Returns:
+        layer: Designed layer
+    &#39;&#39;&#39;
+    act_list = [&#39;relu&#39;, &#39;sigmoid&#39;, &#39;tanh&#39;, &#39;softrelu&#39;, &#39;softsign&#39;];
+
+    if(activation not in act_list):
+        print(&#34;Final activation must be in set: {}&#34;.format(act_list));
+        print(&#34;&#34;);
+    else:
+        layer = nn.Dense(network_layer[&#34;params&#34;][&#34;out_features&#34;], weight_initializer=init.Xavier(), activation=activation);
+        return layer;
+
+
+
+def create_final_layer(finetune_net, custom_network, num_classes, set=1):
+    &#39;&#39;&#39;
+    Create final sub-network 
+
+    Args:
+        finetune_net (network): Initial base network
+        custom_network (list):  List of dicts containing details on appeded layers to base netwoek in transfer learning
+        num_classes (int): Number of classes in the dataset
+        set (int): Select the right set to find the details of outermost layer
+
+    Returns:
+        network: Updated base network with appended custom additions
+    &#39;&#39;&#39;
+    last_layer_name = custom_network[len(custom_network)-1][&#34;name&#34;];
+
+    if(set==1):
+        if(last_layer_name == &#34;linear&#34;):
+            with finetune_net.name_scope():
+                for i in range(len(custom_network)-1):
+                    layer = get_layer(custom_network[i]);
+                    finetune_net.features.add(layer);
+                    finetune_net.features[len(finetune_net.features)-1].initialize(init.Xavier(), ctx = ctx);
+                finetune_net.output = get_layer(custom_network[len(custom_network)-1])
+                finetune_net.output.initialize(init.Xavier(), ctx = ctx)
+        else:
+            with finetune_net.name_scope():
+                for i in range(len(custom_network)-2):
+                    layer = get_layer(custom_network[i]);
+                    finetune_net.features.add(layer);
+                    finetune_net.features[len(finetune_net.features)-1].initialize(init.Xavier(), ctx = ctx);
+                finetune_net.output = get_final_layer(custom_network[len(custom_network)-2], activation=custom_network[len(custom_network)-1][&#39;name&#39;]);
+                finetune_net.output.initialize(init.Xavier(), ctx = ctx)
+
+
+    if(set==2):
+        net = nn.HybridSequential();
+        with net.name_scope():
+            for i in range(len(custom_network)):
+                layer = get_layer(custom_network[i]);
+                net.add(layer);
+        with finetune_net.name_scope():
+            finetune_net.output = net; 
+            finetune_net.output.initialize(init.Xavier(), ctx = ctx) 
+
+
+    if(set==3):
+        msg = &#34;Custom model addition for - Set 3 models: Not Implemented.\n&#34;;
+        msg += &#34;Set 3 models - {}\n&#34;.format(set3);
+        msg += &#34;Ignoring added layers\n&#34;;
+        ConstraintWarning(msg);
+
+    return finetune_net;
+
+
+
+
+def model_to_device(system_dict):
+    &#39;&#39;&#39;
+    Load model weights on device - cpu or gpu 
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    GPUs = GPUtil.getGPUs()
+    if(len(GPUs)==0):
+        system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.cpu()];
+    else:
+        if(system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_gpu&#34;]):
+            system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.gpu(0)];
+        else:
+            system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.cpu()];
+
+    system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().reset_ctx(system_dict[&#34;local&#34;][&#34;ctx&#34;])
+    system_dict[&#34;local&#34;][&#34;model&#34;].hybridize()
+
+    return system_dict;
+
+
+
+def print_grad_stats(system_dict):
+    &#39;&#39;&#39;
+    Print details on which layers are trainable
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        None 
+    &#39;&#39;&#39;
+    print(&#34;Model - Gradient Statistics&#34;);
+    i = 1;
+    for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+        if(i%2 != 0):
+            print(&#34;    {}. {} Trainable - {}&#34;.format(i//2+1, param, param.grad_req ));
+        i += 1;
+    print(&#34;&#34;);
+
+
+
+def get_num_layers(system_dict):
+    &#39;&#39;&#39;
+    Get number of potentially trainable layers
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        num_layers = 0;
+        complete_list = [];
+        for names in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().keys():
+            layer_name = &#39;_&#39;.join(names.split(&#34;_&#34;)[:-1]);
+            if(&#34;running&#34; in layer_name):
+                layer_name = &#39;_&#39;.join(layer_name.split(&#34;_&#34;)[:-1]);
+            if(layer_name not in complete_list):
+                complete_list.append(layer_name);
+        system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_layers&#34;] = len(np.unique(complete_list));
+        return system_dict;
+    else:
+        num_layers = 0;
+        complete_list = [];
+        for names in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().keys():
+            complete_list.append(names.split(&#34;_&#34;)[0]);
+        system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_layers&#34;] = len(np.unique(complete_list));
+        return system_dict;
+
+
+
+
+def freeze_layers(num, system_dict):
+    &#39;&#39;&#39;
+    Main function responsible to freeze layers in network
+
+    Args:
+        num (int): Number of layers to freeze
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        num_freeze = num;
+        num_freezed = 0;
+        training_list = system_dict[&#34;local&#34;][&#34;params_to_update&#34;];
+
+        grad_req= &#34;null&#34;;
+        current_name = training_list[0];
+        complete_list = [];
+        for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            layer_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+            if(&#34;running&#34; in layer_name):
+                layer_name = &#39;_&#39;.join(layer_name.split(&#34;_&#34;)[:-1]);
+            if(layer_name not in complete_list):
+                num_freezed += 1;
+                if(num_freezed == num_freeze):
+                    grad_req = &#34;write&#34;;
+                param.grad_req = grad_req;
+                complete_list.append(layer_name)
+            else:
+                param.grad_req = grad_req;
+
+        current_name = &#34;&#34;;
+        ip = 0;
+        system_dict[&#34;local&#34;][&#34;params_to_update&#34;] = [];
+        complete_list = [];
+        for param in self.system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(ip==0):
+                current_name = param.name.split(&#34;_&#34;)[0];
+                if(&#34;running&#34; in current_name):
+                    current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                if(param.grad_req == &#34;write&#34;):
+                    if(current_name not in complete_list):
+                        complete_list.append(current_name);
+                    self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            else:
+                if(current_name != param.name.split(&#34;_&#34;)[0]):
+                    current_name = param.name.split(&#34;_&#34;)[0];
+                    if(&#34;running&#34; in current_name):
+                        current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                    if(param.grad_req == &#34;write&#34;):
+                        if(current_name not in complete_list):
+                            complete_list.append(current_name);
+                        self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            ip += 1;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_params_to_update&#34;] = len(complete_list);
+        system_dict[&#34;model&#34;][&#34;status&#34;] = True;
+
+        return system_dict;
+
+    else:
+        num_freeze = num;
+        num_freezed = 0;
+        training_list = system_dict[&#34;local&#34;][&#34;params_to_update&#34;];
+
+
+        current_name = training_list[0];
+        for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(current_name != param.name.split(&#34;_&#34;)[0]):
+                num_freezed += 1;
+                if(num_freezed == num_freeze):
+                    break;
+                param.grad_req = &#34;null&#34;;
+                current_name = param.name.split(&#34;_&#34;)[0];
+            else:
+                param.grad_req = &#34;null&#34;;
+
+
+        current_name = &#34;&#34;;
+        ip = 0;
+        system_dict[&#34;local&#34;][&#34;params_to_update&#34;] = [];
+        complete_list = [];
+        for param in self.system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(ip==0):
+                current_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+                if(&#34;running&#34; in current_name):
+                    current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                if(param.grad_req == &#34;write&#34;):
+                    if(current_name not in complete_list):
+                        complete_list.append(current_name);
+                    self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            else:
+                if(current_name != &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1])):
+                    current_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+                    if(&#34;running&#34; in current_name):
+                        current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                    if(param.grad_req == &#34;write&#34;):
+                        if(current_name not in complete_list):
+                            complete_list.append(current_name);
+                        self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            ip += 1;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_params_to_update&#34;] = len(self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;]);
+        system_dict[&#34;model&#34;][&#34;status&#34;] = True;
+
+
+
+        return system_dict;
+
+
+def get_layer_uid(network_stack, count):
+    &#39;&#39;&#39;
+    Get a unique name for layer in custom network development
+
+    Args:
+        network_stack (list): List of list containing custom network details
+        count (dict): a unique dictionary mapping number of every type of layer in the network
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        str: layer unique name
+        dict: updated layer type mapper count
+    &#39;&#39;&#39;
+    if network_stack[&#34;uid&#34;]:
+        return network_stack[&#34;uid&#34;], count;
+    else:
+        index = layer_names.index(network_stack[&#34;name&#34;]);
+        network_name = names[index] + str(count[index]);
+        count[index] += 1;
+        return network_name, count;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="monk.gluon.models.common.create_final_layer"><code class="name flex">
+<span>def <span class="ident">create_final_layer</span></span>(<span>finetune_net, custom_network, num_classes, set=1)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create final sub-network </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>finetune_net</code></strong> :&ensp;<code>network</code></dt>
+<dd>Initial base network</dd>
+<dt><strong><code>custom_network</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of dicts containing details on appeded layers to base netwoek in transfer learning</dd>
+<dt><strong><code>num_classes</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of classes in the dataset</dd>
+<dt><strong><code>set</code></strong> :&ensp;<code>int</code></dt>
+<dd>Select the right set to find the details of outermost layer</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>network</code></strong></dt>
+<dd>Updated base network with appended custom additions</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_final_layer(finetune_net, custom_network, num_classes, set=1):
+    &#39;&#39;&#39;
+    Create final sub-network 
+
+    Args:
+        finetune_net (network): Initial base network
+        custom_network (list):  List of dicts containing details on appeded layers to base netwoek in transfer learning
+        num_classes (int): Number of classes in the dataset
+        set (int): Select the right set to find the details of outermost layer
+
+    Returns:
+        network: Updated base network with appended custom additions
+    &#39;&#39;&#39;
+    last_layer_name = custom_network[len(custom_network)-1][&#34;name&#34;];
+
+    if(set==1):
+        if(last_layer_name == &#34;linear&#34;):
+            with finetune_net.name_scope():
+                for i in range(len(custom_network)-1):
+                    layer = get_layer(custom_network[i]);
+                    finetune_net.features.add(layer);
+                    finetune_net.features[len(finetune_net.features)-1].initialize(init.Xavier(), ctx = ctx);
+                finetune_net.output = get_layer(custom_network[len(custom_network)-1])
+                finetune_net.output.initialize(init.Xavier(), ctx = ctx)
+        else:
+            with finetune_net.name_scope():
+                for i in range(len(custom_network)-2):
+                    layer = get_layer(custom_network[i]);
+                    finetune_net.features.add(layer);
+                    finetune_net.features[len(finetune_net.features)-1].initialize(init.Xavier(), ctx = ctx);
+                finetune_net.output = get_final_layer(custom_network[len(custom_network)-2], activation=custom_network[len(custom_network)-1][&#39;name&#39;]);
+                finetune_net.output.initialize(init.Xavier(), ctx = ctx)
+
+
+    if(set==2):
+        net = nn.HybridSequential();
+        with net.name_scope():
+            for i in range(len(custom_network)):
+                layer = get_layer(custom_network[i]);
+                net.add(layer);
+        with finetune_net.name_scope():
+            finetune_net.output = net; 
+            finetune_net.output.initialize(init.Xavier(), ctx = ctx) 
+
+
+    if(set==3):
+        msg = &#34;Custom model addition for - Set 3 models: Not Implemented.\n&#34;;
+        msg += &#34;Set 3 models - {}\n&#34;.format(set3);
+        msg += &#34;Ignoring added layers\n&#34;;
+        ConstraintWarning(msg);
+
+    return finetune_net;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.freeze_layers"><code class="name flex">
+<span>def <span class="ident">freeze_layers</span></span>(<span>num, system_dict)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Main function responsible to freeze layers in network</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of layers to freeze</dd>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dict containing system state and parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>Updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def freeze_layers(num, system_dict):
+    &#39;&#39;&#39;
+    Main function responsible to freeze layers in network
+
+    Args:
+        num (int): Number of layers to freeze
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        num_freeze = num;
+        num_freezed = 0;
+        training_list = system_dict[&#34;local&#34;][&#34;params_to_update&#34;];
+
+        grad_req= &#34;null&#34;;
+        current_name = training_list[0];
+        complete_list = [];
+        for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            layer_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+            if(&#34;running&#34; in layer_name):
+                layer_name = &#39;_&#39;.join(layer_name.split(&#34;_&#34;)[:-1]);
+            if(layer_name not in complete_list):
+                num_freezed += 1;
+                if(num_freezed == num_freeze):
+                    grad_req = &#34;write&#34;;
+                param.grad_req = grad_req;
+                complete_list.append(layer_name)
+            else:
+                param.grad_req = grad_req;
+
+        current_name = &#34;&#34;;
+        ip = 0;
+        system_dict[&#34;local&#34;][&#34;params_to_update&#34;] = [];
+        complete_list = [];
+        for param in self.system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(ip==0):
+                current_name = param.name.split(&#34;_&#34;)[0];
+                if(&#34;running&#34; in current_name):
+                    current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                if(param.grad_req == &#34;write&#34;):
+                    if(current_name not in complete_list):
+                        complete_list.append(current_name);
+                    self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            else:
+                if(current_name != param.name.split(&#34;_&#34;)[0]):
+                    current_name = param.name.split(&#34;_&#34;)[0];
+                    if(&#34;running&#34; in current_name):
+                        current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                    if(param.grad_req == &#34;write&#34;):
+                        if(current_name not in complete_list):
+                            complete_list.append(current_name);
+                        self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            ip += 1;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_params_to_update&#34;] = len(complete_list);
+        system_dict[&#34;model&#34;][&#34;status&#34;] = True;
+
+        return system_dict;
+
+    else:
+        num_freeze = num;
+        num_freezed = 0;
+        training_list = system_dict[&#34;local&#34;][&#34;params_to_update&#34;];
+
+
+        current_name = training_list[0];
+        for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(current_name != param.name.split(&#34;_&#34;)[0]):
+                num_freezed += 1;
+                if(num_freezed == num_freeze):
+                    break;
+                param.grad_req = &#34;null&#34;;
+                current_name = param.name.split(&#34;_&#34;)[0];
+            else:
+                param.grad_req = &#34;null&#34;;
+
+
+        current_name = &#34;&#34;;
+        ip = 0;
+        system_dict[&#34;local&#34;][&#34;params_to_update&#34;] = [];
+        complete_list = [];
+        for param in self.system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+            if(ip==0):
+                current_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+                if(&#34;running&#34; in current_name):
+                    current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                if(param.grad_req == &#34;write&#34;):
+                    if(current_name not in complete_list):
+                        complete_list.append(current_name);
+                    self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            else:
+                if(current_name != &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1])):
+                    current_name = &#39;_&#39;.join(param.name.split(&#34;_&#34;)[:-1]);
+                    if(&#34;running&#34; in current_name):
+                        current_name = &#39;_&#39;.join(current_name.split(&#34;_&#34;)[:-1]);
+                    if(param.grad_req == &#34;write&#34;):
+                        if(current_name not in complete_list):
+                            complete_list.append(current_name);
+                        self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;].append(current_name);
+            ip += 1;
+        self.system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_params_to_update&#34;] = len(self.system_dict[&#34;local&#34;][&#34;params_to_update&#34;]);
+        system_dict[&#34;model&#34;][&#34;status&#34;] = True;
+
+
+
+        return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.get_final_layer"><code class="name flex">
+<span>def <span class="ident">get_final_layer</span></span>(<span>network_layer, activation='relu')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Setup final layer</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_layer</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary containing all parameters for layer</dd>
+<dt><strong><code>activation</code></strong> :&ensp;<code>str</code></dt>
+<dd>Activation function to use<br>
+- Available functions: 'relu', 'sigmoid', 'tanh', 'softrelu', 'softsign'</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>layer</code></strong></dt>
+<dd>Designed layer</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_final_layer(network_layer, activation=&#39;relu&#39;):
+    &#39;&#39;&#39;
+    Setup final layer
+
+    Args:
+        network_layer (dict): Dictionary containing all parameters for layer
+        activation (str): Activation function to use  
+                            - Available functions: &#39;relu&#39;, &#39;sigmoid&#39;, &#39;tanh&#39;, &#39;softrelu&#39;, &#39;softsign&#39;
+
+    Returns:
+        layer: Designed layer
+    &#39;&#39;&#39;
+    act_list = [&#39;relu&#39;, &#39;sigmoid&#39;, &#39;tanh&#39;, &#39;softrelu&#39;, &#39;softsign&#39;];
+
+    if(activation not in act_list):
+        print(&#34;Final activation must be in set: {}&#34;.format(act_list));
+        print(&#34;&#34;);
+    else:
+        layer = nn.Dense(network_layer[&#34;params&#34;][&#34;out_features&#34;], weight_initializer=init.Xavier(), activation=activation);
+        return layer;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.get_layer_uid"><code class="name flex">
+<span>def <span class="ident">get_layer_uid</span></span>(<span>network_stack, count)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get a unique name for layer in custom network development</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>network_stack</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of list containing custom network details</dd>
+<dt><strong><code>count</code></strong> :&ensp;<code>dict</code></dt>
+<dd>a unique dictionary mapping number of every type of layer in the network</dd>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dict containing system state and parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>str</code></strong></dt>
+<dd>layer unique name</dd>
+<dt><strong><code>dict</code></strong></dt>
+<dd>updated layer type mapper count</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_layer_uid(network_stack, count):
+    &#39;&#39;&#39;
+    Get a unique name for layer in custom network development
+
+    Args:
+        network_stack (list): List of list containing custom network details
+        count (dict): a unique dictionary mapping number of every type of layer in the network
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        str: layer unique name
+        dict: updated layer type mapper count
+    &#39;&#39;&#39;
+    if network_stack[&#34;uid&#34;]:
+        return network_stack[&#34;uid&#34;], count;
+    else:
+        index = layer_names.index(network_stack[&#34;name&#34;]);
+        network_name = names[index] + str(count[index]);
+        count[index] += 1;
+        return network_name, count;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.get_num_layers"><code class="name flex">
+<span>def <span class="ident">get_num_layers</span></span>(<span>system_dict)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get number of potentially trainable layers</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dict containing system state and parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>Updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_num_layers(system_dict):
+    &#39;&#39;&#39;
+    Get number of potentially trainable layers
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    if(system_dict[&#34;model&#34;][&#34;type&#34;] == &#34;pretrained&#34;):
+        num_layers = 0;
+        complete_list = [];
+        for names in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().keys():
+            layer_name = &#39;_&#39;.join(names.split(&#34;_&#34;)[:-1]);
+            if(&#34;running&#34; in layer_name):
+                layer_name = &#39;_&#39;.join(layer_name.split(&#34;_&#34;)[:-1]);
+            if(layer_name not in complete_list):
+                complete_list.append(layer_name);
+        system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_layers&#34;] = len(np.unique(complete_list));
+        return system_dict;
+    else:
+        num_layers = 0;
+        complete_list = [];
+        for names in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().keys():
+            complete_list.append(names.split(&#34;_&#34;)[0]);
+        system_dict[&#34;model&#34;][&#34;params&#34;][&#34;num_layers&#34;] = len(np.unique(complete_list));
+        return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.model_to_device"><code class="name flex">
+<span>def <span class="ident">model_to_device</span></span>(<span>system_dict)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Load model weights on device - cpu or gpu </p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dict containing system state and parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>dict</code></strong></dt>
+<dd>Updated system dict</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def model_to_device(system_dict):
+    &#39;&#39;&#39;
+    Load model weights on device - cpu or gpu 
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        dict: Updated system dict 
+    &#39;&#39;&#39;
+    GPUs = GPUtil.getGPUs()
+    if(len(GPUs)==0):
+        system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.cpu()];
+    else:
+        if(system_dict[&#34;model&#34;][&#34;params&#34;][&#34;use_gpu&#34;]):
+            system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.gpu(0)];
+        else:
+            system_dict[&#34;local&#34;][&#34;ctx&#34;] = [mx.cpu()];
+
+    system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().reset_ctx(system_dict[&#34;local&#34;][&#34;ctx&#34;])
+    system_dict[&#34;local&#34;][&#34;model&#34;].hybridize()
+
+    return system_dict;</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.print_grad_stats"><code class="name flex">
+<span>def <span class="ident">print_grad_stats</span></span>(<span>system_dict)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Print details on which layers are trainable</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>system_dict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>System dict containing system state and parameters</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_grad_stats(system_dict):
+    &#39;&#39;&#39;
+    Print details on which layers are trainable
+
+    Args:
+        system_dict (dict): System dict containing system state and parameters
+
+    Returns:
+        None 
+    &#39;&#39;&#39;
+    print(&#34;Model - Gradient Statistics&#34;);
+    i = 1;
+    for param in system_dict[&#34;local&#34;][&#34;model&#34;].collect_params().values():
+        if(i%2 != 0):
+            print(&#34;    {}. {} Trainable - {}&#34;.format(i//2+1, param, param.grad_req ));
+        i += 1;
+    print(&#34;&#34;);</code></pre>
+</details>
+</dd>
+<dt id="monk.gluon.models.common.set_parameter_requires_grad"><code class="name flex">
+<span>def <span class="ident">set_parameter_requires_grad</span></span>(<span>finetune_net, freeze_base_network)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Freeze based network as per params set</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>finetune_net</code></strong> :&ensp;<code>network</code></dt>
+<dd>Model network</dd>
+<dt><strong><code>freeze_base_network</code></strong> :&ensp;<code>bool</code></dt>
+<dd>If True, all trainable params are freezed</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>network</code></strong></dt>
+<dd>Updated Model network</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_parameter_requires_grad(finetune_net, freeze_base_network):
+    &#39;&#39;&#39;
+    Freeze based network as per params set
+
+    Args:
+        finetune_net (network): Model network
+        freeze_base_network (bool): If True, all trainable params are freezed
+
+    Returns:
+        network: Updated Model network
+    &#39;&#39;&#39;
+    if(freeze_base_network):
+        for param in finetune_net.collect_params().values():
+            param.grad_req = &#39;null&#39;;
+    return finetune_net</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="monk.gluon.models" href="index.html">monk.gluon.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="monk.gluon.models.common.create_final_layer" href="#monk.gluon.models.common.create_final_layer">create_final_layer</a></code></li>
+<li><code><a title="monk.gluon.models.common.freeze_layers" href="#monk.gluon.models.common.freeze_layers">freeze_layers</a></code></li>
+<li><code><a title="monk.gluon.models.common.get_final_layer" href="#monk.gluon.models.common.get_final_layer">get_final_layer</a></code></li>
+<li><code><a title="monk.gluon.models.common.get_layer_uid" href="#monk.gluon.models.common.get_layer_uid">get_layer_uid</a></code></li>
+<li><code><a title="monk.gluon.models.common.get_num_layers" href="#monk.gluon.models.common.get_num_layers">get_num_layers</a></code></li>
+<li><code><a title="monk.gluon.models.common.model_to_device" href="#monk.gluon.models.common.model_to_device">model_to_device</a></code></li>
+<li><code><a title="monk.gluon.models.common.print_grad_stats" href="#monk.gluon.models.common.print_grad_stats">print_grad_stats</a></code></li>
+<li><code><a title="monk.gluon.models.common.set_parameter_requires_grad" href="#monk.gluon.models.common.set_parameter_requires_grad">set_parameter_requires_grad</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
